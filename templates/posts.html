@@ -31,10 +31,13 @@
 			];
 
 			$scope.addPost = function (argument) {
-				$scope.posts.unshift({
-					username: 'tomi3',
-					body: $scope.postBody
-				})
+				if ($scope.postBody) {
+					$scope.posts.unshift({
+						username: 'tomi3',
+						body: $scope.postBody
+					})
+				}
+
 			}
 		});
 	</script>
