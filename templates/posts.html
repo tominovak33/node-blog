@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tomi - MEAN</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+<body ng-app='app'>
+<div ng-controller='PostsCtrl' class="container">
+	<h1>Recent Posts:</h1>
+	<input ng-model='postBody' class="form-control" />
+	<button ng-click='addPost()' class="btn btn-default">Add new post</button>
+	<ul class="list-group">
+		<li ng-repeat='post in posts' class="list-group-item">
+			<strong>{{ post.username }}</strong>
+			<span>{{ post.body }}</span>
+		</li>
+	</ul>
+</div>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
+	<script type="text/javascript">
+		var app = angular.module('app', []);
+		app.controller('PostsCtrl', function ($scope) {
+			$scope.posts = [
+				{
+					username: 'tomi1',
+					body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit one.'
+				},
+				{
+					username: 'tomi2',
+					body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit two.'
+				},
+			];
+
+			$scope.addPost = function (argument) {
+				if ($scope.postBody) {
+					$scope.posts.unshift({
+						username: 'tomi3',
+						body: $scope.postBody
+					})
+				}
+
+			}
+		});
+	</script>
+</body>
+</html>

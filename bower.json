@@ -1,0 +1,20 @@
+{
+  "name": "tomi-mongo-express-angular-node",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tominovak33/meanapp",
+  "authors": [
+    "Tomi Novak <dev.tomi33@gmail.com>"
+  ],
+  "description": "A Mongo, Express, Angular and Node practice app",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.4"
+  }
+}
