@@ -1,5 +1,7 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var ngAnnotate = require('gulp-ng-annotate');
 
 gulp.task('hello', function () {
 	console.log('hello gulp task');
@@ -13,8 +15,10 @@ gulp.task('combined_task', ['hello', 'test_task'], function () {
 	console.log('combined gulp task');
 })
 
-gulp.task('js-concat', function() {
-	gulp.src('angular-src/**/*.js')
+gulp.task('js', function() {
+	gulp.src(['angular-src/module.js','angular-src/**/*.js'])
 		.pipe(concat('app.js'))
+		.pipe(ngAnnotate())
+		.pipe(uglify())
 		.pipe(gulp.dest('assets'))
 })
