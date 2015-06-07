@@ -1,9 +1,10 @@
 var app = angular.module('app', []);
-app.controller('PostsCtrl', function ($scope, $http) {
-	$scope.addPost = function (argument) {
+
+app.controller('PostsCtrl', function ($scope, $http, PostsService) {
+	$scope.addPost = function () {
 		if ($scope.postBody) {
-			$http.post('/api/posts', {
-				username: 'tomi6',
+			PostsService.send({
+				username: 'tomi7',
 				body: $scope.postBody
 			})
 			.success(function (post) {
@@ -13,11 +14,18 @@ app.controller('PostsCtrl', function ($scope, $http) {
 		}
 	}
 
-	$http.get('/api/posts')
+	PostsService.get()
 	.success(function (posts) {
 		$scope.posts = posts;
 	})
-	.error (function (error) {
-		//todo: error handling here later
-	})
+
 });
+
+app.service('PostsService', function ($http) {
+	this.get = function () {
+		return $http.get('/api/posts');
+	}
+	this.send = function (post) {
+		return $http.post('/api/posts', post);
+	}
+})
