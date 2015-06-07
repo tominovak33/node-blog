@@ -16,7 +16,7 @@ app.get('/api/posts', function (request, response, next) {
 })
 
 app.get('/', function (request, response) {
-	response.sendfile('layouts/posts.html');
+	response.sendFile(__dirname+'/layouts/posts.html');
 })
 
 app.post('/api/posts', function (request, response, next) {
