@@ -6,7 +6,9 @@ var app = express();
 app.use(bodyParser.json());
 
 app.get('/api/posts', function (request, response, next) {
-	Post.find(function (error, posts) {
+	Post.find()
+	.sort('-date')
+	.exec(function (error, posts) {
 		if (error) {
 			return next(error);
 		}
