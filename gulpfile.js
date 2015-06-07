@@ -6,7 +6,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
 var sourcemaps = require('gulp-sourcemaps');
-
+var nodemon = require('gulp-nodemon');
 
 
 //Get every file in the /gulp/ folder and then require every file that is there
@@ -39,4 +39,16 @@ gulp.task('js', function() {
 
 gulp.task('watch:js', ['js'], function () {
 	gulp.watch('angular-src/**/*js', ['js'])
+})
+
+//Start nodemon and watch all js files (restart if files are saved)
+gulp.task('develop:server', function () {
+	nodemon({
+		script: 'server.js',
+		ext: 'js'
+	})
+})
+
+//run this task to start the server using nodemon (restart server when js files are edited) and to watch the css and js files (rebuild assets when assets are edited)
+gulp.task('develop', ['watch:js', 'watch:css', 'develop:server'] ,  function () {
 })

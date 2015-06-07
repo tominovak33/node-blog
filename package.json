@@ -14,7 +14,8 @@
     "gulp-uglify": "~1.2.0",
     "gulp-ng-annotate": "~1.0.0",
     "gulp-sourcemaps": "~1.5.2",
-    "gulp-stylus": "~2.0.3"
+    "gulp-stylus": "~2.0.3",
+    "gulp-nodemon": "~2.0.3"
   },
   "repository": {
     "type": "git",
