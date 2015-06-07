@@ -1,4 +1,4 @@
-var db = require('mongoose');
+var db = require('../db');
 
 var Post = db.model('Post', {
 	username: {type: String, required: true },
