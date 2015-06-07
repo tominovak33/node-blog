@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('PostsCtrl', function ($scope, $http, PostsService) {
+	.controller('PostsCtrl', ["$scope" , "$http", "PostsService" , function ($scope, $http, PostsService) {
 		$scope.addPost = function () {
 			if ($scope.postBody) {
 				PostsService.send({
@@ -18,4 +18,4 @@ angular.module('app')
 			$scope.posts = posts;
 		})
 
-	})
+	}])

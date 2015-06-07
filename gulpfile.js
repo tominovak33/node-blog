@@ -18,7 +18,7 @@ gulp.task('combined_task', ['hello', 'test_task'], function () {
 gulp.task('js', function() {
 	gulp.src(['angular-src/module.js','angular-src/**/*.js'])
 		.pipe(concat('app.js'))
-		.pipe(ngAnnotate())
+		//.pipe(ngAnnotate())
 		.pipe(uglify())
 		.pipe(gulp.dest('assets'))
 })
