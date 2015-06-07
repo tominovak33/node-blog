@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var ngAnnotate = require('gulp-ng-annotate');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('hello', function () {
 	console.log('hello gulp task');
@@ -17,9 +18,11 @@ gulp.task('combined_task', ['hello', 'test_task'], function () {
 
 gulp.task('js', function() {
 	gulp.src(['angular-src/module.js','angular-src/**/*.js'])
-		.pipe(concat('app.js'))
-		//.pipe(ngAnnotate())
-		.pipe(uglify())
+		.pipe(sourcemaps.init())
+			.pipe(concat('app.js'))
+			//.pipe(ngAnnotate()) //Add this back in if manually preventing ugilfy from breaking the angular dependency injection becomes too much
+			.pipe(uglify())
+		.pipe(sourcemaps.write())
 		.pipe(gulp.dest('assets'))
 })
 
