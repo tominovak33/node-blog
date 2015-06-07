@@ -6,10 +6,7 @@ app.use(bodyParser.json());
 
 //allows the controller to only have to specify the router after '/api/posts'
 app.use('/api/posts', require('./controllers/api/posts.js'));
-
-app.get('/', function (request, response) {
-	response.sendFile(__dirname+'/layouts/posts.html');
-})
+app.use(require('./controllers/static'));
 
 var port =  (process.argv[2] || 3000);
 
