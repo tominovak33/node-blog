@@ -4,7 +4,8 @@ var bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.json());
 
-app.use(require('./controllers/api/posts.js'));
+//allows the controller to only have to specify the router after '/api/posts'
+app.use('/api/posts', require('./controllers/api/posts.js'));
 
 app.get('/', function (request, response) {
 	response.sendFile(__dirname+'/layouts/posts.html');
