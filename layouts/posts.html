@@ -16,30 +16,7 @@
 	</ul>
 </div>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
-	<script type="text/javascript">
-		var app = angular.module('app', []);
-		app.controller('PostsCtrl', function ($scope, $http) {
-			$http.get('/api/posts')
-			.success(function (posts) {
-				$scope.posts = posts;
-			})
-			.error (function (error) {
-				//todo: error handling here later
-			})
-
-			$scope.addPost = function (argument) {
-				if ($scope.postBody) {
-					$http.post('/api/posts', {
-						username: 'tomi6',
-						body: $scope.postBody
-					})
-					.success(function (post) {
-						$scope.posts.unshift(post);
-						$scope.postBody = null;
-					})
-				}
-			}
-		});
-	</script>
+	<!--Access things in the /assets folder as if they were in the webroot -->
+	<script type="text/javascript" src='/app.js'></script>
 </body>
 </html>
