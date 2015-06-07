@@ -18,17 +18,14 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.js"></script>
 	<script type="text/javascript">
 		var app = angular.module('app', []);
-		app.controller('PostsCtrl', function ($scope) {
-			$scope.posts = [
-				{
-					username: 'tomi1',
-					body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit one.'
-				},
-				{
-					username: 'tomi2',
-					body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit two.'
-				},
-			];
+		app.controller('PostsCtrl', function ($scope, $http) {
+			$http.get('http://localhost:3000/api/posts')
+			.success(function (posts) {
+				$scope.posts = posts;
+			})
+			.error (function (error) {
+				//todo: error handling here later
+			})
 
 			$scope.addPost = function (argument) {
 				if ($scope.postBody) {
