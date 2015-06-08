@@ -17,3 +17,11 @@ Fix some module not found errors:
 rm -rf node_modules/
 npm cache clean
 npm install
+
+
+### Node issues
+
+Node error: Error: listen EADDRINUSE
+
+ps aux | grep node
+kill -9 xyz 		<---- Swap xyz for the id of the node js process from the list shown above
