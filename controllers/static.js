@@ -6,8 +6,11 @@ var router = require('express').Router();
 //Eg: /assets/app.js is accessed as /app.js
 router.use(express.static(__dirname+'/../assets'));
 
+//Serve templates
+router.use(express.static(__dirname+'/../templates'));
+
 router.get('/', function (request, response) {
-	var abs_path = path.resolve(__dirname+'/../layouts/posts.html');
+	var abs_path = path.resolve(__dirname+'/../layouts/app.html');
 	response.sendFile(abs_path);
 })
 
