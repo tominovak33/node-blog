@@ -15,7 +15,9 @@
     "gulp-ng-annotate": "~1.0.0",
     "gulp-sourcemaps": "~1.5.2",
     "gulp-stylus": "~2.0.3",
-    "gulp-nodemon": "~2.0.3"
+    "gulp-nodemon": "~2.0.3",
+    "jwt-simple": "~0.3.0",
+    "bcrypt": "~0.8.3"
   },
   "repository": {
     "type": "git",
