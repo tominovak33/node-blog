@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var User = require('../../models/user');
 
+var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt');
 var config = require('../../config');
 
