@@ -17,11 +17,16 @@
     "gulp-stylus": "~2.0.3",
     "gulp-nodemon": "~2.0.3",
     "jwt-simple": "~0.3.0",
-    "bcrypt": "~0.8.3"
+    "bcrypt": "~0.8.3",
+    "ws": "~0.7.2",
+    "lodash": "~3.9.3"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:tominovak33/meanapp.git"
   },
-  "author": "Tomi"
+  "author": "Tomi",
+  "devDependencies": {
+    "wscat": "~1.0.0"
+  }
 }
