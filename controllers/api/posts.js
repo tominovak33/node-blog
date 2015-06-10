@@ -22,9 +22,11 @@ router.get('/', function (request, response, next) {
 //in server.js includes that part
 router.post('/', function (request, response, next) {
 	var post = new Post({
-		username: request.body.username,
 		body: request.body.body
 	});
+	
+	post.username=request.auth.username;
+
 	post.save(function (error, post) {
 		if (error) {
 			return next(error);
