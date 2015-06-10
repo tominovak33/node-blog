@@ -13,6 +13,12 @@ angular.module('app')
 			}
 		}
 
+		$scope.$on('ws:new_post', ["_", "post", function (_,post) {
+			$scope.$apply(function () {
+				$scope.posts.unshift(post);
+			})
+		}])
+
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
