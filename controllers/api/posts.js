@@ -1,5 +1,6 @@
 var Post = require('../../models/post');
 var router = require('express').Router();
+var websocket = require('../../websockets');
 
 
 //No need fo /api/posts part of route as 
@@ -31,6 +32,7 @@ router.post('/', function (request, response, next) {
 		if (error) {
 			return next(error);
 		}
+		websocket.broadcast('new_post', post);
 		response.status(201);
 		response.json(post);
 	});
