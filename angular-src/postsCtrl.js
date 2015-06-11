@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('PostsCtrl', ["$scope" , "$http", "PostsService" , function ($scope, $http, PostsService) {
+	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", function ($scope, $http, PostsService) {
 		$scope.addPost = function () {
 			if ($scope.postBody) {
 				PostsService.send({
@@ -13,11 +13,11 @@ angular.module('app')
 			}
 		}
 
-		$scope.$on('ws:new_post', ["_", "post", function (_,post) {
+		$scope.$on('ws:new_post', function(_, post) {
 			$scope.$apply(function () {
 				$scope.posts.unshift(post);
 			})
-		}])
+		})
 
 	PostsService.get()
 		.success(function (posts) {
