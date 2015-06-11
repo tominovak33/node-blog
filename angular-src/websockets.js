@@ -1,9 +1,10 @@
 angular.module('app')
-.run(["$rootScope", "$timeout" , function ($rootScope, $timeout) {
+.run(["$rootScope", "$timeout" , "$window" , function ($rootScope, $timeout, $window) {
 	
-		var url = 'ws://localhost:3000'
-
-		var connection = new WebSocket(url)
+		//Create a websocket connection with the server
+		var host = "ws://" + $window.location.host
+		  
+		var connection = new WebSocket(host)
 
 		connection.onopen = function () {
 			console.log('Websocket connected')

@@ -17,7 +17,6 @@ angular.module('app')
 			$scope.$apply(function () {
 				$scope.posts.unshift(post);
 			})
-			alert("new post recieved");
 		})
 
 	PostsService.get()
