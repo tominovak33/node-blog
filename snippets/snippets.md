@@ -30,3 +30,8 @@ Node error: Error: listen EADDRINUSE
 
 ps aux | grep node
 kill -9 xyz 		<---- Swap xyz for the id of the node js process from the list shown above
+
+
+### Listen for websockets
+
+node_modules/wscat/bin/wscat -c ws://localhost:3000
