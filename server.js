@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var websocket = require('./websockets');
 
 var app = express();
 app.use(bodyParser.json());
@@ -15,6 +16,8 @@ app.use(require('./controllers/static'));
 
 var port =  (process.argv[2] || 3000);
 
-app.listen(port, function () {
+var server = app.listen(port, function () {
 	console.log('Server listening on port: ', port);
 })
+
+websocket.connect(server);
