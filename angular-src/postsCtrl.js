@@ -14,14 +14,10 @@ angular.module('app')
 		}
 
 		$scope.$on('ws:new_post', function(_, post) {
-			/*
-			console.log("arg 1:")
-			console.log(foo);
-			console.log("arg 2:")
-			console.log(post);
-			console.log('end');
-			*/
-			alert("new post recieved")
+			$scope.$apply(function () {
+				$scope.posts.unshift(post);
+			})
+			alert("new post recieved");
 		})
 
 	PostsService.get()
