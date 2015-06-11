@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var websocket = require('./websockets');
+var _ =  require('lodash');
 
 var app = express();
 app.use(bodyParser.json());
