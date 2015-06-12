@@ -1,6 +1,7 @@
 angular.module('app')
 .run(["$rootScope", "$timeout" , "$window" , function ($rootScope, $timeout, $window) {
 	
+	(function connect(){
 		//Create a websocket connection with the server
 		var host = "ws://" + $window.location.host
 		  
@@ -13,7 +14,7 @@ angular.module('app')
 
 		connection.onclose = function (e) {
 			console.log('Websocket closed. Trying to reconnect...')
-			//$timeout(connect, 10*1000);
+			$timeout(connect, 10*1000);
 		} 
 
 		connection.onmessage = function (e) {
@@ -26,5 +27,5 @@ angular.module('app')
 
 			$rootScope.$broadcast(name, data);
 		}
-
+	})()
 }])
