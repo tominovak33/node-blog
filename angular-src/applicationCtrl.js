@@ -1,9 +1,14 @@
 angular.module('app')
 	.controller('ApplicationCtrl' , ["$scope", "UserSvc", function ($scope, UserSvc) {
+		/*
+		If we have a stored token, get the user information from it
+		and emit the user loggedin messages in order to allow the UI to 
+		indicate to the user that they were logged in
+		*/
+		
 		if (window.localStorage.token) {
 			UserSvc.getUser()
 				.then(function (response){
-					//console.log(response.data);
 					$scope.$emit('userLoggedIn', response.data);
 				})
 		}
