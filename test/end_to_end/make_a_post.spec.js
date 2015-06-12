@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 
 describe('test making a post:', function() {
-	it('logs in as a test user and creates a new post' , function () {
+	it('logs in as a test user and creates a new post successfully' , function () {
 
 		//Open application
 		browser.get('http://localhost:3001');
