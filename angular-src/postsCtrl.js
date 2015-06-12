@@ -7,7 +7,11 @@ angular.module('app')
 					body: $scope.postBody
 				})
 				.success(function (post) {
-					$scope.posts.unshift(post);
+					/*
+					//Removed as websocket broadcast would cause the post to appear duplicated on the browser that it was posted from 
+					//as both of the functions would get executed because the client who sends the post would still recieve the websockets broadcast back from the server  
+					*/
+					//$scope.posts.unshift(post); 
 					$scope.postBody = null;
 				})
 			}
