@@ -15,10 +15,10 @@ app.use('/api/users', require('./controllers/api/users'));
 app.use('/api/posts', require('./controllers/api/posts.js'));
 app.use(require('./controllers/static'));
 
-var port =  (process.argv[2] || 3000);
+var port =  process.env.PORT || 3000;
 
 var server = app.listen(port, function () {
-	console.log('Server listening on port: ', port);
+	console.log('Server ', process.pid ,' listening on port: ', port);
 })
 
 websocket.connect(server);
