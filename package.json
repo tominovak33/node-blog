@@ -19,7 +19,8 @@
     "jwt-simple": "~0.3.0",
     "bcrypt": "~0.8.3",
     "ws": "~0.7.2",
-    "lodash": "~3.9.3"
+    "lodash": "~3.9.3",
+    "chai": "~3.0.0"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
   },
   "author": "Tomi",
   "devDependencies": {
-    "wscat": "~1.0.0"
+    "wscat": "~1.0.0",
+    "protractor": "~2.1.0",
+    "mocha": "~2.2.5"
   }
 }
