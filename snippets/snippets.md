@@ -35,3 +35,9 @@ kill -9 xyz 		<---- Swap xyz for the id of the node js process from the list sho
 ### Listen for websockets
 
 node_modules/wscat/bin/wscat -c ws://localhost:3000
+
+### Testing
+
+* Protractor
+
+Run protactor tests with : ./node_modules/.bin/protractor
