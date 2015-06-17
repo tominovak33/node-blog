@@ -16,4 +16,13 @@ angular.module('app')
 				return svc.getUser();
 			})
 		}
+		svc.register = function (username, password, password_confirm) {
+			console.log("tried to register");
+			return $http.post('/api/users', {
+				username: username, password: password
+			})
+			.then(function (val) {
+				return svc.login(username, password);
+			})
+		}
 	}])

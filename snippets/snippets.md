@@ -14,6 +14,19 @@ curl -v -H "Content-Type: application/json" -XPOST --data "{\"username\":\"tomi5
 
 curl -X POST -d '{"username": "tomi1" , "password": "pass" }' -H "Content-Type: application/json" localhost:3000/api/users
 
+### Mongo Database
+
+mongo
+
+use social
+
+Show users:
+
+db.users.find()
+
+Show posts:
+
+db.posts.find()
 
 ### NPM issues
 
