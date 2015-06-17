@@ -21,6 +21,7 @@ describe('test registration :', function() {
 		element(by.model('password_confirm')).sendKeys('password');		
 		element(by.css('.register-submit')).click();
 		
+		browser.sleep(1000);
 		//Assertions
 
 		//See if the first post on the list of posts is the once just submitted

@@ -17,12 +17,18 @@ angular.module('app')
 			})
 		}
 		svc.register = function (username, password, password_confirm) {
-			console.log("tried to register");
+			//svc.logout()
 			return $http.post('/api/users', {
 				username: username, password: password
 			})
 			.then(function (val) {
-				return svc.login(username, password);
+				return svc.login(username, password)
+				.then(function(){
+					window.location.reload();	
+				})
 			})
+		}
+		svc.logout = function () {
+			window.localStorage.removeItem('token');
 		}
 	}])
