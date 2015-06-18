@@ -3,8 +3,10 @@ angular.module('app')
 		$scope.login = function (username, password) {
 			UserSvc.login(username, password)
 				.then(function (response){
-					//console.log(response.data);
 					$scope.$emit('userLoggedIn', response.data);
+				},
+				function(error){
+				  $scope.loginValidation = 'Incorrect username & password combination';
 				})
 		}
 	}])
