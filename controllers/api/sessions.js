@@ -5,6 +5,17 @@ var jwt = require('jwt-simple');
 var bcrypt = require('bcrypt');
 var config = require('../../config');
 
+var users = [{username: 'user' , password: 'pass'}]
+
+
+function findUserByUsername (username) {
+	return _.find(users, {username: username});
+}
+
+function validateUser (user, password) {
+	return user.password === password;
+}
+
 //Path eqvivalent to /api/session/ not /
 router.post('/', function (request, response, next) {
 	User.findOne({username: request.body.username})
@@ -27,6 +38,12 @@ router.post('/', function (request, response, next) {
 				response.send(token);
 			})
 	})
+})
+
+router.get('/', function (request, response) {
+	var token = request.headers['x-auth'];
+	var user = jwt.decode(token, secretkey);
+	response.json(user);
 })
 
 module.exports = router;

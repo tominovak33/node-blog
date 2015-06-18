@@ -8,7 +8,8 @@ app.use(bodyParser.json());
 
 app.use(require('./auth'));
 
-app.use('/api/sessions', require('./controllers/api/sessions'));
+//app.use('/api/sessions', require('./controllers/api/sessions'));
+app.use('/api/sessions', require('./controllers/api/sessions-locked-down'));
 app.use('/api/users', require('./controllers/api/users'));
 
 //allows the controller to only have to specify the router after '/api/posts'

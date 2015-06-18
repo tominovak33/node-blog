@@ -11,9 +11,12 @@ router.get('/', function (request, response) {
 	var user = jwt.decode(token, config.secret);
 	
 	//Get user info from database here
+	/*
 	User.findOne({username: user.username}, function (error, user) {
 		response.json(user);
 	})
+	*/
+	response.json(user);
 })
 
 router.post('/', function (request, response, next) {
