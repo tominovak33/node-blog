@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('ApplicationCtrl' , ["$scope", "UserSvc", function ($scope, UserSvc) {
+	.controller('ApplicationCtrl' , ["$scope", "$rootScope", "UserSvc", function ($scope, $rootScope, UserSvc) {
 		/*
 		If we have a stored token, get the user information from it
 		and emit the user loggedin messages in order to allow the UI to 
@@ -16,4 +16,9 @@ angular.module('app')
 		$scope.$on('userLoggedIn', function(event, user) {
 			$scope.currentUser = user;
 		})
+
+		$scope.$on('$viewContentLoaded', function(){
+			//the page is ready
+            CKEDITOR.replace('editor1');
+		});
 	}])
