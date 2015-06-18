@@ -5,6 +5,9 @@
 			<input type="text" class="form-control" ng-model="username"/>
 		</div>
 		<div class="form-group">
+			<p ng-if="validationMessage" class="fucked_up">
+			Invalid input: {{validationMessage}}
+			</p>
 			<label>Password</label>
 			<input type="password" class="form-control" ng-model="password"/>
 			<label>Confirm Password</label>
