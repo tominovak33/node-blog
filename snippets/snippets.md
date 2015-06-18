@@ -53,4 +53,11 @@ node_modules/wscat/bin/wscat -c ws://localhost:3000
 
 * Protractor
 
+Before first ever test:
+
+PORT=3001 TEST=1 node server.js
+
+curl -X POST -d '{"username": "test-user" , "password": "password" }' -H "Content-Type: application/json" localhost:3001/api/users
+
+
 Run protactor tests with : ./node_modules/.bin/protractor

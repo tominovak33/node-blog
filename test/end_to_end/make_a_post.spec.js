@@ -38,4 +38,8 @@ describe('test making a post:', function() {
 			expect(post_text).to.contain(post);
 		});
 	})
+
+	afterEach(function(){
+		//db.connection.db.dropDatabase();	
+	})
 })

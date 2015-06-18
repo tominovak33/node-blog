@@ -23,7 +23,7 @@ angular.module('app')
 			.then(function (val) {
 				return svc.login(username, password)
 					.then(function(){
-						window.location.reload();	
+						window.location.href= '/';	
 					})
 			})
 		}
