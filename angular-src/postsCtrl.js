@@ -3,8 +3,8 @@ angular.module('app')
 		$scope.addPost = function () {
 			if ($scope.postBody) {
 				PostsService.send({
-					username: 'tomi7',
-					body: $scope.postBody
+					username: 'tomi',
+					body: CKEDITOR.instances.editor1.getData()
 				})
 				.success(function (post) {
 					/*
