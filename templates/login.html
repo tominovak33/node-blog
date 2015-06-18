@@ -8,6 +8,9 @@
 			<label>Password</label>
 			<input type="password" class="form-control" ng-model="password"/>
 		</div>
+		<p ng-if="loginValidation" class="fucked_up">
+			Error: {{loginValidation}}
+		</p>
 		<input class="btn btn-success btn-lg btn-block login-submit" type="submit" value="Login">
 	</form>
 </div>

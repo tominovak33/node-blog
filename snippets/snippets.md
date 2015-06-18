@@ -14,6 +14,19 @@ curl -v -H "Content-Type: application/json" -XPOST --data "{\"username\":\"tomi5
 
 curl -X POST -d '{"username": "tomi1" , "password": "pass" }' -H "Content-Type: application/json" localhost:3000/api/users
 
+### Mongo Database
+
+mongo
+
+use social
+
+Show users:
+
+db.users.find()
+
+Show posts:
+
+db.posts.find()
 
 ### NPM issues
 
@@ -39,5 +52,12 @@ node_modules/wscat/bin/wscat -c ws://localhost:3000
 ### Testing
 
 * Protractor
+
+Before first ever test:
+
+PORT=3001 TEST=1 node server.js
+
+curl -X POST -d '{"username": "test-user" , "password": "password" }' -H "Content-Type: application/json" localhost:3001/api/users
+
 
 Run protactor tests with : ./node_modules/.bin/protractor
