@@ -1,10 +1,10 @@
 angular.module('app')
 	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", function ($scope, $http, PostsService) {
 		$scope.addPost = function () {
-			if ($scope.postBody) {
+			var ckeditor_content = CKEDITOR.instances.editor1.getData();
+			if (ckeditor_content) {
 				PostsService.send({
-					username: 'tomi',
-					body: CKEDITOR.instances.editor1.getData()
+					body: ckeditor_content
 				})
 				.success(function (post) {
 					/*
@@ -26,6 +26,7 @@ angular.module('app')
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
             CKEDITOR.replace('editor1');
+            document.getElementById('post-simple-input').style.display = 'none';
 		});
 
 	PostsService.get()
