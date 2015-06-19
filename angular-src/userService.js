@@ -2,9 +2,11 @@ angular.module('app')
 	.service('UserSvc', ["$http", function($http) {
 		var svc = this;
 		svc.getUser = function () {
-			return $http.get('/api/users', {
-				headers: { 'X-Auth': window.localStorage.token }
-			})
+			$http.defaults.headers.common['X-Auth'] = window.localStorage.token
+			return $http.get('/api/users')
+			.then(function (response) {
+      			return response
+    		})
 		}
 		svc.login = function (username, password) {
 			return $http.post('/api/sessions', {

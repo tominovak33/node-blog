@@ -61,3 +61,17 @@ curl -X POST -d '{"username": "test-user" , "password": "password" }' -H "Conten
 
 
 Run protactor tests with : ./node_modules/.bin/protractor
+
+### CK Editor
+
+<!--<script src="//cdn.ckeditor.com/4.4.7/full/ckeditor.js"></script>-->
+<script src="//cdn.ckeditor.com/4.4.7/basic/ckeditor.js"></script>
+
+
+<textarea name="editor1" id="editor1" rows="10" cols="80" ng-model='postBody'>
+    This is my textarea to be replaced with CKEditor.
+</textarea>
+
+CKEDITOR.replace('editor1');
+
+CKEDITOR.instances.editor1.getData()

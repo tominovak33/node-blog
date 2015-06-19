@@ -3,8 +3,8 @@ angular.module('app')
 		$scope.addPost = function () {
 			if ($scope.postBody) {
 				PostsService.send({
-					username: 'tomi7',
-					body: $scope.postBody
+					username: 'tomi',
+					body: CKEDITOR.instances.editor1.getData()
 				})
 				.success(function (post) {
 					/*
@@ -22,6 +22,11 @@ angular.module('app')
 				$scope.posts.unshift(post);
 			})
 		})
+
+		$scope.$on('$viewContentLoaded', function(){
+			//the page is ready
+            CKEDITOR.replace('editor1');
+		});
 
 	PostsService.get()
 		.success(function (posts) {
