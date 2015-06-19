@@ -35,3 +35,9 @@ angular.module('app')
 		})
 
 	}])
+
+	.filter('output_html', ["$sce", function ($sce) {
+		return function(val) {
+	        return $sce.trustAsHtml(val);
+	    };
+	}])
