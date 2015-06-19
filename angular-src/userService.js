@@ -5,7 +5,7 @@ angular.module('app')
 			$http.defaults.headers.common['X-Auth'] = window.localStorage.token
 			return $http.get('/api/users')
 			.then(function (response) {
-				console.log(response);
+				console.log(response.data);
       			return response.data
     		})
 		}

@@ -9,7 +9,7 @@ angular.module('app')
 		if (window.localStorage.token) {
 			UserSvc.getUser()
 				.then(function (response){
-					$scope.$emit('userLoggedIn', response.data);
+					$scope.$emit('userLoggedIn', response);
 				})
 		}
 
