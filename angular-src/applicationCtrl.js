@@ -9,16 +9,11 @@ angular.module('app')
 		if (window.localStorage.token) {
 			UserSvc.getUser()
 				.then(function (response){
-					$scope.$emit('userLoggedIn', response);
+					$scope.$emit('userLoggedIn', response.data);
 				})
 		}
 
 		$scope.$on('userLoggedIn', function(event, user) {
 			$scope.currentUser = user;
 		})
-
-		$scope.$on('$viewContentLoaded', function(){
-			//the page is ready
-            CKEDITOR.replace('editor1');
-		});
 	}])

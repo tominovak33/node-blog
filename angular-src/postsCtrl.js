@@ -23,6 +23,11 @@ angular.module('app')
 			})
 		})
 
+		$scope.$on('$viewContentLoaded', function(){
+			//the page is ready
+            CKEDITOR.replace('editor1');
+		});
+
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
