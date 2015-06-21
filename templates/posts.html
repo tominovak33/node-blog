@@ -6,9 +6,8 @@
 	            This is my textarea to be replaced with CKEditor.
 	        </textarea>
 	    </form>
+	    <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
     </div>
-	<input ng-model='postBody' class="form-control" id="post-simple-input"/>
-	<button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
 	<ul class="list-group posts-list">
 		<li ng-repeat="post in posts | orderBy: '-date'" class="list-group-item">
 			<strong>{{ post.username }}</strong>

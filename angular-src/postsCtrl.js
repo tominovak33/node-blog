@@ -19,7 +19,6 @@ angular.module('app')
 
 		$scope.init_ckedit = function () {
 		    CKEDITOR.replace('editor1');
-            document.getElementById('post-simple-input').style.display = 'none';
 		}
 
 		$scope.$on('ws:new_post', function(_, post) {
