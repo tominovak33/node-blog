@@ -4,10 +4,12 @@ angular.module('app')
 			UserSvc.login(username, password)
 				.then(function (response){
 					$scope.$emit('userLoggedIn', response.data);
+					window.location.href = '#/'
 				},
 				function(error){
 				  $scope.loginValidation = 'Incorrect username & password combination';
 				})
+
 		}
 
 		$scope.logout = function () {
