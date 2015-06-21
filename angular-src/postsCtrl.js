@@ -17,6 +17,10 @@ angular.module('app')
 			}
 		}
 
+		$scope.init_ckedit = function () {
+		    CKEDITOR.replace('editor1');
+		}
+
 		$scope.$on('ws:new_post', function(_, post) {
 			$scope.$apply(function () {
 				$scope.posts.unshift(post);
@@ -25,8 +29,7 @@ angular.module('app')
 
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
-            CKEDITOR.replace('editor1');
-            document.getElementById('post-simple-input').style.display = 'none';
+			//alert("foo");
 		});
 
 	PostsService.get()

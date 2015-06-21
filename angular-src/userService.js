@@ -31,5 +31,6 @@ angular.module('app')
 		}
 		svc.logout = function () {
 			window.localStorage.removeItem('token');
+			window.location.href= '/';
 		}
 	}])
