@@ -50,5 +50,5 @@ gulp.task('develop:server', function () {
 })
 
 //run this task to start the server using nodemon (restart server when js files are edited) and to watch the css and js files (rebuild assets when assets are edited)
-gulp.task('develop', ['watch:js', 'watch:css', 'develop:server'] ,  function () {
+gulp.task('develop', ['watch:js', 'watch:less', 'develop:server'] ,  function () {
 })
