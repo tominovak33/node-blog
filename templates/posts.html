@@ -1,10 +1,12 @@
 <div class="container" ng-controller="PostsCtrl">
 	<h1>Recent Posts:</h1>
-    <form>
-        <textarea name="editor1" id="editor1" rows="10" cols="80">
-            This is my textarea to be replaced with CKEditor.
-        </textarea>
-    </form>
+	<div ng-if="currentUser" data-ng-init="init_ckedit()">
+	    <form>
+	        <textarea name="editor1" id="editor1" rows="10" cols="80">
+	            This is my textarea to be replaced with CKEditor.
+	        </textarea>
+	    </form>
+    </div>
 	<input ng-model='postBody' class="form-control" id="post-simple-input"/>
 	<button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
 	<ul class="list-group posts-list">
@@ -14,4 +16,3 @@
 		</li>
 	</ul>
 </div>
-
