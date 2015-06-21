@@ -9,4 +9,8 @@ angular.module('app')
 				  $scope.loginValidation = 'Incorrect username & password combination';
 				})
 		}
+
+		$scope.logout = function () {
+			UserSvc.logout()
+		}
 	}])
