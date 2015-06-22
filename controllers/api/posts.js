@@ -1,6 +1,7 @@
 var Post = require('../../models/post');
 var router = require('express').Router();
 var websocket = require('../../websockets');
+var mongoose = require('mongoose');
 
 
 //No need fo /api/posts part of route as 
@@ -14,6 +15,7 @@ router.get('/', function (request, response, next) {
 		if (error) {
 			return next(error);
 		}
+		console.log(posts);
 		response.status(200);
 		response.json(posts);
 	})
@@ -24,11 +26,11 @@ router.get('/', function (request, response, next) {
 //in server.js includes that part
 router.post('/', function (request, response, next) {
 	var post = new Post({
-		body: request.body.body
+		body: request.body.body,
+		_author: request.auth.user_id   // assign the _id from the person
+		//_author:  mongoose.Types.ObjectId(request.auth.user_id)   // assign the _id from the person
 	});
-	
-	_author: request.auth.user_id    // assign the _id from the person
-	
+		
 	post.save(function (error, post) {
 		if (error) {
 			return next(error);

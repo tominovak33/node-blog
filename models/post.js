@@ -1,7 +1,10 @@
 var db = require('../db');
 
+var mongoose = require('mongoose')
+  , Schema = mongoose.Schema
+
 var Post = db.model('Post', {
-	_author : { type: Number, ref: 'User' },
+	_author : { type:  Schema.Types.ObjectId, ref: 'User' },
 	body: {type: String, required: true },
 	date: {type: Date, required: true, default: Date.now },
 });
