@@ -15,7 +15,6 @@ router.get('/', function (request, response, next) {
 		if (error) {
 			return next(error);
 		}
-		console.log(posts);
 		response.status(200);
 		response.json(posts);
 	})
