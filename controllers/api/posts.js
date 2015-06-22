@@ -9,6 +9,7 @@ var websocket = require('../../websockets');
 router.get('/', function (request, response, next) {
 	Post.find()
 	.sort('-date')
+	.populate('_author')
 	.exec(function (error, posts) {
 		if (error) {
 			return next(error);
@@ -22,13 +23,12 @@ router.get('/', function (request, response, next) {
 //app.use('/api/posts', require('./controllers/api/posts.js'));
 //in server.js includes that part
 router.post('/', function (request, response, next) {
-	console.log(request.auth);
 	var post = new Post({
 		body: request.body.body
 	});
 	
-	post.username=request.auth.username;
-
+	_author: request.auth.user_id    // assign the _id from the person
+	
 	post.save(function (error, post) {
 		if (error) {
 			return next(error);
