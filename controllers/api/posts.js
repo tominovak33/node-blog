@@ -22,6 +22,7 @@ router.get('/', function (request, response, next) {
 //app.use('/api/posts', require('./controllers/api/posts.js'));
 //in server.js includes that part
 router.post('/', function (request, response, next) {
+	console.log(request.auth);
 	var post = new Post({
 		body: request.body.body
 	});
