@@ -34,7 +34,6 @@ angular.module('app')
 
 	PostsService.get()
 		.success(function (posts) {
-			console.log(posts);
 			$scope.posts = posts;
 		})
 
