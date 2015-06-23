@@ -26,17 +26,23 @@ router.get('/', function (request, response, next) {
 router.post('/', function (request, response, next) {
 	var post = new Post({
 		body: request.body.body,
-		_author: request.auth.user_id   // assign the _id from the person
-		//_author:  mongoose.Types.ObjectId(request.auth.user_id)   // assign the _id from the person
+		_author: request.auth.user_id,   // assign the _id from the person
+		post_username: request.auth.username
 	});
 		
 	post.save(function (error, post) {
-		if (error) {
-			return next(error);
-		}
+		//Post.find({ "_id": ObjectId("123456789101112131415") })
+		Post.find({ "_id": post._id })
+		.populate('_author')
+		.exec(function (error, post) {
+			if (error) {
+				return next(error);
+			}
+		//console.log(post);
 		websocket.broadcast('new_post', post);
 		response.status(201);
 		response.json(post);
+		})
 	});
 })
 
