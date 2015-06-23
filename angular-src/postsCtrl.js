@@ -1,10 +1,12 @@
 angular.module('app')
 	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", function ($scope, $http, PostsService) {
 		$scope.addPost = function () {
+			alert($scope.postTitle);
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();
 			if (ckeditor_content) {
 				PostsService.send({
-					body: ckeditor_content
+					body: ckeditor_content,
+					title: $scope.postTitle
 				})
 				.success(function (post) {
 					/*

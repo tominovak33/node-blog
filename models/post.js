@@ -6,6 +6,7 @@ var Schema = mongoose.Schema
 var Post = db.model('Post', {
 	_author : { type:  Schema.Types.ObjectId, ref: 'User' },
 	body: {type: String, required: true },
+	title: {type: String, required: true, default:'Untitled' },
 	date: {type: Date, required: true, default: Date.now },
 });
 
