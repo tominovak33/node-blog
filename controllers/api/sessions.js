@@ -23,7 +23,7 @@ router.post('/', function (request, response, next) {
 					return response.send('Authentication unsuccessful');
 				}
 
-				var token = jwt.encode({username: user.username}, config.secret);
+				var token = jwt.encode({username: user.username, user_id: user._id}, config.secret);
 				response.send(token);
 			})
 	})

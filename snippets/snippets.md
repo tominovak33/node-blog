@@ -28,6 +28,14 @@ Show posts:
 
 db.posts.find()
 
+* Edit a user:
+
+db.users.update( { "_id": ObjectId("123456789101112131415") }, { $set: { "username": "foo" } } );
+
+* Delete All Posts 
+db.posts.remove({})
+
+
 ### NPM issues
 
 Fix some module not found errors:
