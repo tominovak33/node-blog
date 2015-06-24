@@ -11,14 +11,14 @@
 /* Secondary color scheme */
 /* Secondary colours */
 /*
-@rgba-primary-0: rgba(173, 36,  0,1);
-@rgba-primary-1: rgba(250, 52,  0,1);
-@rgba-primary-2: rgba(219, 46,  0,1);
-@rgba-primary-3: rgba( 84, 17,  0,1);
-@rgba-primary-4: rgba(  2,  0,  0,1);
+@rgba-secondary-0: rgba(173, 36,  0,1);
+@rgba-secondary-1: rgba(250, 52,  0,1);
+@rgba-secondary-2: rgba(219, 46,  0,1);
+@rgba-secondary-3: rgba( 84, 17,  0,1);
+@rgba-secondary-4: rgba(  2,  0,  0,1);
 */
 h1 {
-  color: #fa3400;
+  color: #00c800;
 }
 button {
   color: #0F0;
