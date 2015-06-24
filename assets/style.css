@@ -17,7 +17,8 @@
 @rgba-secondary-3: rgba( 84, 17,  0,1);
 @rgba-secondary-4: rgba(  2,  0,  0,1);
 */
-h1 {
+body {
+  background-color: #000200;
   color: #00af00;
 }
 button {
@@ -27,17 +28,21 @@ button {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.navbar-default .navbar-nav > li > a {
-  text-decoration: underline;
+.navbar a {
   font-size: 16px;
   color: #00af00;
 }
-.navbar-default .navbar-nav > li > a:focus,
-.navbar-default .navbar-nav > li > a:hover {
+.nav > li > a:focus,
+.nav > li > a:hover {
   color: #00c800;
+  background-color: #000200;
+  text-decoration: underline;
 }
 .navbar {
-  background-color: #000100;
+  background-color: #000200;
+}
+.navbar p {
+  color: #00af00;
 }
 .post-submit {
   margin-top: 10px;
@@ -46,6 +51,9 @@ button {
 .posts-header {
   font-weight: bold;
 }
+.posts-list {
+  color: #bb0000;
+}
 .posts-list li {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -53,6 +61,7 @@ button {
 .post_details {
   height: 33px;
   position: relative;
+  color: #bb0000;
 }
 .author_name {
   position: absolute;
@@ -67,5 +76,12 @@ button {
   font-size: 24px;
   font-family: "Courier New", Courier, monospace;
   text-decoration: underline;
-  color: #B00;
+  color: #00af00;
+}
+.post_body {
+  color: #000200;
+}
+.post_body a {
+  color: #00af00;
+  text-decoration: underline;
 }

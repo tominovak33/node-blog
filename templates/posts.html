@@ -18,7 +18,7 @@
 			<h5 class="post_date">{{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
 		</div>	
 			<div class="post_title"><p class="title">{{ post.title }}</p></div>
-			<div ng-bind-html="post.body | output_html"></div>
+			<div class="post_body" ng-bind-html="post.body | output_html"></div>
 		</li>
 	</ul>
 </div>
