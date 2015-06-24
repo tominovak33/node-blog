@@ -1,5 +1,24 @@
+/* Main primary color scheme hex codes */
+/* Main Primary color */
+/* As RGBa codes for quick reference */
+/*
+@rgba-primary-0: rgba(  0,139,  0,1);
+@rgba-primary-1: rgba(  0,200,  0,1);
+@rgba-primary-2: rgba(  0,175,  0,1);
+@rgba-primary-3: rgba(  0, 67,  0,1);
+@rgba-primary-4: rgba(  0,  1,  0,1);
+*/
+/* Secondary color scheme */
+/* Secondary colours */
+/*
+@rgba-primary-0: rgba(173, 36,  0,1);
+@rgba-primary-1: rgba(250, 52,  0,1);
+@rgba-primary-2: rgba(219, 46,  0,1);
+@rgba-primary-3: rgba( 84, 17,  0,1);
+@rgba-primary-4: rgba(  2,  0,  0,1);
+*/
 h1 {
-  color: #0A0;
+  color: #fa3400;
 }
 button {
   color: #0F0;
