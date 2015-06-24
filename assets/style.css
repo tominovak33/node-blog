@@ -18,7 +18,7 @@
 @rgba-secondary-4: rgba(  2,  0,  0,1);
 */
 h1 {
-  color: #008b00;
+  color: #00af00;
 }
 button {
   color: #0F0;
@@ -27,9 +27,17 @@ button {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.nav a {
+.navbar-default .navbar-nav > li > a {
   text-decoration: underline;
   font-size: 16px;
+  color: #00af00;
+}
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:hover {
+  color: #00c800;
+}
+.navbar {
+  background-color: #000100;
 }
 .post-submit {
   margin-top: 10px;
