@@ -14,6 +14,8 @@ angular.module('app')
 					*/
 					//$scope.posts.unshift(post); 
 					$scope.postBody = null;
+					CKEDITOR.instances.editor1.setData('');
+					$scope.postTitle = null;
 				})
 			}
 		}
