@@ -1,21 +1,25 @@
 <div class="container" ng-controller="PostsCtrl">
-	<h1 class="posts-header">Recent Posts:</h1>
-	<input ng-model='postTitle' class="form-control" />
 	<div ng-if="currentUser" data-ng-init="init_ckedit()">
+		<h1>Create a Post: </h1>
 	    <form>
+	    	<h4 class="margin-v-small">Post Title:</h4>
+	    	<input ng-model='$parent.postTitle' class="form-control" />
+	    	<h4 class="margin-v-small">Post Body:</h4>
 	        <textarea name="editor1" id="editor1" rows="10" cols="80">	        
 	        </textarea>
 	    </form>
 	    <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
     </div>
-	<ul class="list-group posts-list">
-		<li ng-repeat="post in posts | orderBy: '-date'" class="list-group-item">
+    <h1 ng-if="posts.length" class="posts-header">Recent Posts:</h1>
+    <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
+	<ul class="posts-list">
+		<li ng-repeat="post in posts | orderBy: '-date'" class="post_item">
 		<div class="post_details">
 			<h5 class="author_name"><strong>{{ post._author.username }}</strong><h5>
 			<h5 class="post_date">{{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
 		</div>	
 			<div class="post_title"><p class="title">{{ post.title }}</p></div>
-			<div ng-bind-html="post.body | output_html"></div>
+			<div class="post_body" ng-bind-html="post.body | output_html"></div>
 		</li>
 	</ul>
 </div>

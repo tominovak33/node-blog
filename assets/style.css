@@ -1,12 +1,57 @@
-h1 {
-  color: #0A0;
+/* Main primary color scheme hex codes */
+/* Main Primary color */
+/* As RGBa codes for quick reference */
+/*
+@rgba-primary-0: rgba(  0,139,  0,1);
+@rgba-primary-1: rgba(  0,200,  0,1);
+@rgba-primary-2: rgba(  0,175,  0,1);
+@rgba-primary-3: rgba(  0, 67,  0,1);
+@rgba-primary-4: rgba(  0,  1,  0,1);
+*/
+/* Secondary color scheme */
+/* Secondary colours */
+/*
+@rgba-secondary-0: rgba(173, 36,  0,1);
+@rgba-secondary-1: rgba(250, 52,  0,1);
+@rgba-secondary-2: rgba(219, 46,  0,1);
+@rgba-secondary-3: rgba( 84, 17,  0,1);
+@rgba-secondary-4: rgba(  2,  0,  0,1);
+*/
+body {
+  background-color: #000200;
+  color: #00af00;
 }
 button {
   color: #0F0;
 }
-.nav a {
-  text-decoration: underline;
+.margin-v-small {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.float-left {
+  float: left !important;
+}
+.float-right {
+  float: right !important;
+}
+.float-none {
+  float: none !important;
+}
+.navbar a {
   font-size: 16px;
+  color: #00af00;
+}
+.nav > li > a:focus,
+.nav > li > a:hover {
+  color: #00c800;
+  background-color: #000200;
+  text-decoration: underline;
+}
+.navbar {
+  background-color: #000200;
+}
+.navbar p {
+  color: #00af00;
 }
 .post-submit {
   margin-top: 10px;
@@ -15,13 +60,26 @@ button {
 .posts-header {
   font-weight: bold;
 }
+.posts-list {
+  padding-left: 0;
+  padding-right: 0;
+  color: #bb0000;
+}
 .posts-list li {
   margin-top: 10px;
   margin-bottom: 10px;
+  border-radius: 10px;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
 .post_details {
   height: 33px;
   position: relative;
+  color: #bb0000;
 }
 .author_name {
   position: absolute;
@@ -36,5 +94,15 @@ button {
   font-size: 24px;
   font-family: "Courier New", Courier, monospace;
   text-decoration: underline;
-  color: #B00;
+  color: #00af00;
+}
+.post_body {
+  color: #000200;
+}
+.post_body a {
+  color: #00af00;
+  text-decoration: underline;
+}
+.footer p {
+  color: #00af00;
 }

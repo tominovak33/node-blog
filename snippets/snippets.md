@@ -83,3 +83,21 @@ Run protactor tests with : ./node_modules/.bin/protractor
 CKEDITOR.replace('editor1');
 
 CKEDITOR.instances.editor1.getData()
+
+### First post content:
+
+<h2><strong>About the project:</strong></h2>
+
+<h3><strong>Technology:</strong></h3>
+
+<p>This application is created using <a href="https://nodejs.org/" target="_blank">Node</a>, <a href="http://expressjs.com/" target="_blank">Express</a>, <a href="https://www.mongodb.org/">Mongo DB</a> and <a href="https://angularjs.org/">Angular JS</a>.&nbsp;</p>
+
+<p>Testing of the application is carried out with <a href="https://angular.github.io/protractor/#/">Protractor</a> running end to end tests using the <a href="http://mochajs.org/">Mocha</a> javascript testing framework and the <a href="http://chaijs.com/">Chai</a> assertion library.</p>
+
+<p>Package management is handled by <a href="https://www.npmjs.com/">npm</a> and <a href="http://bower.io/">bower</a>.</p>
+
+<p>Less css is used as the css preprocessor and the build process is handled by <a href="http://gulpjs.com/">gulp</a>.</p>
+
+<h3><strong>Purpose:</strong></h3>
+
+<p>Currently the only purpose of this project is to allow me to practice my development skills and to enable me to try different tools and workflows within a project.</p>

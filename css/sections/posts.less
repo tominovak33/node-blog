@@ -8,15 +8,27 @@
 }
 
 .posts-list {
+	padding-left: 0;
+	padding-right: 0;
+	color: @color-secondary-0;
 	li {
 		margin-top: 10px;
 		margin-bottom: 10px;
+		border-radius: 10px;
+		position: relative;
+		display: block;
+		padding: 10px 15px;
+		margin-bottom: -1px;
+		background-color: #fff;
+		border: 1px solid #ddd;
 	}
 }
 
 .post_details {
 	height: 33px;
 	position: relative;
+
+	color:  @color-secondary-0;
 }
 
 .author_name {
@@ -34,5 +46,21 @@
 	font-size: 24px;
 	font-family: "Courier New", Courier, monospace;
 	text-decoration: underline;
-	color: #B00;
+	color: @color-primary-2;
+}
+
+
+.post_body {
+	color: @color-primary-4;
+	
+	a {
+		color: @color-primary-2;
+		text-decoration: underline;
+	}
+}
+
+.footer {
+	p {
+		color: @color-primary-2;
+	}
 }
