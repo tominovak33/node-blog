@@ -28,6 +28,15 @@ button {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.float-left {
+  float: left !important;
+}
+.float-right {
+  float: right !important;
+}
+.float-none {
+  float: none !important;
+}
 .navbar a {
   font-size: 16px;
   color: #00af00;
