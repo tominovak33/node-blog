@@ -52,11 +52,20 @@ button {
   font-weight: bold;
 }
 .posts-list {
+  padding-left: 0;
+  padding-right: 0;
   color: #bb0000;
 }
 .posts-list li {
   margin-top: 10px;
   margin-bottom: 10px;
+  border-radius: 10px;
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
 .post_details {
   height: 33px;
