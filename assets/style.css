@@ -37,6 +37,12 @@ button {
 .float-none {
   float: none !important;
 }
+.footer {
+  margin-top: 10px;
+}
+.footer p {
+  color: #00af00;
+}
 .navbar a {
   font-size: 16px;
   color: #00af00;
@@ -102,7 +108,4 @@ button {
 .post_body a {
   color: #00af00;
   text-decoration: underline;
-}
-.footer p {
-  color: #00af00;
 }
