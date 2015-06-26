@@ -10,14 +10,20 @@
 	    </form>
 	    <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
     </div>
-    <h1 ng-if="posts.length" class="posts-header">Recent Posts:</h1>
-    <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
-	<ul class="posts-list">
-		<!--<input type="text" ng-model="search">-->
-		<label>Any: <input ng-model="search.$"></label> <br>
+    <h1 ng-if="posts.length" class="posts-header">Posts:</h1>
+
+	<div ng-click="show_search = !show_search" class="posts_search_toggle"><span>Show search options</span></div>
+
+ 	<div ng-show="show_search" class="posts_search_inputs">
+    	<label>Any: <input ng-model="search.$"></label> <br>
 		<label>Author: <input ng-model="search._author.username"></label><br>
 		<label>Date:  <input ng-model="search.date"></label><br>
 		<label>Body:  <input ng-model="search.body"></label><br>
+  	</div>
+
+    <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
+	<ul class="posts-list">
+		<!--<input type="text" ng-model="search">-->
 		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" class="post_item">
 		<div class="post_details">
 			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
