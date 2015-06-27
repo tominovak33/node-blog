@@ -54,9 +54,9 @@ angular.module('app')
 	        }
 	    };
 	    
-	    $scope.setPage = function () {
-	    	alert('setting page');
-	        $scope.currentPage = this.n;
+	    $scope.setPage = function (page_number) {
+	        $scope.currentPage = page_number;
+	        $scope.paginate();
 	    };
 
 	    $scope.range = function(n) {
