@@ -104,25 +104,6 @@
 	display: inline-block;
 }
 
-
-.my-animation.ng-enter {
-  /* standard transition code */
-  transition: 1s linear all;
-  opacity:0;
-}
-.my-animation.ng-enter-stagger {
-  /* this will have a 100ms delay between each successive leave animation */
-  transition-delay: 1s;
-
-  /* in case the stagger doesn't work then the duration value
-   must be set to 0 to avoid an accidental CSS inheritance */
-  transition-duration: 0s;
-}
-.my-animation.ng-enter.ng-enter-active {
-  /* standard transition styles */
-  opacity:1;
-}
-
 .post_item.ng-enter {
   /* standard transition code */
   transition: 1s linear all;

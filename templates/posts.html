@@ -36,7 +36,7 @@
     <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
 	<ul class="posts-list">
 		<!--<input type="text" ng-model="search">-->
-		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" ng-animate="'my-animation'" class="post_item">
+		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" class="post_item">
 		<div class="post_details">
 			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
 			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
