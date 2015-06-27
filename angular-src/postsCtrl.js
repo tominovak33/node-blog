@@ -38,7 +38,7 @@ angular.module('app')
 		});
 
 		$scope.currentPage = 1;
-		$scope.postsPerPage = 5;
+		$scope.postsPerPage = 2;
 
 		$scope.prevPage = function () {
 	        if ($scope.currentPage > 1) {
@@ -55,12 +55,18 @@ angular.module('app')
 	    };
 	    
 	    $scope.setPage = function () {
+	    	alert('setting page');
 	        $scope.currentPage = this.n;
 	    };
+
+	    $scope.range = function(n) {
+        	return new Array(n);
+    	};
 
 		$scope.paginate = function() {
 
 			$scope.pagedPosts = [];
+			$scope.pages = Math.ceil($scope.posts.length/$scope.postsPerPage);
 
 			$scope.numberOfPages = function () {
 				return Math.ceil($scope.posts.length / $scope.postsPerPage);
