@@ -24,6 +24,10 @@
 			<div ng-show="author_search" class="search_input"><label><input ng-model="search._author.username"></label><div class="clear_button" ng-click="search._author.username = '' ">Clear</div></div>
 		</div> 
 		<div class="post_search_wrapper">
+			<div ng-click="title_search = !title_search" class="title_search_toggle search_toggle_button"><span>Title: </span></div>
+			<div ng-show="title_search" class="search_input"><label><input ng-model="search.title"></label><div class="clear_button" ng-click="search.title = '' ">Clear</div></div>
+		</div>
+		<div class="post_search_wrapper">
 			<div ng-click="date_search = !date_search" class="date_search_toggle search_toggle_button"><span>Date: </span></div>
 			<div ng-show="date_search" class="search_input"><label><input ng-model="search.date"></label><div class="clear_button" ng-click="search.date = '' ">Clear</div></div>
 		</div>
