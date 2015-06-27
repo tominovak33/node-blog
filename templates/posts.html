@@ -15,10 +15,22 @@
 	<div ng-click="show_search = !show_search" class="posts_search_toggle"><span>Show search options</span></div>
 
  	<div ng-show="show_search" class="posts_search_inputs">
-    	<div><div ng-click="any_search = !any_search" class="any_search_toggle"><span>Any: </span></div><label ng-show="any_search"><input ng-model="search.$"></label></div>
-		<div><div ng-click="author_search = !author_search" class="any_search_toggle"><span>Author: </span></div><label ng-show="author_search"><input ng-model="search._author.username"></label></div> 
-		<div><div ng-click="date_search = !date_search" class="date_search_toggle"><span>Date: </span></div><label ng-show="date_search"><input ng-model="search.date"></label></div>
-		<div><div ng-click="body_search = !body_search" class="body_search_toggle"><span>Body: </span></div><label ng-show="body_search"><input ng-model="search.body"></label></div>
+    	<div class="post_search_wrapper">
+    		<div ng-click="any_search = !any_search" class="any_search_toggle search_toggle_button"><span>Any: </span></div>
+    		<label ng-show="any_search"><input ng-model="search.$"></label>
+    	</div>
+		<div class="post_search_wrapper">
+			<div ng-click="author_search = !author_search" class="any_search_toggle search_toggle_button"><span>Author: </span></div>
+			<label ng-show="author_search"><input ng-model="search._author.username"></label>
+		</div> 
+		<div class="post_search_wrapper">
+			<div ng-click="date_search = !date_search" class="date_search_toggle search_toggle_button"><span>Date: </span></div>
+			<label ng-show="date_search"><input ng-model="search.date"></label>
+		</div>
+		<div class="post_search_wrapper">
+			<div ng-click="body_search = !body_search" class="body_search_toggle search_toggle_button"><span>Body: </span></div>
+			<label ng-show="body_search"><input ng-model="search.body"></label>
+		</div>
   	</div>
 
     <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>

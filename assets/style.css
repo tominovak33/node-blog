@@ -102,6 +102,23 @@ button {
   padding: 5px 10px 5px 10px;
   background-color: #bb0000;
 }
-.posts_search_inputs div {
+.posts_search_inputs {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.posts_search_inputs .post_search_wrapper {
+  display: block;
+}
+.search_toggle_button {
   display: inline-block;
+  min-width: 100px;
+  cursor: pointer;
+  background-color: #db2e00;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.search_toggle_button span {
+  text-align: center;
+  width: 100%;
 }
