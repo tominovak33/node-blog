@@ -36,6 +36,10 @@ angular.module('app')
 			//alert("foo");
 		});
 
+    	$scope.currentPage = 0;
+		$scope.itemsPerPage = 5;
+		$scope.pagedItems = [];
+
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
