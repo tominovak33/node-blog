@@ -34,7 +34,7 @@
   	</div>
 
     <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
-	<ul class="posts-list">
+	<ul ng-if="posts.length" class="posts-list">
 		<!--<input type="text" ng-model="search">-->
 		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" class="post_item">
 		<div class="post_details">
