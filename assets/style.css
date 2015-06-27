@@ -1,22 +1,7 @@
 /* Main primary color scheme hex codes */
 /* Main Primary color */
-/* As RGBa codes for quick reference */
-/*
-@rgba-primary-0: rgba(  0,139,  0,1);
-@rgba-primary-1: rgba(  0,200,  0,1);
-@rgba-primary-2: rgba(  0,175,  0,1);
-@rgba-primary-3: rgba(  0, 67,  0,1);
-@rgba-primary-4: rgba(  0,  1,  0,1);
-*/
+/* Nice green for text */
 /* Secondary color scheme */
-/* Secondary colours */
-/*
-@rgba-secondary-0: rgba(173, 36,  0,1);
-@rgba-secondary-1: rgba(250, 52,  0,1);
-@rgba-secondary-2: rgba(219, 46,  0,1);
-@rgba-secondary-3: rgba( 84, 17,  0,1);
-@rgba-secondary-4: rgba(  2,  0,  0,1);
-*/
 body {
   background-color: #000200;
   color: #00af00;
@@ -36,6 +21,13 @@ button {
 }
 .float-none {
   float: none !important;
+}
+.footer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.footer p {
+  color: #00af00;
 }
 .navbar a {
   font-size: 16px;
@@ -103,6 +95,13 @@ button {
   color: #00af00;
   text-decoration: underline;
 }
-.footer p {
-  color: #00af00;
+.posts_search_toggle {
+  cursor: pointer;
+}
+.posts_search_toggle span {
+  padding: 5px 10px 5px 10px;
+  background-color: #bb0000;
+}
+.posts_search_inputs div {
+  display: inline-block;
 }

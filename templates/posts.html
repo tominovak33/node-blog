@@ -10,13 +10,24 @@
 	    </form>
 	    <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
     </div>
-    <h1 ng-if="posts.length" class="posts-header">Recent Posts:</h1>
+    <h1 ng-if="posts.length" class="posts-header">Posts:</h1>
+
+	<div ng-click="show_search = !show_search" class="posts_search_toggle"><span>Show search options</span></div>
+
+ 	<div ng-show="show_search" class="posts_search_inputs">
+    	<div><div ng-click="any_search = !any_search" class="any_search_toggle"><span>Any: </span></div><label ng-show="any_search"><input ng-model="search.$"></label></div>
+		<div><div ng-click="author_search = !author_search" class="any_search_toggle"><span>Author: </span></div><label ng-show="author_search"><input ng-model="search._author.username"></label></div> 
+		<div><div ng-click="date_search = !date_search" class="date_search_toggle"><span>Date: </span></div><label ng-show="date_search"><input ng-model="search.date"></label></div>
+		<div><div ng-click="body_search = !body_search" class="body_search_toggle"><span>Body: </span></div><label ng-show="body_search"><input ng-model="search.body"></label></div>
+  	</div>
+
     <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
 	<ul class="posts-list">
-		<li ng-repeat="post in posts | orderBy: '-date'" class="post_item">
+		<!--<input type="text" ng-model="search">-->
+		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" class="post_item">
 		<div class="post_details">
-			<h5 class="author_name"><strong>{{ post._author.username }}</strong><h5>
-			<h5 class="post_date">{{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
+			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
+			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
 		</div>	
 			<div class="post_title"><p class="title">{{ post.title }}</p></div>
 			<div class="post_body" ng-bind-html="post.body | output_html"></div>
