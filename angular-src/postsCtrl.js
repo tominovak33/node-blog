@@ -37,10 +37,34 @@ angular.module('app')
 			//alert("foo");
 		});
 
+		$scope.currentPage = 1;
+		$scope.postsPerPage = 5;
+/*rm */
+		$scope.prevPage = function () {
+	        if ($scope.currentPage > 0) {
+	            $scope.currentPage--;
+	            $scope.paginate();
+	        }
+	    };
+    
+	    $scope.nextPage = function () {
+	        if ($scope.currentPage < $scope.posts.length/$scope.postsPerPage) {
+	            $scope.currentPage++;
+	            $scope.paginate();
+	        }
+	    };
+	    
+	    $scope.setPage = function () {
+	        $scope.currentPage = this.n;
+	    };
+/* nd */
+
+
+
 		$scope.paginate = function() {
 
-			$scope.currentPage = 0;
-			$scope.postsPerPage = 5;
+			alert('paginate' + $scope.currentPage);
+
 			$scope.pagedPosts = [];
 
 			/* rm */ 
@@ -48,15 +72,13 @@ angular.module('app')
 				return Math.ceil($scope.posts.length / $scope.postsPerPage);
 			};
 
-			var begin = (($scope.currentPage) * $scope.postsPerPage);
+			var begin = (($scope.currentPage -1 ) * $scope.postsPerPage);
 			var end = begin + $scope.postsPerPage;
 
 			//console.log(begin);
 			//console.log(end);
 
 			$scope.pagedPosts = $scope.posts.slice(begin, end);
-
-			console.log($scope.pagedPosts);
 
 			/* end */
 		}

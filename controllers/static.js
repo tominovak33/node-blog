@@ -7,6 +7,7 @@ var router = require('express').Router();
 router.use(express.static(__dirname+'/../assets'));
 
 //Serve templates
+//Access templates folder content directly from the root not /templates/foo.html
 router.use(express.static(__dirname+'/../templates'));
 
 router.get('/', function (request, response) {

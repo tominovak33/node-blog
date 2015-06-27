@@ -29,6 +29,11 @@ button {
 .footer p {
   color: #00af00;
 }
+.pagination_item {
+  display: inline-block;
+  cursor: pointer;
+  min-width: 50px;
+}
 .navbar a {
   font-size: 16px;
   color: #00af00;
