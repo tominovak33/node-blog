@@ -24,6 +24,10 @@
 			<div ng-show="author_search" class="search_input"><label><input ng-model="search._author.username"></label><div class="clear_button" ng-click="search._author.username = '' ">Clear</div></div>
 		</div> 
 		<div class="post_search_wrapper">
+			<div ng-click="title_search = !title_search" class="title_search_toggle search_toggle_button"><span>Title: </span></div>
+			<div ng-show="title_search" class="search_input"><label><input ng-model="search.title"></label><div class="clear_button" ng-click="search.title = '' ">Clear</div></div>
+		</div>
+		<div class="post_search_wrapper">
 			<div ng-click="date_search = !date_search" class="date_search_toggle search_toggle_button"><span>Date: </span></div>
 			<div ng-show="date_search" class="search_input"><label><input ng-model="search.date"></label><div class="clear_button" ng-click="search.date = '' ">Clear</div></div>
 		</div>
@@ -34,9 +38,9 @@
   	</div>
 
     <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
-	<ul class="posts-list">
+	<ul ng-if="posts.length" class="posts-list">
 		<!--<input type="text" ng-model="search">-->
-		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" class="post_item">
+		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" class="post_item animate-3d-rotate">
 		<div class="post_details">
 			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
 			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
