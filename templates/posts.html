@@ -40,7 +40,7 @@
     <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
 	<ul ng-if="posts.length" class="posts-list">
 		<!--<input type="text" ng-model="search">-->
-		<li ng-repeat="post in posts | orderBy: '-date' | filter:search" class="post_item animate-3d-rotate">
+		<li ng-repeat="post in pagedPosts | orderBy: '-date' | filter:search" class="post_item animate-3d-rotate">
 		<div class="post_details">
 			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
 			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
@@ -49,4 +49,7 @@
 			<div class="post_body" ng-bind-html="post.body | output_html"></div>
 		</li>
 	</ul>
+
+	<div data-pagination="" data-num-pages="numberOfPages()" data-current-page="currentPage" data-max-size="postsPerPage"></div>
+
 </div>

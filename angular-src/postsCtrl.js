@@ -1,5 +1,6 @@
 angular.module('app')
 	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", function ($scope, $http, PostsService) {
+		$scope.posts = [];
 		$scope.addPost = function () {
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();
 			if (ckeditor_content) {
@@ -36,13 +37,34 @@ angular.module('app')
 			//alert("foo");
 		});
 
-    	$scope.currentPage = 0;
-		$scope.itemsPerPage = 5;
-		$scope.pagedItems = [];
+		$scope.paginate = function() {
+
+			$scope.currentPage = 0;
+			$scope.postsPerPage = 5;
+			$scope.pagedPosts = [];
+
+			/* rm */ 
+			$scope.numberOfPages = function () {
+				return Math.ceil($scope.posts.length / $scope.postsPerPage);
+			};
+
+			var begin = (($scope.currentPage) * $scope.postsPerPage);
+			var end = begin + $scope.postsPerPage;
+
+			//console.log(begin);
+			//console.log(end);
+
+			$scope.pagedPosts = $scope.posts.slice(begin, end);
+
+			console.log($scope.pagedPosts);
+
+			/* end */
+		}
 
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
+			$scope.paginate();
 		})
 
 	}])
