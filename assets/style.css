@@ -29,11 +29,6 @@ button {
 .footer p {
   color: #00af00;
 }
-.pagination_item {
-  display: inline-block;
-  cursor: pointer;
-  min-width: 50px;
-}
 .pagination {
   height: 40px;
   margin: 20px 0;
@@ -57,7 +52,7 @@ button {
   line-height: 38px;
   text-decoration: none;
   background-color: #000;
-  border: 1px solid #dddddd;
+  border: 1px solid #FFF;
   border-left-width: 0;
   color: #00af00;
 }
