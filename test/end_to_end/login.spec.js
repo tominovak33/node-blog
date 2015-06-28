@@ -1,3 +1,4 @@
+/*
 var expect = require('chai').expect;
 
 describe('test logging in:', function() {
@@ -23,3 +24,5 @@ describe('test logging in:', function() {
 		});
 	})
 })
+
+*/
