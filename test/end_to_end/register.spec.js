@@ -2,10 +2,11 @@ var expect = require('chai').expect;
 
 describe('test registration :', function() {
 		
-	afterEach(function() {
+	beforeEach(function() {
     	browser.executeScript('window.sessionStorage.clear();');
     	browser.executeScript('window.localStorage.clear();');
 	});
+	
 	//Set credentials to use so available in all tests below
 	var time = Date.now();
 
