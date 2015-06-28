@@ -63,11 +63,106 @@
 	span {
 		padding: 5px 10px 5px 10px;
 		background-color: @color-secondary-0;
+		font-weight: 600;
 	}
 }
 
 .posts_search_inputs {
-	div {
-		display: inline-block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	.post_search_wrapper {
+		display: block;
 	}
 }
+
+.search_toggle_button {
+	display: inline-block;
+	min-width: 100px;
+	cursor: pointer;
+	background-color: @color-secondary-2;
+	text-align: center;
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	span {
+		text-align: center;
+		width: 100%;
+		font-weight: 600;
+	}
+}
+
+.clear_button {
+	display: inline-block;
+	cursor: pointer;
+	margin: 0 5px;
+	padding: 2px 5px;
+	background-color: @color-secondary-2;
+	font-weight: 600;
+}
+
+.search_input {
+	display: inline-block;
+}
+
+/* 3D rotate */
+.animate-3d-rotate.ng-enter, 
+.animate-3d-rotate.ng-leave { 
+    -webkit-transition: 600ms cubic-bezier(0.895, 0.030, 0.685, 0.220) all;
+    -moz-transition: 600ms cubic-bezier(0.895, 0.030, 0.685, 0.220) all;
+    -ms-transition: 600ms cubic-bezier(0.895, 0.030, 0.685, 0.220) all;
+    -o-transition: 600ms cubic-bezier(0.895, 0.030, 0.685, 0.220) all;
+    transition: 600ms cubic-bezier(0.895, 0.030, 0.685, 0.220) all;
+    position: relative;
+    display: block;
+} 
+ 
+.animate-3d-rotate.ng-leave.animate-3d-rotate.ng-leave-active,
+.animate-3d-rotate.ng-enter {
+    -webkit-transform: rotateX(90deg) rotateZ(90deg);
+    -moz-transform: rotateX(90deg) rotateZ(90deg);
+    -ms-transform: rotateX(90deg) rotateZ(90deg);
+    -o-transform: rotateX(90deg) rotateZ(90deg);
+    transform: rotateX(90deg) rotateZ(90deg);
+    opacity: 0;
+    height: 0px;
+}        
+ 
+.animate-3d-rotate.ng-enter.animate-3d-rotate.ng-enter-active,
+.animate-3d-rotate.ng-leave {
+    -webkit-transform: rotateX(0deg) rotateZ(0deg);
+    -moz-transform: rotateX(0deg) rotateZ(0deg);
+    -ms-transform: rotateX(0deg) rotateZ(0deg);
+    -o-transform: rotateX(0deg) rotateZ(0deg);
+    transform: rotateX(0deg) rotateZ(0deg);
+    opacity: 1;
+    height: 30px;
+}
+/* end 3d rotate */
+
+/* Simple move */
+.animate-simple-move.ng-enter, 
+.animate-simple-move.ng-leave
+{ 
+    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    position: relative;
+    display: block;
+} 
+ 
+.animate-simple-move.ng-enter.animate-simple-move.ng-enter-active, 
+.animate-simple-move.ng-leave {
+    opacity: 1;
+    top: 0;
+    height: 30px;
+}
+ 
+.animate-simple-move.ng-leave.animate-simple-move.ng-leave-active,
+.animate-simple-move.ng-enter {
+    opacity: 0;
+    top: -50px;
+    height: 0px;
+}
+/* end simple move */
