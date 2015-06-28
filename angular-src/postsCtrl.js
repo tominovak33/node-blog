@@ -59,6 +59,7 @@ angular.module('app')
 	        $scope.paginate();
 	    };
 
+	    //This way I can do:  "<li ng-repeat="n in range(pages) track by $index">" and so I can display as many items as the value of a number as this returns an array of that lenght
 	    $scope.range = function(n) {
         	return new Array(n);
     	};
