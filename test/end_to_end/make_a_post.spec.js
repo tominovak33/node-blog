@@ -36,8 +36,6 @@ describe('test making a post:', function() {
 		//in the list will have the expected content
 		var title = 'my test title '
 		title += Date.now();
-
-		console.log(title);
 		
 		//Enter a test post and sumbmit it
 		element(by.model('$parent.postTitle')).sendKeys(title);
@@ -54,7 +52,6 @@ describe('test making a post:', function() {
 		element.all(by.css('.post_title')).first().getText()
 
 			.then(function (post_title) {
-				console.log(post_title)
 				expect(post_title).to.contain(title);
 			}
 
