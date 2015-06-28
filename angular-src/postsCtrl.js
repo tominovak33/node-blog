@@ -1,5 +1,6 @@
 angular.module('app')
 	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", function ($scope, $http, PostsService) {
+		$scope.posts = [];
 		$scope.addPost = function () {
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();
 			if (ckeditor_content) {
@@ -36,9 +37,52 @@ angular.module('app')
 			//alert("foo");
 		});
 
+		$scope.currentPage = 1;
+		$scope.postsPerPage = 2;
+
+		$scope.prevPage = function () {
+	        if ($scope.currentPage > 1) {
+	            $scope.currentPage--;
+	            $scope.paginate();
+	        }
+	    };
+    
+	    $scope.nextPage = function () {
+	        if ($scope.currentPage < $scope.posts.length/$scope.postsPerPage) {
+	            $scope.currentPage++;
+	            $scope.paginate();
+	        }
+	    };
+	    
+	    $scope.setPage = function (page_number) {
+	        $scope.currentPage = page_number;
+	        $scope.paginate();
+	    };
+
+	    //This way I can do:  "<li ng-repeat="n in range(pages) track by $index">" and so I can display as many items as the value of a number as this returns an array of that lenght
+	    $scope.range = function(n) {
+        	return new Array(n);
+    	};
+
+		$scope.paginate = function() {
+
+			$scope.pagedPosts = [];
+			$scope.pages = Math.ceil($scope.posts.length/$scope.postsPerPage);
+
+			$scope.numberOfPages = function () {
+				return Math.ceil($scope.posts.length / $scope.postsPerPage);
+			};
+
+			var begin = (($scope.currentPage -1 ) * $scope.postsPerPage);
+			var end = begin + $scope.postsPerPage;
+
+			$scope.pagedPosts = $scope.posts.slice(begin, end);
+		}
+
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
+			$scope.paginate();
 		})
 
 	}])
