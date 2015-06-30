@@ -80,6 +80,11 @@ angular.module('app')
 			$scope.pagedPosts = $scope.posts.slice(begin, end);
 		}
 
+		$scope.$watchGroup(["search.$", "search._author.username" , "search.title" , "search.date",, "search.title"], function() {
+			//alert('paginating');
+			$scope.paginate();
+		});
+
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
