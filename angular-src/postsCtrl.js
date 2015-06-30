@@ -39,7 +39,7 @@ angular.module('app')
 		});
 
 		$scope.currentPage = 1;
-		$scope.postsPerPage = 2;
+		$scope.postsPerPage = 5;
 
 		$scope.prevPage = function () {
 	        if ($scope.currentPage > 1) {
