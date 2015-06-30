@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", function ($scope, $http, PostsService) {
+	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", function ($scope, $http, PostsService, filterFilter) {
 		$scope.posts = [];
 		$scope.addPost = function () {
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();
@@ -85,6 +85,19 @@ angular.module('app')
 			$scope.paginate();
 		});
 
+	    $scope.currentPage = 1; //current page
+	    $scope.postsPerPage = 5; //max rows for data table
+
+	    /* init pagination with $scope.list */
+	    //$scope.noOfPages = Math.ceil($scope.posts.length/$scope.postsPerPage);
+	    
+	    $scope.$watch('search', function(term) {
+	        // Create $scope.filtered and then calculat $scope.noOfPages, no racing!
+	        $scope.filteredPosts = filterFilter($scope.posts, term);
+	        $scope.noOfPages = Math.ceil($scope.filteredPosts.length/$scope.postsPerPage);
+	    });
+
+
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
@@ -98,3 +111,13 @@ angular.module('app')
 	        return $sce.trustAsHtml(val);
 	    };
 	}])
+
+	.filter('startFrom', function() {
+	    return function(input, start) {
+	        if(input) {
+	            start = +start; //parse to int
+	            return input.slice(start);
+	        }
+	        return [];
+	    }
+	});
