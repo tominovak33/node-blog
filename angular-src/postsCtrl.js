@@ -29,6 +29,7 @@ angular.module('app')
 			post = post[0];
 			$scope.$apply(function () {
 				$scope.posts.unshift(post);
+				$scope.paginate();
 			})
 		})
 
