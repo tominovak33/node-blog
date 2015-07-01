@@ -70,7 +70,7 @@ angular.module('app')
 	    
 	    //watch to see if searching and repaginate if we are
 	    //true at the end  magically makes it so that as each extra letter is added to the search we can repaginate
-	    //without the 'true' it only did  that once
+	    //without the 'true' it only did  that
 	    $scope.$watch('search', function(term) {
 	        $scope.filteredPosts = filterFilter($scope.posts, term);
 	        $scope.paginate($scope.filteredPosts.length);
@@ -90,6 +90,7 @@ angular.module('app')
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
+			$scope.paginate($scope.posts.length);
 		})
 
 	}])
