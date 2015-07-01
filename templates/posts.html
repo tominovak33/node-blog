@@ -36,11 +36,10 @@
 			<div ng-show="body_search" class="search_input"><label><input ng-model="search.body"></label><div class="clear_button" ng-click="search.body = '' ">Clear</div></div>
 		</div>
   	</div>
-
     <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
 	<ul ng-if="posts.length" class="posts-list">
 		<!--<input type="text" ng-model="search">-->
-		<li ng-repeat="post in pagedPosts | orderBy: '-date' | filter:search" class="post_item animate-3d-rotate">
+		<li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
 		<div class="post_details">
 			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
 			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
@@ -49,7 +48,6 @@
 			<div class="post_body" ng-bind-html="post.body | output_html"></div>
 		</li>
 	</ul>
-
 	<ng-include src="'/pagination.html'"></ng-include>
 
 </div>

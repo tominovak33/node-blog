@@ -4,7 +4,7 @@
 	        <a href ng-click="prevPage()">« Prev</a>
 	    </li>
 
-	    <li ng-repeat="n in range(pages) track by $index" ng-class="{disabled: currentPage == $index + 1}">
+	    <li ng-repeat="n in range(numberOfPages) track by $index" ng-class="{disabled: currentPage == $index + 1}">
 	    	<a href ng-click="setPage($index + 1)">{{$index + 1}}</a>
 	    </li>
 
