@@ -44,20 +44,20 @@ angular.module('app')
 		$scope.prevPage = function () {
 	        if ($scope.currentPage > 1) {
 	            $scope.currentPage--;
-	            $scope.paginate();
+	            //$scope.paginate();
 	        }
 	    };
     
 	    $scope.nextPage = function () {
 	        if ($scope.currentPage < $scope.posts.length/$scope.postsPerPage) {
 	            $scope.currentPage++;
-	            $scope.paginate();
+	            //$scope.paginate();
 	        }
 	    };
 	    
 	    $scope.setPage = function (page_number) {
 	        $scope.currentPage = page_number;
-	        $scope.paginate();
+	        //$scope.paginate();
 	    };
 
 	    //This way I can do:  "<li ng-repeat="n in range(pages) track by $index">" and so I can display as many items as the value of a number as this returns an array of that lenght
@@ -65,43 +65,31 @@ angular.module('app')
         	return new Array(n);
     	};
 
-		$scope.paginate = function() {
-
-			$scope.pagedPosts = [];
-			$scope.pages = Math.ceil($scope.posts.length/$scope.postsPerPage);
-
-			$scope.numberOfPages = function () {
-				return Math.ceil($scope.posts.length / $scope.postsPerPage);
-			};
-
-			var begin = (($scope.currentPage -1 ) * $scope.postsPerPage);
-			var end = begin + $scope.postsPerPage;
-
-			$scope.pagedPosts = $scope.posts.slice(begin, end);
-		}
-
-		$scope.$watchGroup(["search.$", "search._author.username" , "search.title" , "search.date",, "search.title"], function() {
-			//alert('paginating');
-			$scope.paginate();
-		});
-
 	    $scope.currentPage = 1; //current page
 	    $scope.postsPerPage = 5; //max rows for data table
-
-	    /* init pagination with $scope.list */
-	    //$scope.noOfPages = Math.ceil($scope.posts.length/$scope.postsPerPage);
 	    
+	    //watch to see if searching and repaginate if we are
+	    //true at the end  magically makes it so that as each extra letter is added to the search we can repaginate
+	    //without the 'true' it only did  that once
 	    $scope.$watch('search', function(term) {
-	        // Create $scope.filtered and then calculat $scope.noOfPages, no racing!
 	        $scope.filteredPosts = filterFilter($scope.posts, term);
-	        $scope.noOfPages = Math.ceil($scope.filteredPosts.length/$scope.postsPerPage);
-	    });
+	        $scope.paginate($scope.filteredPosts.length);
+	    }, true);
+
+
+	    $scope.paginate = function(number_of_items){
+	    	if (number_of_items > 0) {
+	        	$scope.numberOfPages = Math.ceil(number_of_items/$scope.postsPerPage);
+	        }
+	        else {
+	        	$scope.numberOfPages = Math.ceil($scope.posts.length/$scope.postsPerPage);
+	        }
+	    };
 
 
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
-			$scope.paginate();
 		})
 
 	}])
