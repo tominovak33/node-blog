@@ -13,7 +13,6 @@ angular.module('app')
 					//Removed as websocket broadcast would cause the post to appear duplicated on the browser that it was posted from 
 					//as both of the functions would get executed because the client who sends the post would still recieve the websockets broadcast back from the server  
 					*/
-					//$scope.posts.unshift(post); 
 					$scope.postBody = null;
 					CKEDITOR.instances.editor1.setData('');
 					$scope.postTitle = null;
@@ -35,7 +34,6 @@ angular.module('app')
 
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
-			//alert("foo");
 		});
 
 		$scope.currentPage = 1;
@@ -44,20 +42,17 @@ angular.module('app')
 		$scope.prevPage = function () {
 	        if ($scope.currentPage > 1) {
 	            $scope.currentPage--;
-	            //$scope.paginate();
 	        }
 	    };
     
 	    $scope.nextPage = function () {
 	        if ($scope.currentPage < $scope.posts.length/$scope.postsPerPage) {
 	            $scope.currentPage++;
-	            //$scope.paginate();
 	        }
 	    };
 	    
 	    $scope.setPage = function (page_number) {
 	        $scope.currentPage = page_number;
-	        //$scope.paginate();
 	    };
 
 	    //This way I can do:  "<li ng-repeat="n in range(pages) track by $index">" and so I can display as many items as the value of a number as this returns an array of that lenght
