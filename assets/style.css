@@ -3,7 +3,7 @@
 /* Nice green for text */
 /* Secondary color scheme */
 body {
-  background-color: #000200;
+  background-color: #222222;
   color: #00af00;
 }
 button {
@@ -89,11 +89,11 @@ button {
 .nav > li > a:focus,
 .nav > li > a:hover {
   color: #00c800;
-  background-color: #000200;
+  background-color: #222222;
   text-decoration: underline;
 }
 .navbar {
-  background-color: #000200;
+  background-color: #222222;
 }
 .navbar p {
   color: #00af00;
@@ -142,7 +142,7 @@ button {
   color: #00af00;
 }
 .post_body {
-  color: #000200;
+  color: #222222;
 }
 .post_body a {
   color: #00af00;

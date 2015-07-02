@@ -35,6 +35,10 @@ db.users.update( { "_id": ObjectId("123456789101112131415") }, { $set: { "userna
 * Delete All Posts 
 db.posts.remove({})
 
+* Edit a post date
+
+db.posts.update( { "_id": ObjectId("--post object id here--") }, { $set: { "date": ISODate("2014-06-26T18:36:25.603Z") } } );
+
 
 ### NPM issues
 
