@@ -13,10 +13,10 @@ router.get('/', function (request, response, next) {
 	
 	var post_id = get_query_post_id(request._parsedUrl.query);
 	if (post_id) {
-		post = build_post_query (post_id);
+		var post = build_post_query (post_id);
 	}
 
-	console.log(post);
+	//console.log(post);
 
 	Post.find(post)
 
@@ -80,8 +80,8 @@ var get_query_post_id = function(query_string){
 };
 
 var build_post_query = function(post_id){
-	var object_id = "ObjectId("+post_id+")";
-	return "{_id :" + object_id + "}";
+
+	return { "_id":  post_id };
 };
 
 

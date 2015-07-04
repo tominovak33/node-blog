@@ -9,13 +9,10 @@ angular.module('app')
 
 					
 		PostsService.single({
-			id: 'foobar-123'
+			id: '55945a1faf009fa45b7cafc3'
 		})
 		.success(function (post) {
-			/*
-			$scope.post = posts;
+			$scope.post = post;
 			console.log(post);
-			alert(post);
-			*/
 		})
 	}])
