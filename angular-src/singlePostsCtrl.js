@@ -13,6 +13,6 @@ angular.module('app')
 		})
 		.success(function (post) {
 			$scope.post = post;
-			console.log(post);
+			console.log($scope.post);
 		})
 	}])
