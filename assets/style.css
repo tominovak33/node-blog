@@ -141,6 +141,7 @@ button {
   right: 0;
 }
 .post_title .title {
+  display: inline-block;
   font-weight: 600;
   font-size: 24px;
   font-family: "Courier New", Courier, monospace;
