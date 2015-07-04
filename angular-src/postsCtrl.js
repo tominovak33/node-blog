@@ -85,7 +85,7 @@ angular.module('app')
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
-			console.log(posts);
+			//console.log(posts);
 			$scope.paginate($scope.posts.length);
 		})
 
