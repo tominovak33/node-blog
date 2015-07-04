@@ -1,8 +1,7 @@
 <div class="container" ng-controller="SinglePostCtrl">
 	<p>Single post content</p>
-	<ul ng-if="post.length" class="posts-list">
-		<!--<input type="text" ng-model="search">-->
-		<li ng-repeat="item in post" class="post_item animate-3d-rotate">
+	<ul class="posts-list">
+		<li ng-repeat="item in post" class="post_item">
 		<div class="post_wrapper margin-center">
 			<div class="post_details">
 				<h5 class="author_name">Posted by: <strong>{{ item._author.username }}</strong><h5>

@@ -1,7 +1,7 @@
 angular.module('app')
-	.controller('SinglePostCtrl', ["$scope" , "$http", "PostsService", function ($scope, $http, PostsService) {
+	.controller('SinglePostCtrl', ["$scope" , "$http", "PostsService", "$routeParams", "$route" , function ($scope, $http, PostsService, $routeParams, $route) {
 
-		//alert("Single posts controller loaded");
+		var post_id = $routeParams.id;
 
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
@@ -9,10 +9,9 @@ angular.module('app')
 
 					
 		PostsService.single({
-			id: '55945a1faf009fa45b7cafc3'
+			id: post_id
 		})
 		.success(function (post) {
 			$scope.post = post;
-			console.log($scope.post);
 		})
 	}])
