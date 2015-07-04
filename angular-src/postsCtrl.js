@@ -1,5 +1,7 @@
 angular.module('app')
 	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", function ($scope, $http, PostsService, filterFilter) {
+		$scope.baseUrl = location.host;
+
 		$scope.posts = [];
 		$scope.addPost = function () {
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();

@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('SinglePostCtrl', ["$scope" , "$http", "PostsService", "$routeParams", "$route" , function ($scope, $http, PostsService, $routeParams, $route) {
+	.controller('SinglePostCtrl', ["$scope" , "$http", "PostsService", "$routeParams", "$route", "$location" , function ($scope, $http, PostsService, $routeParams, $route, $location) {
 
 		var post_id = $routeParams.id;
 
