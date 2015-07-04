@@ -251,3 +251,10 @@ button {
   height: 0px;
 }
 /* end simple move */
+.link-read-more {
+  color: #00af00;
+  font-weight: 600;
+}
+.link-read-more:hover {
+  color: #004300;
+}
