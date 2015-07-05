@@ -1,6 +1,7 @@
 exports.config = {
 	framework: 'mocha',
 	specs: [
+	'test/end_to_end/register.spec.js',
 	'test/end_to_end/**/*.spec.js'
 	],
 	mochaOpts: {

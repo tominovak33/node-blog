@@ -10,9 +10,12 @@ describe('test keeping login after browser refresh :', function() {
 		element(by.css('.navigation-login')).click();
 
 		//Enter credentials and log in
+		//Get these from the register.spec.js file as that is always set to run first so we have a test user to login with
 		var username = 'test-user';
+		var password = 'password123';
+
 		element(by.model('username')).sendKeys(username);
-		element(by.model('password')).sendKeys('password');		
+		element(by.model('password')).sendKeys(password);		
 		element(by.css('.login-submit')).click();
 		
 		//Assertions
