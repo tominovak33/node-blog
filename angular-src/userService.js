@@ -33,4 +33,7 @@ angular.module('app')
 			window.localStorage.removeItem('token');
 			window.location.href= '/';
 		}
+		svc.profile = function (username) {
+			return $http.get('/api/users/profile', { params: {username: username} })
+		}
 	}])

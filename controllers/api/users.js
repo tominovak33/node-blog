@@ -16,6 +16,18 @@ router.get('/', function (request, response) {
 	})
 })
 
+router.get('/profile', function (request, response) {
+	//var username = request.body.username;
+	var username = get_query_username_param(request._parsedUrl.query);
+	//Get user info from database here
+	
+	User.findOne({username: username}, function (error, user) {
+		response.json(user);
+	})
+	
+})
+
+
 router.post('/', function (request, response, next) {
 	var user = new User({username: request.body.username});
 	bcrypt.hash(request.body.password, 10, function(error, hash) {
@@ -29,5 +41,27 @@ router.post('/', function (request, response, next) {
 		})
 	})
 })
+
+
+var get_query_username_param = function(query_string){
+	if (!query_string) {
+		return null;
+	}
+	var queries = query_string.split("&");
+
+	for (var item in queries) {
+		var query = queries[item];
+		var query_parts = query.split("=");
+
+		var name = query_parts[0];
+		var value = query_parts[1];
+
+		if (name == 'username') {
+			return value;
+		}
+	}
+
+	return null;
+};
 
 module.exports = router;
