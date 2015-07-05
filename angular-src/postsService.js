@@ -7,6 +7,6 @@ angular.module('app')
 			return $http.post('/api/posts', post);
 		}
 		this.single = function (parameters) {
-			return $http.get('/api/posts', { params: {post_id: parameters.id} } );
+			return $http.get('/api/posts', { params: {post_slug: parameters.slug} } );
 		}
 	}])

@@ -11,9 +11,9 @@ router.get('/', function (request, response, next) {
 
 	var post = null;
 	
-	var post_id = get_query_post_id(request._parsedUrl.query);
-	if (post_id) {
-		var post = build_post_query (post_id);
+	var post_slug = get_query_post_slug(request._parsedUrl.query);
+	if (post_slug) {
+		var post = build_post_query (post_slug);
 	}
 
 	//console.log(post);
@@ -59,7 +59,7 @@ router.post('/', function (request, response, next) {
 	});
 })
 
-var get_query_post_id = function(query_string){
+var get_query_post_slug = function(query_string){
 	if (!query_string) {
 		return null;
 	}
@@ -72,7 +72,7 @@ var get_query_post_id = function(query_string){
 		var name = query_parts[0];
 		var value = query_parts[1];
 
-		if (name == 'post_id') {
+		if (name == 'post_slug') {
 			return value;
 		}		
 	}
@@ -80,9 +80,9 @@ var get_query_post_id = function(query_string){
 	return null;
 };
 
-var build_post_query = function(post_id){
+var build_post_query = function(post_slug){
 
-	return { "_id":  post_id };
+	return { "slug":  post_slug };
 };
 
 

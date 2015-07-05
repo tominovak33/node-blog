@@ -1,7 +1,7 @@
 angular.module('app')
 	.controller('SinglePostCtrl', ["$scope" , "$http", "PostsService", "$routeParams", "$route", "$location" , function ($scope, $http, PostsService, $routeParams, $route, $location) {
 
-		var post_id = $routeParams.id;
+		var post_slug = $routeParams.slug;
 
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
@@ -9,7 +9,7 @@ angular.module('app')
 
 					
 		PostsService.single({
-			id: post_id
+			slug: post_slug
 		})
 		.success(function (post) {
 			$scope.post = post;

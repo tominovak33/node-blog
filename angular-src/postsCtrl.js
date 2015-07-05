@@ -101,7 +101,7 @@ angular.module('app')
 		    var month = date.getMonth()+1; //+1 because months are 0 indexed
 		    var year = date.getFullYear();
 
-		    var url_date =  String(year) + '/' + String(month) + '/' + String(day) + '/' ;
+		    var url_date =  String(year) + '-' + String(month) + '-' + String(day) + '-' ;
 
 			return url_date;
 
@@ -119,7 +119,7 @@ angular.module('app')
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
-			//console.log(posts);
+			console.log(posts);
 			$scope.paginate($scope.posts.length);
 		})
 
