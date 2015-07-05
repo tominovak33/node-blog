@@ -1,33 +1,35 @@
 var expect = require('chai').expect;
 
-describe('test making a post:', function() {
-
+describe('test single post view: ', function() {
+		
 	beforeEach(function() {
     	browser.executeScript('window.sessionStorage.clear();');
     	browser.executeScript('window.localStorage.clear();');
 	});
-
+	
 	//Set credentials to use so available in all tests below
 	var time = Date.now();
 
-	var username = 'test-u-'+ time;
+	//Enter credentials and log in
+	//Get these from the register.spec.js file as that is always set to run first so we have a test user to login with
+	var username = 'test-user';
 	var password = 'password123';
 
-	it('logs in as a test user and creates a new post successfully' , function () {
+
+	it('allows a post to be created and then viewed on its individual posts page' , function () {
 
 		//Open application
 		browser.get('http://localhost:3001');
-		
-		//Go to login page
-		element(by.css('.navigation-register')).click();
 
+		//Go to login page
+		element(by.css('.navigation-login')).click();
+
+		//Log in with credentials that were used to registered with
 		element(by.model('username')).sendKeys(username);
-		element(by.model('password')).sendKeys(password);	
-		element(by.model('password_confirm')).sendKeys(password);		
-		element(by.css('.register-submit')).click();
+		element(by.model('password')).sendKeys(password);		
+		element(by.css('.login-submit')).click();
 		
 		browser.sleep(1000); //Waits for refresh to happen
-		//Assertions
 		
 		//Create test post
 		//Adding the unix timestamp to the post as otherwise all test posts are the same and
@@ -39,7 +41,8 @@ describe('test making a post:', function() {
 		
 		//Enter a test post and sumbmit it
 		element(by.model('$parent.postTitle')).sendKeys(title);
-		browser.executeScript("CKEDITOR.instances.editor1.setData('my test post content');");
+
+		browser.executeScript("CKEDITOR.instances.editor1.setData('test post content');");
 		element(by.css('.post-submit')).click();
 
 		//Assertions
@@ -49,14 +52,19 @@ describe('test making a post:', function() {
 		//Rather than wait for the websockets to send the post back, just refresh to get all posts
 		browser.executeScript("window.location.href = '/'");
 
+		element.all(by.css('.post_title')).first().click();
+
 		element.all(by.css('.post_title')).first().getText()
-
 			.then(function (post_title) {
-				console.log(post_title);
-				//expect(post_title).to.contain(title);
-			}
+				//console.log(post_title);
+				expect(post_title).to.contain(title);
+			});
 
-		);
-
+		element.all(by.css('.post_body')).first().getText()
+			.then(function (post_body) {
+				//console.log(post_title);
+				expect(post_body).to.contain('test post content');
+			});
 	})
+
 })

@@ -1,5 +1,8 @@
 angular.module('app')
 	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", function ($scope, $http, PostsService, filterFilter) {
+		$scope.baseUrl = location.host;
+		$scope.bodyLengthLimit = 250;
+
 		$scope.posts = [];
 		$scope.addPost = function () {
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();
@@ -85,7 +88,7 @@ angular.module('app')
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
-			console.log(posts);
+			//console.log(posts);
 			$scope.paginate($scope.posts.length);
 		})
 

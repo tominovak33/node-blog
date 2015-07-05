@@ -41,12 +41,20 @@
 		<!--<input type="text" ng-model="search">-->
 		<li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
 		<div class="post_wrapper margin-center">
-			<div class="post_details">
-				<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
-				<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
-			</div>	
-			<div class="post_title"><p class="title">{{ post.title }}</p></div>
-			<div class="post_body" ng-bind-html="post.body | output_html"></div>
+		<div class="post_details">
+			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
+			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
+		</div>
+		<div class="post_title">
+			<a ng-href="http://{{baseUrl}}/#/post/{{post._id}}">
+				<p class="title">{{ post.title }}</p>
+			</a>
+		</div>
+		<div class="post_body" ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html">
+		</div>
+		<a ng-if="post.body.length > bodyLengthLimit" ng-href="http://{{baseUrl}}/#/post/{{post._id}}" class="link-read-more">
+			<p>Read more....</p>
+		</a>
 		</div>
 		</li>
 	</ul>

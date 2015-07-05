@@ -2,7 +2,7 @@ var expect = require('chai').expect;
 
 describe('test registration :', function() {
 		
-	beforeEach(function() {
+	afterEach(function() {
     	browser.executeScript('window.sessionStorage.clear();');
     	browser.executeScript('window.localStorage.clear();');
 	});
@@ -10,7 +10,7 @@ describe('test registration :', function() {
 	//Set credentials to use so available in all tests below
 	var time = Date.now();
 
-	var username = 'test-u-'+ time;
+	var username = 'test-user';
 	var password = 'password123';
 
 	it('registers a test user successfully who is then logged in' , function () {

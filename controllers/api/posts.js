@@ -8,7 +8,18 @@ var mongoose = require('mongoose');
 //app.use('/api/posts', require('./controllers/api/posts.js'));
 //in server.js includes that part
 router.get('/', function (request, response, next) {
-	Post.find()
+
+	var post = null;
+	
+	var post_id = get_query_post_id(request._parsedUrl.query);
+	if (post_id) {
+		var post = build_post_query (post_id);
+	}
+
+	//console.log(post);
+
+	Post.find(post)
+
 	.sort('-date')
 	.populate('_author')
 	.exec(function (error, posts) {
@@ -46,5 +57,33 @@ router.post('/', function (request, response, next) {
 		})
 	});
 })
+
+var get_query_post_id = function(query_string){
+	if (!query_string) {
+		return null;
+	}
+	var queries = query_string.split("&");
+
+	for (var item in queries){
+		var query = queries[item];
+		var query_parts = query.split("=");
+
+		var name = query_parts[0];
+		var value = query_parts[1];
+
+		if (name == 'post_id') {
+			return value;
+		}		
+	}
+
+	return null;
+};
+
+var build_post_query = function(post_id){
+
+	return { "_id":  post_id };
+};
+
+
 
 module.exports = router;
