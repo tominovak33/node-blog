@@ -9,16 +9,11 @@ var mongoose = require('mongoose');
 //in server.js includes that part
 router.get('/', function (request, response, next) {
 
-	var post = null;
+	var post_param = null;
 	
-	var post_slug = get_query_post_slug(request._parsedUrl.query);
-	if (post_slug) {
-		var post = build_post_query (post_slug);
-	}
-
-	//console.log(post);
-
-	Post.find(post)
+	post_param = get_query_post_param(request._parsedUrl.query);
+	
+	Post.find(post_param)
 
 	.sort('-date')
 	.populate('_author')
@@ -59,13 +54,13 @@ router.post('/', function (request, response, next) {
 	});
 })
 
-var get_query_post_slug = function(query_string){
+var get_query_post_param = function(query_string){
 	if (!query_string) {
 		return null;
 	}
 	var queries = query_string.split("&");
 
-	for (var item in queries){
+	for (var item in queries) {
 		var query = queries[item];
 		var query_parts = query.split("=");
 
@@ -73,7 +68,11 @@ var get_query_post_slug = function(query_string){
 		var value = query_parts[1];
 
 		if (name == 'post_slug') {
-			return value;
+			return { "slug":  value };
+		}
+
+		if (name == 'post_id') {
+			return { "_id":  value };
 		}		
 	}
 
