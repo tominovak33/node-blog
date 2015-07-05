@@ -7,15 +7,6 @@ angular.module('app')
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
 		});
-
-		if (post_id){ 
-			console.log("ID " +  post_id);
-		}
-
-		if (post_slug){ 
-			console.log("Slug " +  post_slug);
-		}
-
 	
 		if (post_slug) {
 			PostsService.single_slug({
