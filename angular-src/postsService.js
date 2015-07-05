@@ -12,4 +12,7 @@ angular.module('app')
 		this.single_id = function (parameters) {
 			return $http.get('/api/posts', { params: {post_id: parameters.id} } );
 		}
+		this.user_posts = function (parameters) {
+			return $http.get('/api/posts', { params: {_author: parameters._author} } );
+		}
 	}])

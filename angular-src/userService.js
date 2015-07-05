@@ -25,12 +25,15 @@ angular.module('app')
 			.then(function (val) {
 				return svc.login(username, password)
 					.then(function(){
-						window.location.href= '/';	
+						window.location.href= '/';
 					})
 			})
 		}
 		svc.logout = function () {
 			window.localStorage.removeItem('token');
 			window.location.href= '/';
+		}
+		svc.profile = function (username) {
+			return $http.get('/api/users/profile', { params: {username: username} })
 		}
 	}])
