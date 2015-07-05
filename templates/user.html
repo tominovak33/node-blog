@@ -1,0 +1,24 @@
+<div class="container" ng-controller="ProfileCtrl">
+	<h1 class="page-title">Profile view:</h2>
+	<div>{{user_profile.username}}</div>
+	<ul ng-if="user_posts.length" class="posts-list">
+		<!--<input type="text" ng-model="search">-->
+		<li ng-repeat="post in user_posts = user_posts" class="post_item animate-3d-rotate">
+			<div class="post_wrapper margin-center">
+			<div class="post_details">
+				<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
+				<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
+			</div>
+			<div class="post_title">
+				<a ng-if="!post.slug" ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
+					<p class="title">{{ post.title }}</p>
+				</a>
+				<a ng-if="post.slug" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">
+					<p class="title">{{ post.title }}</p>
+				</a>
+			</div>
+			<div class="post_body" ng-bind-html="post.body | output_html">
+			</div>
+		</li>
+	</ul>
+</div>
