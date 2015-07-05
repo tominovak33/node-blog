@@ -16,7 +16,7 @@ angular.module('app')
 				})
 					.success(function (user_posts) {
 						$scope.user_posts = user_posts;
-						console.log($scope.user_posts);
+						//console.log($scope.user_posts);
 					})
 			})
 
