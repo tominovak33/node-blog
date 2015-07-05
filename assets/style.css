@@ -6,8 +6,16 @@ body {
   background-color: #222222;
   color: #00af00;
 }
+h1 {
+  color: #0A0;
+}
 button {
   color: #0F0;
+}
+a {
+  color: #00af00;
+  text-decoration: underline;
+  font-weight: 600;
 }
 .margin-v-small {
   margin-top: 5px;

@@ -42,7 +42,9 @@
 		<li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
 		<div class="post_wrapper margin-center">
 		<div class="post_details">
-			<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
+			<h5 class="author_name">Posted by: <a ng-href="http://{{baseUrl}}/#/user/{{ post._author.username }}">
+				<strong>{{ post._author.username }}</strong></a>
+			<h5>
 			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
 		</div>
 		<div class="post_title">
