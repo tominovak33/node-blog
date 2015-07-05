@@ -46,7 +46,10 @@
 			<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
 		</div>
 		<div class="post_title">
-			<a ng-href="http://{{baseUrl}}/#/post/{{post._id}}">
+			<a ng-if="!post.slug" ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
+				<p class="title">{{ post.title }}</p>
+			</a>
+			<a ng-if="post.slug" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">
 				<p class="title">{{ post.title }}</p>
 			</a>
 		</div>
