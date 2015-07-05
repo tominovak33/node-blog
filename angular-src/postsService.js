@@ -6,7 +6,10 @@ angular.module('app')
 		this.send = function (post) {
 			return $http.post('/api/posts', post);
 		}
-		this.single = function (parameters) {
+		this.single_slug = function (parameters) {
+			return $http.get('/api/posts', { params: {post_slug: parameters.slug} } );
+		}
+		this.single_id = function (parameters) {
 			return $http.get('/api/posts', { params: {post_id: parameters.id} } );
 		}
 	}])

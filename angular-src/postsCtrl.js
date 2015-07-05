@@ -6,10 +6,16 @@ angular.module('app')
 		$scope.posts = [];
 		$scope.addPost = function () {
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();
+			var date_slug = $scope.urlDate();
+			var title_slug = $scope.slugify($scope.postTitle);
+
+			var slug = date_slug + title_slug;
+
 			if (ckeditor_content) {
 				PostsService.send({
 					body: ckeditor_content,
-					title: $scope.postTitle
+					title: $scope.postTitle,
+					slug: slug
 				})
 				.success(function (post) {
 					/*
@@ -84,11 +90,36 @@ angular.module('app')
 	        }
 	    };
 
+	    $scope.urlDate = function(time) {
+			if (time === undefined) {
+				var date = new Date();
+			}
+			else {
+				var date = new Date(time);
+			}
+		    var day = date.getDate();
+		    var month = date.getMonth()+1; //+1 because months are 0 indexed
+		    var year = date.getFullYear();
+
+		    var url_date =  String(year) + '-' + String(month) + '-' + String(day) + '-' ;
+
+			return url_date;
+
+	    };
+
+	    $scope.slugify = function(string) {
+	    	var slug =  string.toLowerCase();
+	    	slug = slug.replace(/\s+/g,"_");
+	    	slug = slug.replace(/\?/g, "");
+	    	slug = slug.replace(/\&/g, "");
+	    	slug = slug.replace(/\=/g, "");
+	    	return slug;
+	    };
 
 	PostsService.get()
 		.success(function (posts) {
 			$scope.posts = posts;
-			//console.log(posts);
+			//console.log(posts); //Log all the posts recieved from the server
 			$scope.paginate($scope.posts.length);
 		})
 

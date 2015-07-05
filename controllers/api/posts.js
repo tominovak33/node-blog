@@ -9,16 +9,11 @@ var mongoose = require('mongoose');
 //in server.js includes that part
 router.get('/', function (request, response, next) {
 
-	var post = null;
+	var post_param = null;
 	
-	var post_id = get_query_post_id(request._parsedUrl.query);
-	if (post_id) {
-		var post = build_post_query (post_id);
-	}
-
-	//console.log(post);
-
-	Post.find(post)
+	post_param = get_query_post_param(request._parsedUrl.query);
+	
+	Post.find(post_param)
 
 	.sort('-date')
 	.populate('_author')
@@ -38,6 +33,7 @@ router.post('/', function (request, response, next) {
 	var post = new Post({
 		body: request.body.body,
 		title: request.body.title,
+		slug: request.body.slug,
 		_author: request.auth.user_id,   // assign the _id from the person
 		post_username: request.auth.username
 	});
@@ -58,30 +54,34 @@ router.post('/', function (request, response, next) {
 	});
 })
 
-var get_query_post_id = function(query_string){
+var get_query_post_param = function(query_string){
 	if (!query_string) {
 		return null;
 	}
 	var queries = query_string.split("&");
 
-	for (var item in queries){
+	for (var item in queries) {
 		var query = queries[item];
 		var query_parts = query.split("=");
 
 		var name = query_parts[0];
 		var value = query_parts[1];
 
+		if (name == 'post_slug') {
+			return { "slug":  value };
+		}
+
 		if (name == 'post_id') {
-			return value;
+			return { "_id":  value };
 		}		
 	}
 
 	return null;
 };
 
-var build_post_query = function(post_id){
+var build_post_query = function(post_slug){
 
-	return { "_id":  post_id };
+	return { "slug":  post_slug };
 };
 
 
