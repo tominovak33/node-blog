@@ -7,13 +7,15 @@ angular.module('app')
 		$scope.addPost = function () {
 			var ckeditor_content = CKEDITOR.instances.editor1.getData();
 			var date_slug = $scope.urlDate();
-			console.log(date_slug);
 			var title_slug = $scope.slugify($scope.postTitle);
-			console.log(title_slug);
+
+			var slug = date_slug + title_slug;
+
 			if (ckeditor_content) {
 				PostsService.send({
 					body: ckeditor_content,
-					title: $scope.postTitle
+					title: $scope.postTitle,
+					slug: slug
 				})
 				.success(function (post) {
 					/*
@@ -99,7 +101,7 @@ angular.module('app')
 		    var month = date.getMonth()+1; //+1 because months are 0 indexed
 		    var year = date.getFullYear();
 
-		    var url_date = '/' + String(year) + '/' + String(month) + '/' + String(day) + '/';
+		    var url_date =  String(year) + '/' + String(month) + '/' + String(day) + '/' ;
 
 			return url_date;
 

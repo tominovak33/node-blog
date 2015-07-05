@@ -38,6 +38,7 @@ router.post('/', function (request, response, next) {
 	var post = new Post({
 		body: request.body.body,
 		title: request.body.title,
+		slug: request.body.slug,
 		_author: request.auth.user_id,   // assign the _id from the person
 		post_username: request.auth.username
 	});
