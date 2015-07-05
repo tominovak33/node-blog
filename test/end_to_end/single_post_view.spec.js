@@ -41,7 +41,8 @@ describe('test single post view: ', function() {
 		
 		//Enter a test post and sumbmit it
 		element(by.model('$parent.postTitle')).sendKeys(title);
-		browser.executeScript("CKEDITOR.instances.editor1.setData('my test post content');");
+
+		browser.executeScript("CKEDITOR.instances.editor1.setData('test post content');");
 		element(by.css('.post-submit')).click();
 
 		//Assertions
@@ -55,9 +56,15 @@ describe('test single post view: ', function() {
 
 		element.all(by.css('.post_title')).first().getText()
 			.then(function (post_title) {
+				//console.log(post_title);
 				expect(post_title).to.contain(title);
 			});
 
+		element.all(by.css('.post_body')).first().getText()
+			.then(function (post_body) {
+				//console.log(post_title);
+				expect(post_body).to.contain('test post content');
+			});
 	})
 
 })
