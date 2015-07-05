@@ -12,7 +12,7 @@ router.get('/', function (request, response, next) {
 	var post_param = null;
 	
 	post_param = get_query_post_param(request._parsedUrl.query);
-	
+
 	Post.find(post_param)
 
 	.sort('-date')
@@ -69,6 +69,10 @@ var get_query_post_param = function(query_string){
 
 		if (name == 'post_slug') {
 			return { "slug":  value };
+		}
+
+		if (name == '_author') {
+			return { "_author":  value };
 		}
 
 		if (name == 'post_id') {

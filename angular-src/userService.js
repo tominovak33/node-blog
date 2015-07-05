@@ -25,7 +25,7 @@ angular.module('app')
 			.then(function (val) {
 				return svc.login(username, password)
 					.then(function(){
-						window.location.href= '/';	
+						window.location.href= '/';
 					})
 			})
 		}
