@@ -26,6 +26,9 @@ button {
   margin-left: auto;
   margin-right: auto;
 }
+.page-title {
+  font-weight: 600;
+}
 .footer {
   margin-top: 10px;
   margin-bottom: 10px;
