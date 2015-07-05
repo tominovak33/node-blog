@@ -8,7 +8,7 @@
 	    	<a href ng-click="setPage($index + 1)">{{$index + 1}}</a>
 	    </li>
 
-	    <li ng-class="{disabled: currentPage == pages}"> 
+	    <li ng-class="{disabled: currentPage == numberOfPages}"> 
 	    	<a href ng-click="nextPage()">Next »</a>
 	    </li>
 	</ul>
