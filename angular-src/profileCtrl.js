@@ -1,6 +1,8 @@
 angular.module('app')
 	.controller('ProfileCtrl', ["$scope" , "$http", "UserSvc", "PostsService" , "$routeParams", "$route", "$location" , function ($scope, $http, UserSvc, PostsService, $routeParams, $route, $location) {
 
+		$scope.baseUrl = location.host;
+
 		var username = $routeParams.username;
 
 		$scope.$on('$viewContentLoaded', function(){
