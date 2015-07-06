@@ -1,8 +1,7 @@
 <div class="container" ng-controller="ProfileCtrl">
-	<h1 class="page-title">Profile view:</h2>
-	<div>{{user_profile.username}}</div>
+	<h1 class="page-title">Profile: {{ user_profile.username  }}</h2>
+	<div></div>
 	<ul ng-if="user_posts.length" class="posts-list">
-		<!--<input type="text" ng-model="search">-->
 		<li ng-repeat="post in user_posts = user_posts" class="post_item animate-3d-rotate">
 			<div class="post_wrapper margin-center">
 			<div class="post_details">
