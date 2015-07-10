@@ -2,8 +2,46 @@ angular.module('app')
 	.controller('ProfileCtrl', ["$scope" , "$http", "UserSvc", "PostsService" , "$routeParams", "$route", "$location" , function ($scope, $http, UserSvc, PostsService, $routeParams, $route, $location) {
 
 		$scope.baseUrl = location.host;
-
 		var username = $routeParams.username;
+
+		UserSvc.profile (username)
+			.success(function (user_profile) {
+				$scope.user_profile = user_profile;
+				PostsService.user_posts ({
+					_author: $scope.user_profile._id
+				})
+					.success(function (user_posts) {
+						$scope.user_posts = user_posts;
+						$scope.paginate($scope.user_posts.length);
+					})
+			})
+
+		/*-------------------------------------------
+		/ Check currently logged in user 
+		/------------------------------------------*/
+
+		$scope.checkLogin = function() {
+			//is anyone logged in
+		  	if (window.localStorage.token) {
+			  	//get current user
+			  	UserSvc.getUser()
+					.then(function (response){
+						$scope.currentUser = response.data;
+							//is the user the same as the user who's page this is
+							if ($scope.user_profile._id == $scope.currentUser._id ) {
+								$scope.pageOwner = true;
+							}
+					})
+			}
+		};
+
+		/*-------------------------------------------
+		/ End user check 
+		/------------------------------------------*/
+
+		$scope.currentUser = [];
+
+		$scope.checkLogin();
 
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
@@ -60,17 +98,18 @@ angular.module('app')
 		/ End Pagination 
 		/-------------------------------------------*/
 
-				
-		UserSvc.profile (username)
-			.success(function (user_profile) {
-				$scope.user_profile = user_profile;
-				PostsService.user_posts ({
-					_author: $scope.user_profile._id
-				})
-					.success(function (user_posts) {
-						$scope.user_posts = user_posts;
-						$scope.paginate($scope.user_posts.length);
-					})
-			})
+		/*-------------------------------------------
+		/ Profile edit options 
+		/-------------------------------------------*/
+
+		if ($scope.pageOwner) {
+
+		}
+
+		/*-------------------------------------------
+		/ End profile edit options 
+		/-------------------------------------------*/
+
+	
 
 	}])

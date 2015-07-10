@@ -15,9 +15,31 @@
 			<li ng-if="currentUser == undefined"><a href="#/login" class="navigation-login">Login</a></li>
 			<li ng-if="currentUser"><a href="#/logout" class="navigation-logout">Logout</a></li>
 		</ul>
-		<p ng-if="currentUser" class="navbar-text navbar-right current-user">
-			Signed in as: {{currentUser.username}}
-		</p>
+		<ul ng-if="currentUser" class="current_user_block nav">
+
+			<li id="user-top-nav" class="user-menu">
+				<a ng-href="http://{{baseUrl}}/#/user/{{currentUser.username}}">
+					<span class="navbar-text current-user">Signed in as: {{currentUser.username}}</span>
+				</a>
+				
+				<div class="subnav-wrapper">
+					<ul ng-if="currentUser" id="subnav-user-actions" class="subnav nav">
+
+						<li id="wp-admin-bar-edit-profile">
+							<a class="ab-item" href="http://{{baseUrl}}/#/user/{{currentUser.username}}/edit">
+								<span>Edit My Profile</span>
+							</a>
+						</li>
+
+						<li id="wp-admin-bar-logout">
+							<a href="/#/logout">Log Out</a>
+						</li>
+					</ul>
+				</div>
+
+			</li>
+
+		</ul>
 	</div>
 </nav>
 <div ng-view></div>
