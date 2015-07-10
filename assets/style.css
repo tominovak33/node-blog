@@ -113,6 +113,30 @@ a {
 .navbar p {
   color: #00af00;
 }
+/*---------------------------------
+/ Dropdown user menu
+/----------------------------------*/
+.subnav-wrapper {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0px;
+  width: 100%;
+}
+.user-menu {
+  float: right;
+}
+.user-menu:hover .subnav-wrapper {
+  display: block;
+}
+#subnav-user-actions {
+  border: 1px solid #00af00;
+}
+#subnav-user-actions li > a {
+  padding: 5px 5px;
+  font-size: 13px;
+  text-align: center;
+}
 .post-submit {
   margin-top: 10px;
   margin-bottom: 10px;

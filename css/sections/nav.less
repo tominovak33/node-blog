@@ -16,3 +16,34 @@
 		color: @color-primary-2;
 	}
 }
+
+/*---------------------------------
+/ Dropdown user menu
+/----------------------------------*/
+
+.subnav-wrapper {
+	display: none;
+	position: absolute;
+	top: 60px;
+	left: 0px;
+	width: 100%
+}
+
+.user-menu {
+	float: right;
+	&:hover {
+		.subnav-wrapper {
+			display: block;
+		}
+	}
+}
+
+#subnav-user-actions {
+	border: 1px solid @color-primary-2;
+	li>a {
+		padding: 5px 5px;
+		font-size: 13px;
+		text-align: center;
+	}
+
+}
