@@ -1,6 +1,6 @@
 <div class="container" ng-controller="ProfileCtrl">
 	<h1 class="page-title">Profile: {{ user_profile.username  }}</h2>
-	<div></div>
+	<div ng-if="pageOwner"><a ng-href="http://{{baseUrl}}/#/user/{{user_profile.username}}/edit">Edit profile</a></div>
 	<ul ng-if="user_posts.length" class="posts-list">
 		<li ng-repeat="post in filteredPosts = user_posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
 			<div class="post_wrapper margin-center">
