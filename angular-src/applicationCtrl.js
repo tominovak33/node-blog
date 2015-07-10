@@ -5,6 +5,8 @@ angular.module('app')
 		and emit the user loggedin messages in order to allow the UI to 
 		indicate to the user that they were logged in
 		*/
+		$scope.baseUrl = location.host;
+
 		
 		if (window.localStorage.token) {
 			UserSvc.getUser()
