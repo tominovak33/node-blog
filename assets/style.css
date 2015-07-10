@@ -21,6 +21,10 @@ a {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+.margin-v-large {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 .float-left {
   float: left !important;
 }
@@ -119,7 +123,7 @@ a {
 .subnav-wrapper {
   display: none;
   position: absolute;
-  top: 60px;
+  top: 35px;
   left: 0px;
   width: 100%;
 }
@@ -135,6 +139,11 @@ a {
 #subnav-user-actions li > a {
   padding: 5px 5px;
   font-size: 13px;
+  text-align: center;
+  display: inline-block;
+}
+#subnav-user-actions li {
+  display: inline-block;
   text-align: center;
 }
 .post-submit {
