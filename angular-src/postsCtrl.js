@@ -68,9 +68,6 @@ angular.module('app')
 	    $scope.range = function(n) {
         	return new Array(n);
     	};
-
-	    $scope.currentPage = 1; //current page
-	    $scope.postsPerPage = 5; //max rows for data table
 	    
 	    //watch to see if searching and repaginate if we are
 	    //true at the end  magically makes it so that as each extra letter is added to the search we can repaginate
@@ -124,19 +121,3 @@ angular.module('app')
 		})
 
 	}])
-
-	.filter('output_html', ["$sce", function ($sce) {
-		return function(val) {
-	        return $sce.trustAsHtml(val);
-	    };
-	}])
-
-	.filter('startFrom', function() {
-	    return function(input, start) {
-	        if(input) {
-	            start = +start; //parse to int
-	            return input.slice(start);
-	        }
-	        return [];
-	    }
-	});
