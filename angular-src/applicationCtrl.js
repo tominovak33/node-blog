@@ -17,3 +17,19 @@ angular.module('app')
 			$scope.currentUser = user;
 		})
 	}])
+
+	.filter('output_html', ["$sce", function ($sce) {
+		return function(val) {
+	        return $sce.trustAsHtml(val);
+	    };
+	}])
+
+	.filter('startFrom', function() {
+	    return function(input, start) {
+	        if(input) {
+	            start = +start; //parse to int
+	            return input.slice(start);
+	        }
+	        return [];
+	    }
+	});

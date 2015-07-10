@@ -2,7 +2,7 @@
 	<h1 class="page-title">Profile: {{ user_profile.username  }}</h2>
 	<div></div>
 	<ul ng-if="user_posts.length" class="posts-list">
-		<li ng-repeat="post in user_posts = user_posts" class="post_item animate-3d-rotate">
+		<li ng-repeat="post in filteredPosts = user_posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
 			<div class="post_wrapper margin-center">
 			<div class="post_details">
 				<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong><h5>
@@ -20,4 +20,5 @@
 			</div>
 		</li>
 	</ul>
+	<ng-include src="'/pagination.html'"></ng-include>
 </div>
