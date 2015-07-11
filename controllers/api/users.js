@@ -39,8 +39,13 @@ router.post('/profile', function (request, response) {
 
 	//User.update( { "_id": _id }, { $set: profile_details } );
 
-	User.update({_id: _id}, profile_details, {upsert: true}, function(err){
-		console.log(err);
+	User.update({_id: _id}, profile_details, {upsert: true}, function(error){
+		if(error) {
+			return (error);
+		}
+		User.findOne({_id: _id}, function (error, user) {
+			response.json(user);
+		})
 	});
 
 })

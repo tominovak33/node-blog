@@ -128,7 +128,7 @@ angular.module('app')
 
 			UserSvc.profileUpdate(profile_details)
 				.success(function (user) {
-					alert('done');
+					console.log(user);
 				})
 		}
 
