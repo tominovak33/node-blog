@@ -17,6 +17,17 @@ a {
   text-decoration: underline;
   font-weight: 600;
 }
+.btn-primary {
+  color: #000;
+  background-color: #00af00;
+  border-color: #00af00;
+}
+.btn-primary:hover {
+  color: #000;
+  background-color: #db2e00;
+  border-color: #db2e00;
+  text-decoration: underline;
+}
 .two-thirds {
   width: 66.666666%;
 }
@@ -111,17 +122,20 @@ a {
   font-size: 16px;
   color: #00af00;
 }
+.navbar {
+  position: fixed;
+  z-index: 9999;
+  width: 100%;
+  background-color: #222222;
+}
+.navbar p {
+  color: #00af00;
+}
 .nav > li > a:focus,
 .nav > li > a:hover {
   color: #00c800;
   background-color: #222222;
   text-decoration: underline;
-}
-.navbar {
-  background-color: #222222;
-}
-.navbar p {
-  color: #00af00;
 }
 /*---------------------------------
 / Dropdown user menu
@@ -310,10 +324,19 @@ a {
 }
 .profile-edit {
   max-width: 450px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .profile-edit p {
   margin-bottom: 5px;
   font-size: 18px;
+}
+.profile-edit .btn-primary {
+  width: 100%;
+  max-width: 300px;
+}
+.profile-edit .btn-primary:hover {
+  font-weight: 600;
 }
 .profile-edit-field {
   width: 100%;

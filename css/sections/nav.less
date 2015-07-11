@@ -3,18 +3,21 @@
 	color: @color-primary-2;
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
-	color: @color-primary-1;
-	background-color: @color-primary-4;
-	text-decoration: underline;
-}
-
 .navbar {
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
 	background-color: @color-primary-4;
 
 	p {
 		color: @color-primary-2;
 	}
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+	color: @color-primary-1;
+	background-color: @color-primary-4;
+	text-decoration: underline;
 }
 
 /*---------------------------------
