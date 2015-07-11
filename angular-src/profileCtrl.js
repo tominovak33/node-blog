@@ -110,7 +110,9 @@ angular.module('app')
 
 		$scope.saveProfile = function () {
 
-			var profile_details = {};
+			var profile_details = {
+				_id : $scope.currentUser._id
+			};
 
 			for (var key in $scope.new) {
 			  if ($scope.new.hasOwnProperty(key)) {
@@ -126,7 +128,7 @@ angular.module('app')
 
 			UserSvc.profileUpdate(profile_details)
 				.success(function (user) {
-					//alert('done');
+					alert('done');
 				})
 		}
 
