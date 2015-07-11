@@ -17,6 +17,11 @@ a {
   text-decoration: underline;
   font-weight: 600;
 }
+.page-title {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  text-decoration: underline;
+}
 .btn-primary {
   color: #000;
   background-color: #00af00;
@@ -118,17 +123,20 @@ a {
 .pagination ul > li:last-child > span {
   border-radius: 0 3px 3px 0;
 }
-.navbar a {
-  font-size: 16px;
-  color: #00af00;
-}
 .navbar {
-  position: fixed;
-  z-index: 9999;
-  width: 100%;
+  /*
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
+	*/
+  margin-bottom: 0;
   background-color: #222222;
 }
 .navbar p {
+  color: #00af00;
+}
+.navbar a {
+  font-size: 16px;
   color: #00af00;
 }
 .nav > li > a:focus,
