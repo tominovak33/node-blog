@@ -2,16 +2,10 @@ var gulp = require('gulp');
 var less = require('gulp-less');
 var path = require('path');
 
-gulp.task('css', function () {
-    gulp.src('css/**/*.styl')
-    	.pipe(stylus())
-    	.pipe(gulp.dest('assets'))
-})
- 
 gulp.task('less', function () {
-  return gulp.src('./css/*.less')
+  return gulp.src('./css /*.less')
     .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'sections') ]
+      paths: [ path.join(__dirname, 'css', 'variables'),  path.join(__dirname, 'css', 'global'), path.join(__dirname, 'css', 'sections') ]
     }))
     .pipe(gulp.dest('./assets'));
 });

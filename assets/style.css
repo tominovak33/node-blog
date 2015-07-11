@@ -17,6 +17,12 @@ a {
   text-decoration: underline;
   font-weight: 600;
 }
+.two-thirds {
+  width: 66.666666%;
+}
+.text-center {
+  text-align: center;
+}
 .margin-v-small {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -301,4 +307,24 @@ a {
 }
 .link-read-more:hover {
   color: #004300;
+}
+.profile-edit {
+  max-width: 450px;
+}
+.profile-edit p {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.profile-edit-field {
+  width: 100%;
+  max-width: 300px;
+  min-height: 40px;
+  font-size: 18px;
+}
+.user-profile-edit-section {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.user-profile-edit-section textarea {
+  height: 120px;
 }
