@@ -5,7 +5,7 @@ angular.module('app')
 	
 	(function connect(){
 		//increment the reconnect delay timeer
-		reconnect_delay += 5;
+		reconnect_delay += reconnect_delay;
 
 		//Create a websocket connection with the server
 		var host = "ws://" + $window.location.host

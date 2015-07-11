@@ -3,6 +3,7 @@ angular.module('app')
 
 		$scope.baseUrl = location.host;
 		var username = $routeParams.username;
+		$scope.new  = {};
 
 		UserSvc.profile (username)
 			.success(function (user_profile) {
@@ -15,6 +16,7 @@ angular.module('app')
 						$scope.paginate($scope.user_posts.length);
 					})
 			})
+
 
 		/*-------------------------------------------
 		/ Check currently logged in user 
@@ -104,6 +106,28 @@ angular.module('app')
 
 		if ($scope.pageOwner) {
 
+		}
+
+		$scope.saveProfile = function () {
+
+			var profile_details = {};
+
+			for (var key in $scope.new) {
+			  if ($scope.new.hasOwnProperty(key)) {
+			    //alert(key + " -> " + $scope.new[key]);
+			    if ($scope.new[key] != '') {
+			    	profile_details[key] = $scope.new[key];
+			    }
+			  }
+			}
+
+			//console.log($scope.new);
+			//console.log(profile_details);
+
+			UserSvc.profileUpdate(profile_details)
+				.success(function (user) {
+					//alert('done');
+				})
 		}
 
 		/*-------------------------------------------

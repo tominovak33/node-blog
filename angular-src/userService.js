@@ -36,4 +36,7 @@ angular.module('app')
 		svc.profile = function (username) {
 			return $http.get('/api/users/profile', { params: {username: username} })
 		}
+		svc.profileUpdate = function (profile) {
+			return $http.post('/api/users/profile', profile )
+		}
 	}])

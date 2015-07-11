@@ -1,0 +1,32 @@
+<div class="container" ng-controller="ProfileCtrl">
+	<h1 class="page-title">My Profile: {{ user_profile.username  }}</h2>
+	<div>
+
+		<div>
+			<span>Username: </span><input type="text" ng-model="new.username" placeholder="Enter a new username">
+			<span ng-if="new.username">{{ new_username }}</span>
+			<span ng-if="!new.username">{{ user_profile.username }}</span>
+		</div>
+
+		<div>
+			<span>First Name: </span><input type="text" ng-model="new.first_name" placeholder="First name">
+			<span ng-if="new.first_name">{{ new.first_name }}</span>
+			<span ng-if="!new.first_name">{{ user_profile.first_name }}</span>
+		</div>
+
+		<div>
+			<span>Last Name: </span><input type="text" ng-model="new.last_name" placeholder="Last name">
+			<span ng-if="new.last_name">{{ new.last_name }}</span>
+			<span ng-if="!new.last_name">{{ user_profile.last_name }}</span>
+		</div>
+
+		<div>
+			<span>Profile Description: </span><textarea type="text" ng-model="new.bio" placeholder="Profile Description"></textarea>
+			<span ng-if="new.bio">{{ new.bio }}</span>
+			<span ng-if="!new.bio">{{ user_profile.bio }}</span>
+		</div>
+		
+		<a ng-click="saveProfile()" class="btn btn-large btn-primary">Save</a>
+	</div>
+
+</div>
