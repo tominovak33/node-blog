@@ -104,16 +104,14 @@ angular.module('app')
 		/ Profile edit options 
 		/-------------------------------------------*/
 
-		if ($scope.pageOwner) {
-
-		}
-
 		$scope.saveProfile = function () {
 
+			//get the id of the currently logged in user's ID. So we can use this to edit the user. todo: change this so the superusers can choose who is edited when they visit the page
 			var profile_details = {
 				_id : $scope.currentUser._id
 			};
 
+			//iterate through the new details, if they are not empty then add them to the profile details object
 			for (var key in $scope.new) {
 			  if ($scope.new.hasOwnProperty(key)) {
 			    //alert(key + " -> " + $scope.new[key]);
@@ -123,12 +121,23 @@ angular.module('app')
 			  }
 			}
 
-			//console.log($scope.new);
-			//console.log(profile_details);
-
+			//send this profile details obeject to the user service. This then updated or adds all detail in this to the user who's ID was selected earlier
 			UserSvc.profileUpdate(profile_details)
 				.success(function (user) {
-					console.log(user);
+					//console.log(user);
+					//The username is used as part of the users login token, so if the username changes the token is no longer valid (this is needed for security reasons)
+					//therefore changing a username will effectively log someone out. 
+					//So we need to check if their username was changed, and if it was then send them to the login page so they can log into they account agian and get a new token
+					if (user.username != $scope.user_profile.username) {
+						$scope.returnMessage = "Your username was changed so you must log in again";
+						setTimeout(function(){ 
+							window.location.href= '/#/login';
+						}, 1500);
+					}
+					else {
+						$scope.returnMessage = "Details updated successfully";
+					}
+					
 				})
 		}
 
