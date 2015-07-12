@@ -1,11 +1,24 @@
 angular.module('app')
 	.controller('ProfileCtrl', ["$scope" , "$http", "UserSvc", "PostsService" , "$routeParams", "$route", "$location" , function ($scope, $http, UserSvc, PostsService, $routeParams, $route, $location) {
 
+
+		/*-------------------------------------------
+		/ Get user permissions
+		/-------------------------------------------*/
+	  	UserSvc.authorization()
+			.then(function (response){
+				console.log(response);
+			})
+		/*-------------------------------------------
+		/ Profile edit options 
+		/-------------------------------------------*/
+
+
 		$scope.baseUrl = location.host;
 		var username = $routeParams.username;
 		$scope.new  = {};
 
-		UserSvc.profile (username)
+		UserSvc.profile(username)
 			.success(function (user_profile) {
 				$scope.user_profile = user_profile;
 				PostsService.user_posts ({
@@ -16,7 +29,6 @@ angular.module('app')
 						$scope.paginate($scope.user_posts.length);
 					})
 			})
-
 
 		/*-------------------------------------------
 		/ Check currently logged in user 
@@ -99,6 +111,11 @@ angular.module('app')
 		/*-------------------------------------------
 		/ End Pagination 
 		/-------------------------------------------*/
+
+	  	UserSvc.authorization('10')
+			.then(function (response){
+				console.log(response);
+			})
 
 		/*-------------------------------------------
 		/ Profile edit options 

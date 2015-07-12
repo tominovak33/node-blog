@@ -27,6 +27,17 @@ router.get('/profile', function (request, response) {
 	
 })
 
+router.get('/permissions', function (request, response) {
+	var token = request.headers['x-auth'];
+	var user = jwt.decode(token, config.secret);
+	
+	//Get user info from database here
+	User.findOne({username: user.username}, function (error, user) {
+		response.json(user.permission_level);
+	})
+	
+})
+
 router.post('/profile', function (request, response) {
 
 	var _id = request.body._id;
