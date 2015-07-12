@@ -27,6 +27,29 @@ router.get('/profile', function (request, response) {
 	
 })
 
+router.post('/profile', function (request, response) {
+
+	var _id = request.body._id;
+	
+	delete request.body._id; //so it doesn't go into the query below
+
+	var profile_details = request.body;
+
+	//console.log(profile_details);
+
+	//User.update( { "_id": _id }, { $set: profile_details } );
+
+	User.update({_id: _id}, profile_details, {upsert: true}, function(error){
+		if(error) {
+			return (error);
+		}
+		User.findOne({_id: _id}, function (error, user) {
+			response.json(user);
+		})
+	});
+
+})
+
 
 router.post('/', function (request, response, next) {
 	var user = new User({username: request.body.username});

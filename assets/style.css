@@ -17,9 +17,35 @@ a {
   text-decoration: underline;
   font-weight: 600;
 }
+.page-title {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  text-decoration: underline;
+}
+.btn-primary {
+  color: #000;
+  background-color: #00af00;
+  border-color: #00af00;
+}
+.btn-primary:hover {
+  color: #000;
+  background-color: #db2e00;
+  border-color: #db2e00;
+  text-decoration: underline;
+}
+.two-thirds {
+  width: 66.666666%;
+}
+.text-center {
+  text-align: center;
+}
 .margin-v-small {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.margin-v-large {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 .float-left {
   float: left !important;
@@ -97,6 +123,18 @@ a {
 .pagination ul > li:last-child > span {
   border-radius: 0 3px 3px 0;
 }
+.navbar {
+  /*
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
+	*/
+  margin-bottom: 0;
+  background-color: #222222;
+}
+.navbar p {
+  color: #00af00;
+}
 .navbar a {
   font-size: 16px;
   color: #00af00;
@@ -107,19 +145,13 @@ a {
   background-color: #222222;
   text-decoration: underline;
 }
-.navbar {
-  background-color: #222222;
-}
-.navbar p {
-  color: #00af00;
-}
 /*---------------------------------
 / Dropdown user menu
 /----------------------------------*/
 .subnav-wrapper {
   display: none;
   position: absolute;
-  top: 60px;
+  top: 35px;
   left: 0px;
   width: 100%;
 }
@@ -135,6 +167,11 @@ a {
 #subnav-user-actions li > a {
   padding: 5px 5px;
   font-size: 13px;
+  text-align: center;
+  display: inline-block;
+}
+#subnav-user-actions li {
+  display: inline-block;
   text-align: center;
 }
 .post-submit {
@@ -292,4 +329,33 @@ a {
 }
 .link-read-more:hover {
   color: #004300;
+}
+.profile-edit {
+  max-width: 450px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.profile-edit p {
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.profile-edit .btn-primary {
+  width: 100%;
+  max-width: 300px;
+}
+.profile-edit .btn-primary:hover {
+  font-weight: 600;
+}
+.profile-edit-field {
+  width: 100%;
+  max-width: 300px;
+  min-height: 40px;
+  font-size: 18px;
+}
+.user-profile-edit-section {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.user-profile-edit-section textarea {
+  height: 120px;
 }

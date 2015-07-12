@@ -1,3 +1,17 @@
+.navbar {
+	/*
+	position: fixed;
+	z-index: 9999;
+	width: 100%;
+	*/
+	margin-bottom: 0;
+	background-color: @color-primary-4;
+
+	p {
+		color: @color-primary-2;
+	}
+}
+
 .navbar a {
 	font-size: 16px;
 	color: @color-primary-2;
@@ -9,14 +23,6 @@
 	text-decoration: underline;
 }
 
-.navbar {
-	background-color: @color-primary-4;
-
-	p {
-		color: @color-primary-2;
-	}
-}
-
 /*---------------------------------
 / Dropdown user menu
 /----------------------------------*/
@@ -24,7 +30,7 @@
 .subnav-wrapper {
 	display: none;
 	position: absolute;
-	top: 60px;
+	top: 35px;
 	left: 0px;
 	width: 100%
 }
@@ -43,6 +49,12 @@
 	li>a {
 		padding: 5px 5px;
 		font-size: 13px;
+		text-align: center;
+		display: inline-block;
+	}
+
+	li {
+		display: inline-block;
 		text-align: center;
 	}
 

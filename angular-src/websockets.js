@@ -1,7 +1,12 @@
 angular.module('app')
 .run(["$rootScope", "$timeout" , "$window" , function ($rootScope, $timeout, $window) {
+
+	var reconnect_delay = 10;
 	
 	(function connect(){
+		//increment the reconnect delay timeer
+		reconnect_delay += reconnect_delay;
+
 		//Create a websocket connection with the server
 		var host = "ws://" + $window.location.host
 		  
@@ -13,8 +18,9 @@ angular.module('app')
 
 
 		connection.onclose = function (e) {
-			//console.log('Websocket closed. Trying to reconnect...')
-			$timeout(connect, 10*1000);
+			console.log('Websocket connection closed. Attempting to recconnect in ' + reconnect_delay + ' seconds' )
+
+			$timeout(connect, reconnect_delay*1000);
 		} 
 
 		connection.onmessage = function (e) {
