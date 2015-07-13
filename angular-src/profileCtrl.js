@@ -23,7 +23,6 @@ angular.module('app')
 		UserSvc.profile(username)
 			.success(function (user_profile) {
 				$scope.user_profile = user_profile;
-				$scopeCanEdit = $scope.editPermission($scope.user_profile.permission_level);
 				PostsService.user_posts ({
 					_author: $scope.user_profile._id
 				})
@@ -44,9 +43,9 @@ angular.module('app')
 			  	UserSvc.getUser()
 					.then(function (response){
 						$scope.currentUser = response.data;
-							//is the user the same as the user who's page this is
-							if ($scope.user_profile._id == $scope.currentUser._id ) {
-								$scope.pageOwner = true;
+							//is the user the same as the user who's page this is or they have a higher permission level then let them edit the page
+							if ($scope.user_profile._id == $scope.currentUser._id || $scope.editPermission($scope.currentUser.permission_level) ) {
+								$scopeCanEdit = true;
 							}
 					})
 			}
