@@ -45,7 +45,7 @@ angular.module('app')
 						$scope.currentUser = response.data;
 							//is the user the same as the user who's page this is or they have a higher permission level then let them edit the page
 							if ($scope.user_profile._id == $scope.currentUser._id || $scope.editPermission($scope.currentUser.permission_level) ) {
-								$scopeCanEdit = true;
+								$scope.canEdit = true;
 							}
 					})
 			}
