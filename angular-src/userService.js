@@ -33,9 +33,15 @@ angular.module('app')
 			})
 		}
 
-		svc.authorization = function () {
-			$http.defaults.headers.common['X-Auth'] = window.localStorage.token
+		svc.authorization = function (permission_level) {
+			$http.defaults.headers.common['X-Auth'] = window.localStorage.token;
 			return $http.get('/api/users/permissions')
+			.then(function (response) {
+				if (response.data >= permission_level) {
+					return true;
+				}
+				return false;
+			})
 		}
 
 		svc.logout = function () {
