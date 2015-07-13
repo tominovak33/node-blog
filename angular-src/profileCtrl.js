@@ -127,7 +127,7 @@ angular.module('app')
 
 			//get the id of the currently logged in user's ID. So we can use this to edit the user. todo: change this so the superusers can choose who is edited when they visit the page
 			var profile_details = {
-				_id : $scope.currentUser._id
+				_id : $scope.user_profile._id
 			};
 
 			//iterate through the new details, if they are not empty then add them to the profile details object

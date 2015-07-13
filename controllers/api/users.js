@@ -39,6 +39,14 @@ router.get('/permissions', function (request, response) {
 })
 
 router.post('/profile', function (request, response) {
+	
+	var token = request.headers['x-auth'];
+	var user = jwt.decode(token, config.secret);
+	var _id  = user.user_id;
+
+	User.findOne({_id: _id}, function (error, returned_user) {
+		console.log(returned_user.permission_level);
+	})
 
 	var _id = request.body._id;
 	
