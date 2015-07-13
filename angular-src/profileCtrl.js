@@ -5,12 +5,14 @@ angular.module('app')
 		/*-------------------------------------------
 		/ Get user permissions
 		/-------------------------------------------*/
-	  	UserSvc.authorization()
-			.then(function (response){
-				console.log(response);
-			})
+		$scope.editPermission = function(permission_level) {
+		  	UserSvc.authorization()
+				.then(function (response){
+					$scope=(response);
+				})
+		}
 		/*-------------------------------------------
-		/ Profile edit options 
+		/ End user permissions
 		/-------------------------------------------*/
 
 
@@ -21,6 +23,7 @@ angular.module('app')
 		UserSvc.profile(username)
 			.success(function (user_profile) {
 				$scope.user_profile = user_profile;
+				$scopeCanEdit = $scope.editPermission($scope.user_profile.permission_level);
 				PostsService.user_posts ({
 					_author: $scope.user_profile._id
 				})
