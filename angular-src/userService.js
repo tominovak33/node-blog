@@ -37,6 +37,7 @@ angular.module('app')
 			$http.defaults.headers.common['X-Auth'] = window.localStorage.token;
 			return $http.get('/api/users/permissions')
 			.then(function (response) {
+				console.log(response);
 				if (response.data > permission_level) {
 					return true;
 				}
