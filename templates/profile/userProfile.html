@@ -1,0 +1,11 @@
+<div class="container">
+	<h1 class="page-title">Profile: {{ user_profile.username  }}</h2>
+	<div class="margin-center profile-edit two-thirds text-center">		
+	</div>
+	<div ng-if="canEdit">
+		<ng-include src="'/profile/userEdit.html'"></ng-include>
+	</div>
+	<div ng-if="canEdit != true">
+		<ng-include src="'/profile/userView.html'"></ng-include>
+	</div>
+</div>
