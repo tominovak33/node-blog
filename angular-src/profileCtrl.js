@@ -1,11 +1,26 @@
 angular.module('app')
 	.controller('ProfileCtrl', ["$scope" , "$http", "UserSvc", "PostsService" , "$routeParams", "$route", "$location" , function ($scope, $http, UserSvc, PostsService, $routeParams, $route, $location) {
 
+
+		/*-------------------------------------------
+		/ Get user permissions
+		/-------------------------------------------*/
+		$scope.editPermission = function(permission_level) {
+		  	UserSvc.authorization()
+				.then(function (response){
+					$scope=(response);
+				})
+		}
+		/*-------------------------------------------
+		/ End user permissions
+		/-------------------------------------------*/
+
+
 		$scope.baseUrl = location.host;
 		var username = $routeParams.username;
 		$scope.new  = {};
 
-		UserSvc.profile (username)
+		UserSvc.profile(username)
 			.success(function (user_profile) {
 				$scope.user_profile = user_profile;
 				PostsService.user_posts ({
@@ -16,7 +31,6 @@ angular.module('app')
 						$scope.paginate($scope.user_posts.length);
 					})
 			})
-
 
 		/*-------------------------------------------
 		/ Check currently logged in user 
@@ -29,9 +43,9 @@ angular.module('app')
 			  	UserSvc.getUser()
 					.then(function (response){
 						$scope.currentUser = response.data;
-							//is the user the same as the user who's page this is
-							if ($scope.user_profile._id == $scope.currentUser._id ) {
-								$scope.pageOwner = true;
+							//is the user the same as the user who's page this is or they have a higher permission level then let them edit the page
+							if ($scope.user_profile._id == $scope.currentUser._id || $scope.editPermission($scope.currentUser.permission_level) ) {
+								$scope.canEdit = true;
 							}
 					})
 			}
@@ -100,6 +114,11 @@ angular.module('app')
 		/ End Pagination 
 		/-------------------------------------------*/
 
+	  	UserSvc.authorization('10')
+			.then(function (response){
+				console.log(response);
+			})
+
 		/*-------------------------------------------
 		/ Profile edit options 
 		/-------------------------------------------*/
@@ -108,7 +127,7 @@ angular.module('app')
 
 			//get the id of the currently logged in user's ID. So we can use this to edit the user. todo: change this so the superusers can choose who is edited when they visit the page
 			var profile_details = {
-				_id : $scope.currentUser._id
+				_id : $scope.user_profile._id
 			};
 
 			//iterate through the new details, if they are not empty then add them to the profile details object
@@ -144,7 +163,4 @@ angular.module('app')
 		/*-------------------------------------------
 		/ End profile edit options 
 		/-------------------------------------------*/
-
-	
-
 	}])
