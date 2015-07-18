@@ -49,19 +49,27 @@ npm cache clean
 npm install
 
 
-### Node issues
+## Node issues
 
 Node error: Error: listen EADDRINUSE
 
 ps aux | grep node
 kill -9 xyz 		<---- Swap xyz for the id of the node js process from the list shown above
 
+* NPM install issues saying: Error: `gyp` failed with exit code: 1
+	
+	sudo ln -s /usr/bin/nodejs /usr/bin/node
 
-### Listen for websockets
+
+### Run node forever
+ npm install forever
+ forever start server.js
+
+## Listen for websockets
 
 node_modules/wscat/bin/wscat -c ws://localhost:3000
 
-### Testing
+## Testing
 
 * Protractor
 
