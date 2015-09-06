@@ -17,7 +17,7 @@
     "gulp-stylus": "~2.0.3",
     "gulp-nodemon": "~2.0.3",
     "jwt-simple": "~0.3.0",
-    "bcrypt": "~0.8.3",
+    "bcrypt": "~0.8.5",
     "ws": "~0.7.2",
     "lodash": "~3.9.3",
     "chai": "~3.0.0",
