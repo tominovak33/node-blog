@@ -8,10 +8,10 @@ var ngAnnotate = require('gulp-ng-annotate');
 var sourcemaps = require('gulp-sourcemaps');
 var nodemon = require('gulp-nodemon');
 
-
 //Get every file in the /gulp/ folder and then require every file that is there
 //This prevents me from having to require each new file I add
 fs.readdirSync(__dirname + '/gulp').forEach(function (task) {
+	console.log(task);
 	require('./gulp/' + task);
 })
 
