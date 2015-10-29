@@ -5,7 +5,7 @@
 	    	<h4 class="margin-v-small">Post Title:</h4>
 	    	<input ng-model='$parent.postTitle' class="form-control" />
 	    	<h4 class="margin-v-small">Post Body:</h4>
-	        <textarea name="editor1" id="editor1" rows="10" cols="80">	        
+	        <textarea name="editor1" id="editor1" rows="10" cols="80">
 	        </textarea>
 	    </form>
 	    <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
@@ -22,7 +22,7 @@
 		<div class="post_search_wrapper">
 			<div ng-click="author_search = !author_search" class="any_search_toggle search_toggle_button"><span>Author: </span></div>
 			<div ng-show="author_search" class="search_input"><label><input ng-model="search._author.username"></label><div class="clear_button" ng-click="search._author.username = '' ">Clear</div></div>
-		</div> 
+		</div>
 		<div class="post_search_wrapper">
 			<div ng-click="title_search = !title_search" class="title_search_toggle search_toggle_button"><span>Title: </span></div>
 			<div ng-show="title_search" class="search_input"><label><input ng-model="search.title"></label><div class="clear_button" ng-click="search.title = '' ">Clear</div></div>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="post_body" ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html">
 			</div>
-			<a ng-if="post.body.length > bodyLengthLimit" ng-href="http://{{baseUrl}}/#/post/{{post._id}}" class="link-read-more">
+			<a ng-if="post.body.length > bodyLengthLimit" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}" class="link-read-more">
 				<p>Read more....</p>
 			</a>
 				<a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
