@@ -6,6 +6,9 @@ angular.module('app')
 		this.send = function (post) {
 			return $http.post('/api/posts', post);
 		}
+		this.removeItem = function (parameters) {
+			return $http.post('/api/posts/removeItem', { params: {post_id: parameters.post_id} });
+		}
 		this.single_slug = function (parameters) {
 			return $http.get('/api/posts', { params: {post_slug: parameters.slug} } );
 		}

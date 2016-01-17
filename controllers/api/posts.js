@@ -52,7 +52,27 @@ router.post('/', function (request, response, next) {
 		response.json(post);
 		})
 	});
-})
+});
+
+
+router.post('/removeItem', function (request, response, next) {
+	console.log("trying to remove item");
+	var _authorID = request.auth.user_id;
+	var itemID = request.body.params.post_id;
+
+	Post.find({
+			_id:itemID,
+			_author:_authorID
+		})
+		.remove(function(error, result) {
+			if (error) {
+				response.status(501);
+				return next(error);
+			}
+			response.status(201);
+			response.json(result);
+		});
+});
 
 var get_query_post_param = function(query_string){
 	if (!query_string) {

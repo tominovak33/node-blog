@@ -20,14 +20,41 @@ Currently the only purpose of this project is to allow me to practice my develop
 
 ## Documentation
 
-## Installation
+### Installation (Debian)
 
-Install nodejs and npm
+#### Install nodejs and npm and mongodb
 
-git clone git@github.com:tominovak33/meanapp.git
-cd meanapp
-npm install
-node_modules/.bin/gulp develop (or `npm run build`)
+    sudo apt-get install mongodb
+
+    curl -sL https://deb.nodesource.com/setup_4.x | bash
+
+    sudo apt-get install nodejs
+
+#### Install application
+
+    git clone git@github.com:tominovak33/meanapp.git
+
+    cd meanapp
+
+    npm install
+
+    node_modules/.bin/gulp develop (or `npm run build`)
+
+### Tests
+
+#### Setting up:
+
+On new install:
+
+Download the required selenium files for selenium to start:
+
+./node_modules/protractor/bin/webdriver-manager update
+
+Before running tests (leave running)
+
+./node_modules/protractor/bin/webdriver-manager start
+
+#### Running the tests:
 
 Testing: `./node_modules/.bin/protractor` or `npm run test`
 
