@@ -34,6 +34,7 @@ router.post('/', function (request, response, next) {
 		body: request.body.body,
 		title: request.body.title,
 		slug: request.body.slug,
+		tags: request.body.tags,
 		_author: request.auth.user_id,   // assign the _id from the person
 		post_username: request.auth.username
 	});

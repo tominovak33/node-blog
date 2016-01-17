@@ -2,6 +2,7 @@ angular.module('app')
 	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", function ($scope, $http, PostsService, filterFilter) {
 		$scope.baseUrl = location.host;
 		$scope.bodyLengthLimit = 250;
+		$scope.postTagsArray = [];
 
 		$scope.posts = [];
 		$scope.addPost = function () {
@@ -15,6 +16,7 @@ angular.module('app')
 				PostsService.send({
 					body: ckeditor_content,
 					title: $scope.postTitle,
+					tags: $scope.postTagsArray,
 					slug: slug
 				})
 				.success(function (post) {
@@ -112,6 +114,12 @@ angular.module('app')
 	    	slug = slug.replace(/\=/g, "");
 	    	return slug;
 	    };
+
+		$scope.addTag = function(tag) {
+			//console.log(tag);
+			$scope.postTagsArray.push(tag);
+			$scope.postTag = '';
+		};
 
 	PostsService.get()
 		.success(function (posts) {

@@ -4,6 +4,9 @@
 	    <form>
 	    	<h4 class="margin-v-small">Post Title:</h4>
 	    	<input ng-model='$parent.postTitle' class="form-control" />
+            <h4 class="margin-v-small">Post Tags:</h4>
+            <input ng-model='$parent.postTag' class="form-control" />
+            <button ng-click='addTag($parent.postTag)' class="btn btn-primary margin-v-small">Add</button>
 	    	<h4 class="margin-v-small">Post Body:</h4>
 	        <textarea name="editor1" id="editor1" rows="10" cols="80">
 	        </textarea>
@@ -44,7 +47,7 @@
 			<div class="post_details">
 				<h5 class="author_name">Posted by: <a ng-href="http://{{baseUrl}}/#/user/{{ post._author.username }}">
 					<strong>{{ post._author.username }}</strong></a>
-				<h5>
+				</h5>
 				<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
 			</div>
 			<div class="post_title">
@@ -60,9 +63,18 @@
 			<a ng-if="post.body.length > bodyLengthLimit" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}" class="link-read-more">
 				<p>Read more....</p>
 			</a>
-				<a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
-					<div class="text-right">{{post._id}}</div>
-				</a>
+
+            <div>
+                <div class="float-left inline-block">
+                    <div class="float-right inline-block"><b>Tags:</b> {{post.tags}}</div>
+                </div>
+
+                <a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
+                    <div class="float-right inline-block">{{post._id}}</div>
+                </a>
+
+            </div>
+
 		</div>
 		</li>
 	</ul>
