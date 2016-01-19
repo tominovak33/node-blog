@@ -65,8 +65,10 @@
 			</a>
 
             <div>
-                <div class="float-left inline-block">
-                    <div class="float-right inline-block"><b>Tags:</b> {{post.tags}}</div>
+                <div ng-if="post.tags.length > 0" class="float-left inline-block">
+                    <div class="float-right inline-block"><b>Tags:</b>
+                        <span ng-repeat="tag in post.tags"><a href="tags/{{tag}}">{{tag}}</a>,&nbsp;</span>
+                    </div>
                 </div>
 
                 <a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
