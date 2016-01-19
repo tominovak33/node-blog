@@ -1,18 +1,7 @@
 <div class="container">
-	<staticInclude ng-if="currentUser" data-ng-init="init_ckedit()">
+	<div ng-if="currentUser">
 		<h1 class="page-title">Create a Post: </h1>
-	    <form>
-	    	<h4 class="margin-v-small">Post Title:</h4>
-	    	<input ng-model='$parent.postTitle' class="form-control" />
-            <h4 class="margin-v-small">Post Tags:</h4>
-            <input ng-model='$parent.postTag' class="form-control" />
-            <button ng-click='addTag($parent.postTag)' class="btn btn-primary margin-v-small">Add</button>
-            <div static-include="file.html"></div>
-            <h4 class="margin-v-small">Post Body:</h4>
-	        <textarea name="editor1" id="editor1" rows="10" cols="80">
-	        </textarea>
-	    </form>
-	    <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
+        <div static-include="forms/newPostForm.html"></div>
     </div>
     <h1 ng-if="posts.length" class="posts-header">Posts:</h1>
 
@@ -73,7 +62,7 @@
                 </div>
 
                 <a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
-                    <div class="float-right inline-block">{{post._id}}</div>
+                    <div class="float-right inline-block postID">{{post._id}}</div>
                 </a>
 
             </div>

@@ -1,10 +1,10 @@
 var expect = require('chai').expect;
 
 describe('test single post view: ', function() {
-		
-	beforeEach(function() {
-    	browser.executeScript('window.sessionStorage.clear();');
-    	browser.executeScript('window.localStorage.clear();');
+
+	afterEach(function() {
+		browser.executeScript('window.sessionStorage.clear();');
+		browser.executeScript('window.localStorage.clear();');
 	});
 	
 	//Set credentials to use so available in all tests below
@@ -36,13 +36,15 @@ describe('test single post view: ', function() {
 		//have the same content meaning that if the post from the last test is still in the system 
 		//it will pass the test despite the post submitted just now is not saved as the first post 
 		//in the list will have the expected content
-		var title = 'my test title '
+		var title = 'my test title ';
 		title += Date.now();
 		
 		//Enter a test post and sumbmit it
 		element(by.model('$parent.postTitle')).sendKeys(title);
-
-		browser.executeScript("CKEDITOR.instances.editor1.setData('test post content');");
+		//browser.pause();
+		//browser.sleep(10000); // Waits for the new post form to load in and CK editor it initiate
+		element(by.css('#editor1')).sendKeys('test post content');
+		//browser.executeScript("CKEDITOR.instances.editor1.setData('test post content');");
 		element(by.css('.post-submit')).click();
 
 		//Assertions
@@ -52,7 +54,8 @@ describe('test single post view: ', function() {
 		//Rather than wait for the websockets to send the post back, just refresh to get all posts
 		browser.executeScript("window.location.href = '/'");
 
-		element.all(by.css('.post_title')).first().click();
+		element.all(by.css('.postID')).first().click();
+		browser.sleep(10000);
 
 		element.all(by.css('.post_title')).first().getText()
 			.then(function (post_title) {

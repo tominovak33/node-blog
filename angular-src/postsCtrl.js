@@ -6,15 +6,30 @@ angular.module('app')
 
 		$scope.posts = [];
 		$scope.addPost = function () {
-			var ckeditor_content = CKEDITOR.instances.editor1.getData();
+			//var ckeditor_content = CKEDITOR.instances.editor1.getData();
+			//if (window.CKEDITOR) {
+			//	var postContent = CKEDITOR.instances.editor1.getData();
+			//} else  {
+			//	var postContent = $scope.postContent;
+			//}
+			try {
+				var postContent = CKEDITOR.instances.editor1.getData();
+			}
+			catch(err) {
+				// ckeditor is not loaded
+			}
+			if (!postContent) {
+				var postContent = $scope.postContent;
+			}
+
 			var date_slug = $scope.urlDate();
 			var title_slug = $scope.slugify($scope.postTitle);
 
 			var slug = date_slug + title_slug;
 
-			if (ckeditor_content) {
+			if (postContent) {
 				PostsService.send({
-					body: ckeditor_content,
+					body: postContent,
 					title: $scope.postTitle,
 					tags: $scope.postTagsArray,
 					slug: slug
@@ -31,9 +46,13 @@ angular.module('app')
 			}
 		}
 
-		$scope.init_ckedit = function () {
-		    CKEDITOR.replace('editor1');
-		}
+		$scope.$on('$includeContentLoaded', function () {
+			$scope.init_ckeditor();
+		});
+
+		$scope.init_ckeditor = function () {
+		    //CKEDITOR.replace('editor1');
+		};
 
 		$scope.$on('ws:new_post', function(_, post) {
 			post = post[0];
