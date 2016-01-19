@@ -1,5 +1,5 @@
 <div class="container">
-	<div ng-if="currentUser" data-ng-init="init_ckedit()">
+	<staticInclude ng-if="currentUser" data-ng-init="init_ckedit()">
 		<h1 class="page-title">Create a Post: </h1>
 	    <form>
 	    	<h4 class="margin-v-small">Post Title:</h4>
@@ -7,7 +7,8 @@
             <h4 class="margin-v-small">Post Tags:</h4>
             <input ng-model='$parent.postTag' class="form-control" />
             <button ng-click='addTag($parent.postTag)' class="btn btn-primary margin-v-small">Add</button>
-	    	<h4 class="margin-v-small">Post Body:</h4>
+            <div static-include="file.html"></div>
+            <h4 class="margin-v-small">Post Body:</h4>
 	        <textarea name="editor1" id="editor1" rows="10" cols="80">
 	        </textarea>
 	    </form>
