@@ -2,6 +2,11 @@ var expect = require('chai').expect;
 
 describe('test keeping login after browser refresh :', function() {
 
+	afterEach(function() {
+		browser.executeScript('window.sessionStorage.clear();');
+		browser.executeScript('window.localStorage.clear();');
+	});
+
 	it('keeps the login active after browser refresh' , function () {
 		//Open application
 		browser.get('http://localhost:3001');

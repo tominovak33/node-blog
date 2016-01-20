@@ -57,7 +57,7 @@
             <div>
                 <div ng-if="post.tags.length > 0" class="float-left inline-block">
                     <div class="float-right inline-block"><b>Tags:</b>
-                        <span ng-repeat="tag in post.tags"><a href="tags/{{tag}}">{{tag}}</a>,&nbsp;</span>
+                        <span ng-repeat="tag in post.tags track by $index"><a href="tags/{{tag}}">{{tag}}</a>,&nbsp;</span>
                     </div>
                 </div>
 

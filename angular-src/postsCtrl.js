@@ -51,7 +51,7 @@ angular.module('app')
 		});
 
 		$scope.init_ckeditor = function () {
-		    //CKEDITOR.replace('editor1');
+		    CKEDITOR.replace('editor1');
 		};
 
 		$scope.$on('ws:new_post', function(_, post) {
