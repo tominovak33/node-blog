@@ -6,17 +6,12 @@ angular.module('app')
 
 		$scope.posts = [];
 		$scope.addPost = function () {
-			//var ckeditor_content = CKEDITOR.instances.editor1.getData();
-			//if (window.CKEDITOR) {
-			//	var postContent = CKEDITOR.instances.editor1.getData();
-			//} else  {
-			//	var postContent = $scope.postContent;
-			//}
 			try {
 				var postContent = CKEDITOR.instances.editor1.getData();
 			}
 			catch(err) {
 				// ckeditor is not loaded
+				console.error("CKEDITOR has not been loaded");
 			}
 			if (!postContent) {
 				var postContent = $scope.postContent;
@@ -138,6 +133,10 @@ angular.module('app')
 			//console.log(tag);
 			$scope.postTagsArray.push(tag);
 			$scope.postTag = '';
+		};
+
+		$scope.removeTag = function(tagIndex) {
+			$scope.postTagsArray.splice(tagIndex, 1);
 		};
 
 	PostsService.get()
