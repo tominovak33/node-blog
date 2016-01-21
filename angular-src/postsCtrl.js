@@ -1,5 +1,5 @@
 angular.module('app')
-	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", function ($scope, $http, PostsService, filterFilter) {
+	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", "UserSvc", function ($scope, $http, PostsService, filterFilter, UserSvc) {
 		$scope.baseUrl = location.host;
 		$scope.bodyLengthLimit = 250;
 		$scope.postTagsArray = [];
@@ -39,7 +39,7 @@ angular.module('app')
 					$scope.postTitle = null;
 				})
 			}
-		}
+		};
 
 		$scope.$on('$includeContentLoaded', function () {
 			$scope.init_ckeditor();
@@ -55,7 +55,7 @@ angular.module('app')
 				$scope.posts.unshift(post);
 				$scope.paginate();
 			})
-		})
+		});
 
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
@@ -119,6 +119,14 @@ angular.module('app')
 			return url_date;
 
 	    };
+
+		$scope.$watch('postTitle', function(title) {
+			$scope.generateSlug(title);
+		}, true);
+
+		$scope.generateSlug = function () {
+			$scope.slug = $scope.urlDate() + $scope.slugify($scope.postTitle);
+		};
 
 	    $scope.slugify = function(string) {
 	    	var slug =  string.toLowerCase();
