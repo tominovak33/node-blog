@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 router.get('/', function (request, response, next) {
 
 	var post_param = null;
-	
+
 	post_param = get_query_post_param(request._parsedUrl.query);
 
 	Post.find(post_param)
@@ -87,6 +87,8 @@ var get_query_post_param = function(query_string){
 
 		var name = query_parts[0];
 		var value = query_parts[1];
+
+		value = decodeURIComponent(value);
 
 		if (name == 'post_slug') {
 			return { "slug":  value };

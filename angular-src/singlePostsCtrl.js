@@ -1,9 +1,6 @@
 angular.module('app')
 	.controller('SinglePostCtrl', ["$scope" , "$http", "PostsService", "$routeParams", "$route", "$location" , function ($scope, $http, PostsService, $routeParams, $route, $location) {
 
-		var post_slug = $routeParams.slug;
-		var post_id = $routeParams.id;
-
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
 		});
@@ -18,22 +15,37 @@ angular.module('app')
 				})
 		};
 
+        var postSlug = $routeParams.slug;
+        var postID = $routeParams.id;
 
-		if (post_slug) {
-			PostsService.single_slug({
-				slug: post_slug
+		if (postSlug) {
+            var fullPostSlug = '';
+            fullPostSlug += $routeParams.year + '/';
+            fullPostSlug += $routeParams.month + '/';
+            fullPostSlug += $routeParams.day + '/';
+            fullPostSlug += $routeParams.slug;
+
+            console.log(fullPostSlug);
+
+            PostsService.single_slug({
+				slug: fullPostSlug
 			})
 			.success(function (post) {
 				$scope.post = post[0];
 			})
 		}
-		else {
+		else if (postID) {
 			PostsService.single_id({
-				id: post_id
+				id: postID
 			})		
 			.success(function (post) {
 				$scope.post = post[0];
+                console.log($scope.post);
 			})
-		}				
+		}
+        else {
+            // the url does not contain a valid post slug or id
+            // show error to user
+        }
 
 	}])

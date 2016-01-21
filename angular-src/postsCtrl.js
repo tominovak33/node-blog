@@ -114,11 +114,8 @@ angular.module('app')
 		    var month = date.getMonth()+1; //+1 because months are 0 indexed
 		    var year = date.getFullYear();
 
-		    var url_date =  String(year) + '/' + String(month) + '/' + String(day) + '/' ;
-
-			return url_date;
-
-	    };
+            return String(year) + '/' + String(month) + '/' + String(day) + '/' ;
+        };
 
 		$scope.$watch('postTitle', function(title) {
 			if (title) {
