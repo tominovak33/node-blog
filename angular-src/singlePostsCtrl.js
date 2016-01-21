@@ -32,7 +32,8 @@ angular.module('app')
 			})
 			.success(function (post) {
 				$scope.post = post[0];
-			})
+                console.log($scope.post);
+            })
 		}
 		else if (postID) {
 			PostsService.single_id({

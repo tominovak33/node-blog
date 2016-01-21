@@ -9,12 +9,12 @@ var mongoose = require('mongoose');
 //in server.js includes that part
 router.get('/', function (request, response, next) {
 
-	var post_param = null;
+	var post_param = get_query_post_param(request._parsedUrl.query);
 
-	post_param = get_query_post_param(request._parsedUrl.query);
+	post_param.deleted = false;
+	console.log(post_param);
 
 	Post.find(post_param)
-
 	.sort('-date')
 	.populate('_author')
 	.exec(function (error, posts) {
@@ -61,23 +61,32 @@ router.post('/removeItem', function (request, response, next) {
 	var _authorID = request.auth.user_id;
 	var itemID = request.body.params.post_id;
 
-	Post.find({
-			_id:itemID,
-			_author:_authorID
+	Post.update({_id: itemID, _author:_authorID}, {'deleted': true}, {upsert: true}, function(error){
+		if(error) {
+			return (error);
+		}
+		Post.findOne({_id: itemID}, function (error, post) {
+			response.json(post);
 		})
-		.remove(function(error, result) {
-			if (error) {
-				response.status(501);
-				return next(error);
-			}
-			response.status(201);
-			response.json(result);
-		});
+	});
+
+	//Post.find({
+	//		_id:itemID,
+	//		_author:_authorID
+	//	})
+	//	.remove(function(error, result) {
+	//		if (error) {
+	//			response.status(501);
+	//			return next(error);
+	//		}
+	//		response.status(201);
+	//		response.json(result);
+	//	});
 });
 
 var get_query_post_param = function(query_string){
 	if (!query_string) {
-		return null;
+		return {};
 	}
 	var queries = query_string.split("&");
 
@@ -103,7 +112,7 @@ var get_query_post_param = function(query_string){
 		}		
 	}
 
-	return null;
+	return {};
 };
 
 var build_post_query = function(post_slug){
