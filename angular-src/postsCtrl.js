@@ -114,14 +114,16 @@ angular.module('app')
 		    var month = date.getMonth()+1; //+1 because months are 0 indexed
 		    var year = date.getFullYear();
 
-		    var url_date =  String(year) + '-' + String(month) + '-' + String(day) + '-' ;
+		    var url_date =  String(year) + '/' + String(month) + '/' + String(day) + '/' ;
 
 			return url_date;
 
 	    };
 
 		$scope.$watch('postTitle', function(title) {
-			$scope.generateSlug(title);
+			if (title) {
+				$scope.generateSlug(title);
+			}
 		}, true);
 
 		$scope.generateSlug = function () {
@@ -130,7 +132,7 @@ angular.module('app')
 
 	    $scope.slugify = function(string) {
 	    	var slug =  string.toLowerCase();
-	    	slug = slug.replace(/\s+/g,"_");
+	    	slug = slug.replace(/\s+/g,"-");
 	    	slug = slug.replace(/\?/g, "");
 	    	slug = slug.replace(/\&/g, "");
 	    	slug = slug.replace(/\=/g, "");
