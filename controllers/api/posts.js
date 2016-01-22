@@ -12,7 +12,6 @@ router.get('/', function (request, response, next) {
 	var post_param = get_query_post_param(request._parsedUrl.query);
 
 	post_param.deleted = false;
-	console.log(post_param);
 
 	Post.find(post_param)
 	.sort('-date')

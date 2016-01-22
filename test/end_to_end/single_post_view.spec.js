@@ -43,7 +43,13 @@ describe('test single post view: ', function() {
 		element(by.model('$parent.postTitle')).sendKeys(title);
 		//browser.pause();
 		//browser.sleep(10000); // Waits for the new post form to load in and CK editor it initiate
-		element(by.css('#editor1')).sendKeys('test post content');
+		//try {
+		//	browser.executeScript("CKEDITOR.instances.editor1.setData('my test post content');");
+		//}
+		//catch(err) {
+		//	element(by.css('#editor1')).sendKeys('my test post content');
+		//}
+		element(by.css('#editor1')).sendKeys('my test post content');
 		//browser.executeScript("CKEDITOR.instances.editor1.setData('test post content');");
 		element(by.css('.post-submit')).click();
 

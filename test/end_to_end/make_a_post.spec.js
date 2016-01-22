@@ -39,8 +39,12 @@ describe('test making a post:', function() {
 		
 		//Enter a test post and sumbmit it
 		element(by.model('$parent.postTitle')).sendKeys(title);
-		element(by.css('#editor1')).sendKeys('test post content');
-		//browser.executeScript("CKEDITOR.instances.editor1.setData('my test post content');");
+		try {
+			browser.executeScript("CKEDITOR.instances.editor1.setData('my test post content');");
+		}
+		catch(err) {
+			element(by.css('#editor1')).sendKeys('my test post content');
+		}
 		element(by.css('.post-submit')).click();
 
 		//Assertions
@@ -50,11 +54,12 @@ describe('test making a post:', function() {
 		//Rather than wait for the websockets to send the post back, just refresh to get all posts
 		browser.executeScript("window.location.href = '/'");
 
+		browser.sleep(1000);
+
 		element.all(by.css('.post_title')).first().getText()
 
 			.then(function (post_title) {
-				console.log(post_title);
-				//expect(post_title).to.contain(title);
+				expect(post_title).to.contain(title);
 			}
 
 		);
