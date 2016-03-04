@@ -8,6 +8,7 @@
         <span ng-repeat="tag in postTagsArray track by $index" ng-click='removeTag($index)' class="padding-small tagItem clickPointer">{{tag}}</span>
     </div>
     <h4 class="margin-v-small">Post Body:</h4>
+    <button ng-if="ckLoaded == false" ng-click="init_ckeditor()" class="btn btn-primary margin-v-small">Advanced Editor</button>
     <textarea ng-model='$parent.postContent' name="editor1" id="editor1" class="postContentInput" rows="10" cols="80">
     </textarea>
     <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>

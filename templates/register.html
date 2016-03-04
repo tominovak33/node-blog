@@ -2,16 +2,16 @@
 	<form ng-submit="register(username, password, password_confirm)">
 		<div class="form-group">
 			<label>Username</label>
-			<input type="text" class="form-control" ng-model="username"/>
+			<input type="email" class="form-control" ng-model="username" required />
 		</div>
 		<div class="form-group">
-			<p ng-if="validationMessage" class="fucked_up">
+			<p ng-if="validationMessage">
 			Invalid input: {{validationMessage}}
 			</p>
 			<label>Password</label>
-			<input type="password" class="form-control" ng-model="password"/>
+			<input type="password" class="form-control" ng-model="password" required />
 			<label>Confirm Password</label>
-			<input type="password" class="form-control" ng-model="password_confirm"/>
+			<input type="password" class="form-control" ng-model="password_confirm" required />
 		</div>
 		<input class="btn btn-success btn-lg btn-block register-submit" type="submit" value="Register">
 	</form>

@@ -1,8 +1,9 @@
 angular.module('app')
-	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", "UserSvc", function ($scope, $http, PostsService, filterFilter, UserSvc) {
+	.controller('PostsCtrl', ["$scope" , "$http", "PostsService", "filterFilter", "UserSvc", "$timeout", function ($scope, $http, PostsService, filterFilter, UserSvc, $timeout) {
 		$scope.baseUrl = location.host;
 		$scope.bodyLengthLimit = 250;
 		$scope.postTagsArray = [];
+		$scope.ckLoaded = false;
 
 		$scope.posts = [];
 		$scope.addPost = function () {
@@ -46,7 +47,18 @@ angular.module('app')
 		});
 
 		$scope.init_ckeditor = function () {
-		    CKEDITOR.replace('editor1');
+			$scope.ckLoaded = true;
+			try {
+				var editor = CKEDITOR.replace('editor1');
+			} catch (err) {
+				$scope.ckLoaded = false;
+				console.log("Error: " + err);
+			}
+			//if (typeof editor === 'undefined') {
+			//	$timeout(function() {
+			//		$scope.init_ckeditor();
+			//	}, 1000)
+			//}
 		};
 
 		$scope.$on('ws:new_post', function(_, post) {
