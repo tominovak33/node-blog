@@ -1,4 +1,4 @@
-Tomi: MEAN practice app 
+Tomi: MEAN practice app
 ========================
 
 ### Userful snippets
@@ -14,33 +14,45 @@ curl -v -H "Content-Type: application/json" -XPOST --data "{\"username\":\"tomi5
 
 curl -X POST -d '{"username": "tomi1" , "password": "pass" }' -H "Content-Type: application/json" localhost:3000/api/users
 
-### Mongo Database
+## Mongo Database
 
-mongo
+* Connect to mongodb:
 
-use social
+		mongo social
 
-Show users:
+* Show users:
 
-db.users.find()
+		db.users.find()
 
-Show posts:
+* Show posts:
 
-db.posts.find()
+		db.posts.find()
 
 * Edit a user:
 
-db.users.update( { "_id": ObjectId("123456789101112131415") }, { $set: { "username": "foo" } } );
+		db.users.update( { "_id": ObjectId("123456789101112131415") }, { $set: { "username": "foo" } } );
 
-* Delete All Posts 
-db.posts.remove({})
+* Delete All Posts
+
+		db.posts.remove({})
 
 * Edit a post date
 
-db.posts.update( { "_id": ObjectId("--post object id here--") }, { $set: { "date": ISODate("2014-06-26T18:36:25.603Z") } } );
+		db.posts.update( { "_id": ObjectId("--post object id here--") }, { $set: { "date": ISODate("2014-06-26T18:36:25.603Z") } } );
 
+* Export Data
 
-### NPM issues
+		mongodump --db social --out export/
+
+		mongoexport --db social --collection posts --csv --fields body,slug,deleted,date,tags --out export/socialPosts.csv
+
+* Import Data
+
+		mongorestore --db %dbDestination% %exportLocation/dbName%
+
+## NPM
+
+### Errors issues
 
 Fix some module not found errors:
 
@@ -48,16 +60,19 @@ rm -rf node_modules/
 npm cache clean
 npm install
 
-
-## Node issues
+### Node issues
 
 Node error: Error: listen EADDRINUSE
 
 ps aux | grep node
 kill -9 xyz 		<---- Swap xyz for the id of the node js process from the list shown above
 
+OR
+
+sudo killall node
+
 * NPM install issues saying: Error: `gyp` failed with exit code: 1
-	
+
 	sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 
@@ -88,9 +103,9 @@ Run protactor tests with : ./node_modules/.bin/protractor
 <script src="//cdn.ckeditor.com/4.4.7/basic/ckeditor.js"></script>
 
 
-<textarea name="editor1" id="editor1" rows="10" cols="80" ng-model='postBody'>
-    This is my textarea to be replaced with CKEditor.
-</textarea>
+	<textarea name="editor1" id="editor1" rows="10" cols="80" ng-model='postBody'>
+	    This is my textarea to be replaced with CKEditor.
+	</textarea>
 
 CKEDITOR.replace('editor1');
 
