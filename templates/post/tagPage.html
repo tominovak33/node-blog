@@ -6,5 +6,8 @@
 <ul ng-if="posts.length" class="list--unstyled">
     <li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
         <div static-include="/post/innerPostContent.html"></div>
+        <hr class="break--unstyled" />
+        <a class="btn btn-primary" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <hr />
     </li>
 </ul>
