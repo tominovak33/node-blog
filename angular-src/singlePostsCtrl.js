@@ -17,6 +17,10 @@ angular.module('app')
 				})
 		};
 
+		$scope.prettifyCode = function() {
+			PR.prettyPrint();
+		};
+
         var postSlug = $routeParams.slug;
         var postID = $routeParams.id;
 

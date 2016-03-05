@@ -52,7 +52,9 @@ angular.module('app')
 			$scope.ckLoaded = true;
 
 			if (editorTextAreaExists) {
-				var editor = CKEDITOR.replace('editor1');
+				var editor = CKEDITOR.replace('editor1', {
+					allowedContent : true
+			});
 			} else {
 				$scope.ckLoaded = false;
 			}

@@ -18,13 +18,12 @@
 <span class="float-right">Tags: <span ng-repeat="tag in post.tags track by $index"><a href="#/tag/{{tag}}">{{tag}}</a>,&nbsp;</span></span>
 <div class="clearfix"></div>
 <hr />
-<p data-ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html"></p>
+<div data-ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html" after-render="prettifyCode"></div>
 <!-- multi post views only -->
 <div ng-if="singlePostView != true">
     <hr class="break--unstyled"/>
     <a class="btn btn-primary" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
-
 <hr />
 <!-- end multi view -->
 <!--<p><a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">{{post._id}}</a></p>-->
