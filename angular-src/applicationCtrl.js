@@ -18,6 +18,10 @@ angular.module('app')
 		$scope.$on('userLoggedIn', function(event, user) {
 			$scope.currentUser = user;
 		})
+
+		$scope.logout = function () {
+			UserSvc.logout();
+		}
 	}])
 
 	.filter('output_html', ["$sce", function ($sce) {

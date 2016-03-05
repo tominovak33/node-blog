@@ -11,9 +11,9 @@
 			<div class="container nav-container">
 				<a href="#/" class="navbar-brand">TomiCMS</a>
 				<ul class="nav navbar-nav">
-					<li ng-if="currentUser == undefined"><a href="#/login" class="navigation-login">Login</a></li>
-					<li ng-if="currentUser"><a href="#/post/new" class="navigation-logout">New Post</a></li>
-					<li ng-if="currentUser"><a href="#/logout" class="navigation-logout">Logout</a></li>
+					<li ng-if="currentUser == undefined"><a href="#/login">Login</a></li>
+					<li ng-if="currentUser"><a href="#/post/new">New Post</a></li>
+					<li ng-if="currentUser"><a href="#/" ng-click="logout()">Logout</a></li>
 				</ul>
 			</div>
 		</nav>
