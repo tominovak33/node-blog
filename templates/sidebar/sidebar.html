@@ -1,11 +1,72 @@
-<div>
+<div class="col-md-10"><!-- Search -->
     <h4>Search Posts:</h4>
-    <div class="input-group">
-        <input type="text" class="form-control">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </span>
+    <div>
+        <div><!-- All search -->
+            <div class="input-group">
+                <input ng-model="search.$" type="text" class="form-control">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="search.$ = '' ">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div><!-- ./ All search -->
+        <br />
+        <button ng-click="advancedSearch = !advancedSearch" class="btn">Advanced Search</button>
+        <hr />
+        <div ng-show="advancedSearch"><!-- Advanced Search -->
+            <div class="margin-v--small"><!-- Author search -->
+                <div ng-click="author_search = !author_search">
+                    <span>Author: </span>
+                </div>
+                <div class="input-group">
+                    <input ng-model="search._author.username" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="search._author.username = '' ">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div><!-- ./ Author search -->
+            <div class="margin-v--small"><!-- Title search -->
+                <div ng-click="title_search = !title_search">
+                    <span>Title: </span>
+                </div>
+                <div class="input-group">
+                    <input ng-model="search.title" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="search.title = '' ">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div><!-- ./ Title search -->
+            <div class="margin-v--small"><!-- Date search -->
+                <div ng-click="date_search = !date_search" class="date_search_toggle search_toggle_button">
+                    <span>Date: </span>
+                </div>
+                <div class="input-group">
+                    <input ng-model="search.date" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="search.date = '' ">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div><!-- ./ Date search -->
+            <div class="margin-v--small">
+                <div ng-click="body_search = !body_search">
+                    <span>Body: </span>
+                </div>
+                <div class="input-group">
+                    <input ng-model="search.body" type="text" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="search.body = '' ">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div><!-- ./ Advanced Search -->
     </div>
-</div>
+</div><!-- ./Search -->
