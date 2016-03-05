@@ -11,6 +11,10 @@ angular.module('app')
 
         $scope.tagTitle = tag;
 
+        $scope.prettifyCode = function() {
+            PR.prettyPrint();
+        };
+
         PostsService.filtered_posts ({
                 tags: tag
             })

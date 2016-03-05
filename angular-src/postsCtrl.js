@@ -54,12 +54,16 @@ angular.module('app')
 			if (editorTextAreaExists) {
 				var editor = CKEDITOR.replace('editor1', {
 					allowedContent : true
-			});
+				});
 			} else {
 				$scope.ckLoaded = false;
 			}
 		};
 
+		$scope.prettifyCode = function() {
+			PR.prettyPrint();
+		};
+		
 		$scope.$on('ws:new_post', function(_, post) {
 			post = post[0];
 			$scope.$apply(function () {
