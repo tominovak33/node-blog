@@ -1,0 +1,9 @@
+<h1 class="page-title">Posts By: {{ user_profile.username }}</h1>
+<hr />
+<div ng-if="pageOwner"><a ng-href="http://{{baseUrl}}/#/user/{{user_profile.username}}/edit">Edit profile</a></div>
+<ul ng-if="user_posts.length" class="list--unstyled">
+	<li ng-repeat="post in filteredPosts = user_posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage">
+		<div static-include="/post/innerPostContent.html"></div>
+	</li>
+</ul>
+<ng-include src="'/pagination.html'"></ng-include>

@@ -1,0 +1,10 @@
+<h1>Posts taggged with: {{tagTitle}}</h1>
+<hr />
+<div ng-if="posts.length == 0">
+    <h3>There are currently no posts with this tag</h3>
+</div>
+<ul ng-if="posts.length" class="list--unstyled">
+    <li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
+        <div static-include="/post/innerPostContent.html"></div>
+    </li>
+</ul>
