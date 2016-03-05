@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Tomi - MEAN</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="simpleLayout.css">
-	<!--<script src="//cdn.ckeditor.com/4.4.7/basic/ckeditor.js"></script>-->
-	<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
-</head>
-<body ng-app='app' ng-controller="ApplicationCtrl">
-	<nav class='navbar navbar-fixed-top'>
-		<div class="container nav-container">
-			<a href="#/" class="navbar-brand">TomiCMS</a>
-			<ul class="nav navbar-nav">
-				<li ng-if="currentUser == undefined"><a href="#/login" class="navigation-login">Login</a></li>
-				<li ng-if="currentUser"><a href="#/logout" class="navigation-logout">Logout</a></li>
-			</ul>
-		</div>
-	</nav>
-	<!--Inner page content -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<div ng-view></div>
+	<head>
+		<title>Tomi - CMS</title>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="simpleLayout.css">
+		<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script> <!-- or <script src="//cdn.ckeditor.com/4.4.7/basic/ckeditor.js"></script>-->
+	</head>
+	<body ng-app='app' ng-controller="ApplicationCtrl">
+		<nav class='navbar navbar-fixed-top'>
+			<div class="container nav-container">
+				<a href="#/" class="navbar-brand">TomiCMS</a>
+				<ul class="nav navbar-nav">
+					<li ng-if="currentUser == undefined"><a href="#/login" class="navigation-login">Login</a></li>
+					<li ng-if="currentUser"><a href="#/post/new" class="navigation-logout">New Post</a></li>
+					<li ng-if="currentUser"><a href="#/logout" class="navigation-logout">Logout</a></li>
+				</ul>
 			</div>
-		</div>
-		<footer>
+		</nav>
+		<div class="container"><!--Inner page content -->
 			<div class="row">
-				<div class="col-lg-12">
-					<p>Copyright © 2016</p>
+				<div class="col-md-8">
+					<div ng-view></div>
 				</div>
 			</div>
-		</footer>
-	</div>
-	<!-- ./Inner page content -->
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-route.js"></script>
-	<!--Access things in the /assets folder as if they were in the webroot -->
-	<script type="text/javascript" src='/app.js'></script>
-</body>
+			<footer>
+				<div class="row">
+					<div class="col-lg-12">
+						<p>Copyright © 2016</p>
+					</div>
+				</div>
+			</footer>
+		</div><!-- ./Inner page content -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-animate.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.1/angular-route.js"></script>
+		<script type="text/javascript" src='/app.js'></script><!--Access things in the /assets folder as if they were in the webroot -->
+	</body>
 </html>
