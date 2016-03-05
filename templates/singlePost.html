@@ -1,18 +1,8 @@
-<div class="container">
-	<h1 class="page-title">Single post view:</h1>
-	<ul class="posts-list">
-		<li class="post_item">
-		<div class="post_wrapper margin-center">
-			<div class="post_details">
-				<h5 class="author_name">Posted by: <strong>{{ post._author.username }}</strong></h5>
-				<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
-			</div>	
-			<div class="post_title"><p class="title">{{ post.title }}</p></div>
-			<div class="post_body" ng-bind-html="post.body | output_html"></div>
-		</div>
-		<div>
-			<button ng-click="deleteItem()"><span>Delete Item</span></button>
-		</div>
-		</li>
-	</ul>
-</div>
+<h1 class="page-title">{{ post.title }}</h1>
+<p class="lead">posted by: <a ng-href="http://{{baseUrl}}/#/user/{{ post._author.username }}">{{ post._author.username }}</a></p>
+<span class="float-left">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</span>
+<span class="float-right">Tags: <span ng-repeat="tag in post.tags track by $index"><a href="tag/{{tag}}">{{tag}}</a>,&nbsp;</span></span>
+<div class="clearfix"></div>
+<hr />
+<p data-ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html"></p>
+<hr />

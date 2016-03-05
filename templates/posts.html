@@ -1,75 +1,57 @@
-<div class="container">
-	<div ng-if="currentUser">
-		<h1 class="page-title">Create a Post: </h1>
-        <div static-include="forms/newPostForm.html"></div>
-    </div>
-    <h1 ng-if="posts.length" class="posts-header">Posts:</h1>
-
-	<div ng-click="show_search = !show_search" class="posts_search_toggle"><span>Show search options</span></div>
-
- 	<div ng-show="show_search" class="posts_search_inputs">
-    	<div class="post_search_wrapper">
-    		<div ng-init = "any_search = true" ng-click="any_search = !any_search" class="any_search_toggle search_toggle_button"><span>Any: </span></div>
-    		<div ng-show="any_search" class="search_input"><label><input ng-model="search.$"></label><div class="clear_button" ng-click="search.$ = '' ">Clear</div></div>
-    	</div>
-		<div class="post_search_wrapper">
-			<div ng-click="author_search = !author_search" class="any_search_toggle search_toggle_button"><span>Author: </span></div>
-			<div ng-show="author_search" class="search_input"><label><input ng-model="search._author.username"></label><div class="clear_button" ng-click="search._author.username = '' ">Clear</div></div>
-		</div>
-		<div class="post_search_wrapper">
-			<div ng-click="title_search = !title_search" class="title_search_toggle search_toggle_button"><span>Title: </span></div>
-			<div ng-show="title_search" class="search_input"><label><input ng-model="search.title"></label><div class="clear_button" ng-click="search.title = '' ">Clear</div></div>
-		</div>
-		<div class="post_search_wrapper">
-			<div ng-click="date_search = !date_search" class="date_search_toggle search_toggle_button"><span>Date: </span></div>
-			<div ng-show="date_search" class="search_input"><label><input ng-model="search.date"></label><div class="clear_button" ng-click="search.date = '' ">Clear</div></div>
-		</div>
-		<div class="post_search_wrapper">
-			<div ng-click="body_search = !body_search" class="body_search_toggle search_toggle_button"><span>Body: </span></div>
-			<div ng-show="body_search" class="search_input"><label><input ng-model="search.body"></label><div class="clear_button" ng-click="search.body = '' ">Clear</div></div>
-		</div>
-  	</div>
-    <div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
-	<ul ng-if="posts.length" class="posts-list">
-		<!--<input type="text" ng-model="search">-->
-		<li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
-		<div class="post_wrapper margin-center">
-			<div class="post_details">
-				<h5 class="author_name">Posted by: <a ng-href="http://{{baseUrl}}/#/user/{{ post._author.username }}">
-					<strong>{{ post._author.username }}</strong></a>
-				</h5>
-				<h5 class="post_date">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</h5>
-			</div>
-			<div class="post_title">
-				<a ng-if="post.slug == false" ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
-					<p class="title">{{ post.title }}</p>
-				</a>
-				<a ng-if="post.slug" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">
-					<p class="title">{{ post.title }}</p>
-				</a>
-			</div>
-			<div class="post_body" ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html">
-			</div>
-			<a ng-if="post.body.length > bodyLengthLimit" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}" class="link-read-more">
-				<p>Read more....</p>
-			</a>
-
-            <div>
-                <div ng-if="post.tags.length > 0" class="float-left inline-block">
-                    <div class="float-right inline-block"><b>Tags:</b>
-                        <span ng-repeat="tag in post.tags track by $index"><a href="tags/{{tag}}">{{tag}}</a>,&nbsp;</span>
-                    </div>
-                </div>
-
-                <a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
-                    <div class="float-right inline-block postID">{{post._id}}</div>
-                </a>
-
-            </div>
-
-		</div>
-		</li>
-	</ul>
-	<ng-include src="'/pagination.html'"></ng-include>
-
+<h1><b>Posts</b></h1>
+<div ng-if="currentUser">
+    <h1 class="page-title">Create a Post: </h1>
+    <div static-include="forms/newPostForm.html"></div>
 </div>
+
+<div ng-if="posts.length == 0"><h3>There are currently no posts in the system.</h3></div>
+
+<div ng-click="show_search = !show_search" class="posts_search_toggle"><span>Show search options</span></div>
+
+<div ng-show="show_search" class="posts_search_inputs">
+    <div class="post_search_wrapper">
+        <div ng-init = "any_search = true" ng-click="any_search = !any_search" class="any_search_toggle search_toggle_button"><span>Any: </span></div>
+        <div ng-show="any_search" class="search_input"><label><input ng-model="search.$"></label><div class="clear_button" ng-click="search.$ = '' ">Clear</div></div>
+    </div>
+    <div class="post_search_wrapper">
+        <div ng-click="author_search = !author_search" class="any_search_toggle search_toggle_button"><span>Author: </span></div>
+        <div ng-show="author_search" class="search_input"><label><input ng-model="search._author.username"></label><div class="clear_button" ng-click="search._author.username = '' ">Clear</div></div>
+    </div>
+    <div class="post_search_wrapper">
+        <div ng-click="title_search = !title_search" class="title_search_toggle search_toggle_button"><span>Title: </span></div>
+        <div ng-show="title_search" class="search_input"><label><input ng-model="search.title"></label><div class="clear_button" ng-click="search.title = '' ">Clear</div></div>
+    </div>
+    <div class="post_search_wrapper">
+        <div ng-click="date_search = !date_search" class="date_search_toggle search_toggle_button"><span>Date: </span></div>
+        <div ng-show="date_search" class="search_input"><label><input ng-model="search.date"></label><div class="clear_button" ng-click="search.date = '' ">Clear</div></div>
+    </div>
+    <div class="post_search_wrapper">
+        <div ng-click="body_search = !body_search" class="body_search_toggle search_toggle_button"><span>Body: </span></div>
+        <div ng-show="body_search" class="search_input"><label><input ng-model="search.body"></label><div class="clear_button" ng-click="search.body = '' ">Clear</div></div>
+    </div>
+</div>
+
+<ul ng-if="posts.length" class="list--unstyled">
+    <!--<input type="text" ng-model="search">-->
+    <li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
+        <h2 class="title">
+            <a ng-if="post.slug == false" ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
+                {{ post.title }}
+            </a>
+            <a ng-if="post.slug" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">
+                {{ post.title }}
+            </a>
+        </h2>
+        <p class="lead">posted by: <a ng-href="http://{{baseUrl}}/#/user/{{ post._author.username }}">{{ post._author.username }}</a></p>
+        <span class="float-left">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</span>
+        <span class="float-right">Tags: <span ng-repeat="tag in post.tags track by $index"><a href="tag/{{tag}}">{{tag}}</a>,&nbsp;</span></span>
+        <div class="clearfix"></div>
+        <hr />
+        <p data-ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html"></p>
+        <!--<p><a ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">{{post._id}}</a></p>-->
+        <hr class="break--unstyled" />
+        <a class="btn btn-primary" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <hr />
+    </li>
+</ul>
+<ng-include src="'/pagination.html'"></ng-include>
