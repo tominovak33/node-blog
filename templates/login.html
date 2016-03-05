@@ -1,16 +1,16 @@
-<div class="container">
-	<form ng-submit="login(username, password)">
-		<div class="form-group">
-			<label>Username</label>
-			<input type="text" class="form-control" ng-model="username"/>
+<form ng-submit="login(username, password)">
+	<div>
+		<div class="margin-v--medium">
+			<label>Email: </label>
+			<input type="email" class="form-control" ng-model="username" placeholder="Email Address" required />
 		</div>
-		<div class="form-group">
-			<label>Password</label>
-			<input type="password" class="form-control" ng-model="password"/>
+		<div class="margin-v--medium">
+			<label>Password:</label>
+			<input type="password" class="form-control" ng-model="password" placeholder="Password" required />
 		</div>
-		<p ng-if="loginValidation" class="fucked_up">
-			Error: {{loginValidation}}
-		</p>
-		<input class="btn btn-success btn-lg btn-block login-submit" type="submit" value="Login">
-	</form>
-</div>
+	</div>
+	<p ng-if="validationMessage">
+		Invalid input: {{validationMessage}}
+	</p>
+	<input class="btn btn-lg" type="submit" value="Login">
+</form>

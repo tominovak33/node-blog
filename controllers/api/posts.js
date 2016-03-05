@@ -11,7 +11,7 @@ router.get('/', function (request, response, next) {
 
 	var post_param = get_query_post_param(request._parsedUrl.query);
 
-	post_param.deleted = false;
+	post_param.deleted = false; // only select posts that haven't be logically deleted
 
 	Post.find(post_param)
 	.sort('-date')
@@ -100,15 +100,14 @@ var get_query_post_param = function(query_string){
 
 		if (name == 'post_slug') {
 			return { "slug":  value };
-		}
-
-		if (name == '_author') {
+		} else if (name == '_author') {
 			return { "_author":  value };
+		} else if (name == 'post_id') {
+			return { "_id":  value };
+		} else if (name == 'tags') {
+			return {"tags": value}
 		}
 
-		if (name == 'post_id') {
-			return { "_id":  value };
-		}		
 	}
 
 	return {};

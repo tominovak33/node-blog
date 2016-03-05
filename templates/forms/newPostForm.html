@@ -5,7 +5,7 @@
     <input ng-model='$parent.postTag' class="form-control" />
     <button ng-click='addTag($parent.postTag)' class="btn btn-primary margin-v-small">Add</button>
     <div ng-if="postTagsArray.length > 0" class="float-right inline-block margin-top-small"><b>Tags: (click to remove)</b>
-        <span ng-repeat="tag in postTagsArray track by $index" ng-click='removeTag($index)' class="padding-small tagItem clickPointer">{{tag}}</span>
+        <span ng-repeat="tag in postTagsArray track by $index" ng-click='removeTag($index)' class="padding-small tagItem clickPointer">{{tag}},&nbsp;</span>
     </div>
     <h4 class="margin-v-small">Post Body:</h4>
     <button ng-if="ckLoaded == false" ng-click="init_ckeditor()" class="btn btn-primary margin-v-small">Advanced Editor</button>

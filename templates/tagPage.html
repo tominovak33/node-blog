@@ -1,0 +1,25 @@
+<h1><b>Posts</b></h1>
+<div ng-if="posts.length == 0">
+    <h3>There are currently no posts with this tag</h3>
+</div>
+<ul ng-if="posts.length" class="list--unstyled">
+    <li ng-repeat="post in filteredPosts = posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage" class="post_item animate-3d-rotate">
+        <h2 class="title">
+            <a ng-if="post.slug == false" ng-href="http://{{baseUrl}}/#/post/id/{{post._id}}">
+                {{ post.title }}
+            </a>
+            <a ng-if="post.slug" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">
+                {{ post.title }}
+            </a>
+        </h2>
+        <p class="lead">posted by: <a ng-href="http://{{baseUrl}}/#/user/{{ post._author.username }}">{{ post._author.username }}</a></p>
+        <span class="float-left">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</span>
+        <span class="float-right">Tags: <span ng-repeat="tag in post.tags track by $index"><a href="tag/{{tag}}">{{tag}}</a>,&nbsp;</span></span>
+        <div class="clearfix"></div>
+        <hr />
+        <p data-ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html"></p>
+        <hr class="break--unstyled" />
+        <a class="btn btn-primary" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <hr />
+    </li>
+</ul>

@@ -25,8 +25,6 @@ angular.module('app')
             fullPostSlug += $routeParams.day + '/';
             fullPostSlug += $routeParams.slug;
 
-            console.log(fullPostSlug);
-
             PostsService.single_slug({
 				slug: fullPostSlug
 			})

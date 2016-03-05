@@ -44,7 +44,7 @@
         </h2>
         <p class="lead">posted by: <a ng-href="http://{{baseUrl}}/#/user/{{ post._author.username }}">{{ post._author.username }}</a></p>
         <span class="float-left">Posted on: {{ post.date | date:'yyyy-MM-dd @ h:mm a' }}</span>
-        <span class="float-right">Tags: <span ng-repeat="tag in post.tags track by $index"><a href="tag/{{tag}}">{{tag}}</a>,&nbsp;</span></span>
+        <span class="float-right">Tags: <span ng-repeat="tag in post.tags track by $index"><a href="#/tag/{{tag}}">{{tag}}</a>,&nbsp;</span></span>
         <div class="clearfix"></div>
         <hr />
         <p data-ng-bind-html="post.body | limitTo : bodyLengthLimit : 0 | output_html"></p>

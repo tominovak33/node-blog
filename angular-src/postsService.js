@@ -18,4 +18,7 @@ angular.module('app')
 		this.user_posts = function (parameters) {
 			return $http.get('/api/posts', { params: {_author: parameters._author} } );
 		}
+		this.filtered_posts = function (searchParams) {
+			return $http.get('/api/posts', { params: searchParams } );
+		}
 	}])

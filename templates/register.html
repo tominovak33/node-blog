@@ -1,18 +1,20 @@
-<div class="container">
-	<form ng-submit="register(username, password, password_confirm)">
-		<div class="form-group">
-			<label>Username</label>
-			<input type="email" class="form-control" ng-model="username" required />
+<form ng-submit="register(username, password, password_confirm)">
+	<div>
+		<div class="margin-v--medium">
+			<label>Email: </label>
+			<input type="email" class="form-control" ng-model="username" placeholder="Email Address" autocomplete="off" required />
 		</div>
-		<div class="form-group">
-			<p ng-if="validationMessage">
-			Invalid input: {{validationMessage}}
-			</p>
-			<label>Password</label>
-			<input type="password" class="form-control" ng-model="password" required />
-			<label>Confirm Password</label>
-			<input type="password" class="form-control" ng-model="password_confirm" required />
+		<div class="margin-v--medium">
+			<label>Password:</label>
+			<input type="password" class="form-control" ng-model="password" placeholder="Password" autocomplete="off" required />
 		</div>
-		<input class="btn btn-success btn-lg btn-block register-submit" type="submit" value="Register">
-	</form>
-</div>
+		<div class="margin-v--medium">
+			<label>Confirm Password:</label>
+			<input type="password" class="form-control" ng-model="password_confirm" placeholder="Confirm Password" autocomplete="off" required />
+		</div>
+	</div>
+	<p ng-if="validationMessage">
+		Invalid input: {{validationMessage}}
+	</p>
+	<input class="btn btn-lg" type="submit" value="Register">
+</form>
