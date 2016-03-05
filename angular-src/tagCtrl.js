@@ -9,7 +9,7 @@ angular.module('app')
         var tag = $routeParams.tag;
         $scope.new  = {};
 
-        console.log(tag);
+        $scope.tagTitle = tag;
 
         PostsService.filtered_posts ({
                 tags: tag
