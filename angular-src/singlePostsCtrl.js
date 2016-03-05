@@ -1,6 +1,8 @@
 angular.module('app')
 	.controller('SinglePostCtrl', ["$scope" , "$http", "PostsService", "$routeParams", "$route", "$location" , function ($scope, $http, PostsService, $routeParams, $route, $location) {
 
+		$scope.singlePostView = true; // makes it a bit easier to change the styling of the post on its single post page while using the same template as the multi post summary pages
+
 		$scope.$on('$viewContentLoaded', function(){
 			//the page is ready
 		});

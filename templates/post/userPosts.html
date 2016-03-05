@@ -4,9 +4,6 @@
 <ul ng-if="user_posts.length" class="list--unstyled">
 	<li ng-repeat="post in filteredPosts = user_posts | filter:search | startFrom:(currentPage-1)*postsPerPage | limitTo:postsPerPage">
 		<div static-include="/post/innerPostContent.html"></div>
-		<hr class="break--unstyled" />
-		<a class="btn btn-primary" ng-href="http://{{baseUrl}}/#/post/{{post.slug}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
-		<hr />
 	</li>
 </ul>
 <ng-include src="'/pagination.html'"></ng-include>
