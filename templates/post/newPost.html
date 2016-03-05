@@ -6,12 +6,14 @@
         <h4 class="margin-v-small">Post Tags:</h4>
         <input ng-model='$parent.postTag' class="form-control" />
         <button ng-click='addTag($parent.postTag)' class="btn btn-primary margin-v-small">Add</button>
-        <div ng-if="postTagsArray.length > 0" class="float-right inline-block margin-top-small"><b>Tags: (click to remove)</b>
+        <div ng-if="postTagsArray.length > 0" class="float-right inline-block"><b>Tags: (click to remove)</b>
             <span ng-repeat="tag in postTagsArray track by $index" ng-click='removeTag($index)' class="padding-small tagItem clickPointer">{{tag}},&nbsp;</span>
         </div>
-        <h4 class="margin-v-small">Post Body:</h4>
+        <h4 class="margin-v--small">Post Body:</h4>
         <button ng-if="ckLoaded == false" ng-click="init_ckeditor()" class="btn btn-primary margin-v-small">Advanced Editor</button>
-        <textarea ng-model='$parent.postContent' name="editor1" id="editor1" class="postContentInput" rows="10" cols="80"></textarea>
+        <div class="margin-v--small">
+            <textarea ng-model='$parent.postContent' name="editor1" id="editor1" rows="10" cols="80"></textarea>
+        </div>
         <button ng-click='addPost()' class="btn btn-default post-submit">Add new post</button>
         <p ng-if="$parent.postTitle">URL: {{baseUrl}}/#/post/{{ slug }}</p>
     </form>

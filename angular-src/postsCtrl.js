@@ -47,18 +47,15 @@ angular.module('app')
 		});
 
 		$scope.init_ckeditor = function () {
+			var editorTextAreaExists = !!document.getElementById("editor1");
+
 			$scope.ckLoaded = true;
-			try {
+
+			if (editorTextAreaExists) {
 				var editor = CKEDITOR.replace('editor1');
-			} catch (err) {
+			} else {
 				$scope.ckLoaded = false;
-				console.log("Error: " + err);
 			}
-			//if (typeof editor === 'undefined') {
-			//	$timeout(function() {
-			//		$scope.init_ckeditor();
-			//	}, 1000)
-			//}
 		};
 
 		$scope.$on('ws:new_post', function(_, post) {
