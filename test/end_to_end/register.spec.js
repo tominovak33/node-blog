@@ -10,7 +10,7 @@ describe('test registration :', function() {
 	//Set credentials to use so available in all tests below
 	var time = Date.now();
 
-	var username = 'test-user';
+	var username = 'test-user@example.com';
 	var password = 'password123';
 
 	it('registers a test user successfully who is then logged in' , function () {
@@ -21,15 +21,16 @@ describe('test registration :', function() {
 		//Go to login page
 		element(by.css('.navigation-register')).click();
 
+		browser.sleep(1000); //Waits for refresh to happen
+
 		element(by.model('username')).sendKeys(username);
 		element(by.model('password')).sendKeys(password);	
-		element(by.model('password_confirm')).sendKeys(password);		
+		element(by.model('password_confirm')).sendKeys(password);
 		element(by.css('.register-submit')).click();
 		
 		browser.sleep(1000); //Waits for refresh to happen
 		//Assertions
 
-		//See if the first post on the list of posts is the once just submitted
 		element(by.css('.current-user')).getText().then(function (current_user_test) {
 			expect(current_user_test).to.contain(username);
 		});

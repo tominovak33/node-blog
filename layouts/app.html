@@ -11,9 +11,13 @@
 			<div class="container nav-container">
 				<a href="#/" class="navbar-brand">TomiCMS</a>
 				<ul class="nav navbar-nav">
-					<li ng-if="currentUser == undefined"><a href="#/login">Login</a></li>
+					<li ng-if="currentUser == undefined"><a href="#/login" class="navigation-login">Login</a></li>
+					<li ng-if="currentUser == undefined"><a href="#/register" class="navigation-register">Register</a></li>
 					<li ng-if="currentUser"><a href="#/post/new">New Post</a></li>
-					<li ng-if="currentUser"><a href="#/" ng-click="logout()">Logout</a></li>
+					<li ng-if="currentUser"><a href="#/" ng-click="logout()" class="navigation-register">Logout</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="current-user"><a href="http://{{baseUrl}}/#/user/{{currentUser.username}}/">{{ currentUser.username }}</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -23,6 +27,7 @@
 					<div ng-view></div>
 				</div>
 				<div class="col-md-4">
+					<p>Logged in as: <span class="current-user">{{ currentUser.username }}</span></p>
 					<div static-include="/sidebar/sidebar.html" class="margin-top--large"></div>
 				</div>
 			</div>

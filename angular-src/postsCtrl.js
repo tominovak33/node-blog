@@ -63,7 +63,7 @@ angular.module('app')
 		$scope.prettifyCode = function() {
 			PR.prettyPrint();
 		};
-		
+
 		$scope.$on('ws:new_post', function(_, post) {
 			post = post[0];
 			$scope.$apply(function () {
